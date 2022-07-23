@@ -1,0 +1,46 @@
+:root {
+  --ground-height: 150px;
+}
+
+body {
+  margin: 0;
+}
+
+#background {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  /* overflow-x: auto; */
+  
+  width: 100%;
+  height: calc(100vh - var(--ground-height));
+  
+  background-color: green;
+}
+
+#country-1 {
+  position: absolute;
+  bottom: 0;
+}
+
+#country-1 img {
+  /* img width should be regulated depends on country image */
+  width: 150%;
+}
+
+#character img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: var(--ground-height);
+
+  width: 50px;
+  margin: 0 auto;
+}
+
+#ground {
+  width: 100%;
+  height: var(--ground-height);
+
+  background-color: saddlebrown;
+}
