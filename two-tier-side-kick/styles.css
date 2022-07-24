@@ -1,5 +1,13 @@
 :root {
-  --ground-height: 150px;
+  --ground-height: 100px;
+}
+
+.stick-on-bottom {
+  position: absolute;
+  bottom: 0;
+}
+.smooth-animation {
+  transition-duration: 0.3s;
 }
 
 body {
@@ -10,22 +18,37 @@ body {
   position: relative;
   display: flex;
   overflow: hidden;
-  /* overflow-x: auto; */
   
   width: 100%;
   height: calc(100vh - var(--ground-height));
-  
-  background-color: green;
 }
 
-#country-1 {
-  position: absolute;
-  bottom: 0;
+#tree-1 {
+  left: 100px;
+}
+#tree-1 img {
+  width: 200px;
 }
 
-#country-1 img {
-  /* img width should be regulated depends on country image */
-  width: 150%;
+#tree-2 {
+  left: 800px;
+}
+#tree-2 img {
+  width: 200px;
+}
+
+#tree-3 {
+  left: 1500px;
+}
+#tree-3 img {
+  width: 200px;
+}
+
+#GHM {
+  left: 300px;
+}
+#GHM img {
+  width: 1000px;
 }
 
 #character img {
