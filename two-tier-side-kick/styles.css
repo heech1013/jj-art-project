@@ -1,69 +1,120 @@
+/* element */
 :root {
-  --ground-height: 100px;
-}
-
-.stick-on-bottom {
-  position: absolute;
-  bottom: 0;
-}
-.smooth-animation {
-  transition-duration: 0.3s;
+  --content-width: 950px;
+  --content-height: 650px;
+  --ground-bottom: 40px;
 }
 
 body {
   margin: 0;
 }
 
-#background {
-  position: relative;
+img {
+  width: inherit;
+  height: inherit;
+
+  object-fit: contain;
+}
+
+/* class */
+
+/* id */
+#main {
   display: flex;
-  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: black;
+}
+
+#content {
+  position: relative;
+
+  width: var(--content-width);
+  height: var(--content-height);
   
-  width: 100%;
-  height: calc(100vh - var(--ground-height));
+  background-color: white;
 }
 
-#tree-1 {
-  left: 100px;
-}
-#tree-1 img {
-  width: 200px;
-}
-
-#tree-2 {
-  left: 800px;
-}
-#tree-2 img {
-  width: 200px;
-}
-
-#tree-3 {
-  left: 1500px;
-}
-#tree-3 img {
-  width: 200px;
-}
-
-#GHM {
-  left: 300px;
-}
-#GHM img {
-  width: 1000px;
-}
-
-#character img {
+#sun {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: var(--ground-height);
+  top: 50px;
+  right: 100px;
 
-  width: 50px;
-  margin: 0 auto;
+  width: 200px;
+  height: 200px;
+}
+
+#mountain1 {
+  position: absolute;
+  left: 40px;
+  bottom: 0;
+  transform: rotate(2deg);
+
+  width: 600px;
+  height: 600px;
+}
+
+#mountain2 {
+  position: absolute;
+  right: 40px;
+  bottom: -20px;
+
+  width: 500px;
+  height: 500px;
+}
+
+#tiger {
+  position: absolute;
+  left: 344px;
+  top: 130px;
+
+  width: 100px;
+  height: 100px;
+}
+
+#tower {
+  position: absolute;
+  left: 630px;
+  top: 140px;
+
+  width: 150px;
+  height: 200px;
+}
+
+#landmark {
+  position: absolute;
+  left: 200px;
+  bottom: 50px;
+
+  width: 550px;
+  height: 390px;;
+}
+
+#plant2 {
+  position: absolute;
+  right: 140px;
+  bottom: 6px;
+
+  width: 160px;
+  height: 390px;
+}
+
+#plant1 {
+  position: absolute;
+  left: 15px;
+  bottom: 0;
+
+  width: 280px;
+  height: 420px;
 }
 
 #ground {
-  width: 100%;
-  height: var(--ground-height);
+  position: absolute;
+  bottom: var(--ground-bottom);
 
-  background-color: saddlebrown;
+  width: var(--content-width);
 }
