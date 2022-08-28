@@ -5,6 +5,17 @@
   --ground-bottom: 40px;
 }
 
+body {
+  margin: 0;
+}
+
+img {
+  width: inherit;
+  height: inherit;
+
+  object-fit: contain;
+}
+
 /* animation */
 @keyframes plant-shake {
   0% {
@@ -18,16 +29,71 @@
   }
 }
 
-body {
-  margin: 0;
+@keyframes kangaroo-jump {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
-img {
-  width: inherit;
-  height: inherit;
-
-  object-fit: contain;
+@keyframes boomerang-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
+@keyframes boomerang-fly {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  10% {
+    transform: translate(-130px, 60px);
+  }
+  20% {
+    transform: translate(-240px, 120px);
+  }
+  30% {
+    transform: translate(-300px, 130px);
+  }
+  40% {
+    transform: translate(-370px, 60px);
+  }
+  50% {
+    transform: translate(-450px, 0px);
+  }
+  60% {
+    transform: translate(-370px, -60px);
+  }
+  70% {
+    transform: translate(-300px, -120px);
+  }
+  80% {
+    transform: translate(-240px, -60px);
+  }
+  90% {
+    transform: translate(-130px, -30px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
 
 /* class */
 
@@ -53,7 +119,7 @@ img {
 }
 
 /* korea */
-#sun {
+#korea #sun {
   position: absolute;
   top: 50px;
   right: 100px;
@@ -62,7 +128,7 @@ img {
   height: 200px;
 }
 
-#mountain1 {
+#korea #mountain1 {
   position: absolute;
   left: 40px;
   bottom: 0;
@@ -72,7 +138,7 @@ img {
   height: 600px;
 }
 
-#mountain2 {
+#korea #mountain2 {
   position: absolute;
   right: 40px;
   bottom: -20px;
@@ -81,7 +147,7 @@ img {
   height: 500px;
 }
 
-#tiger {
+#korea #tiger {
   position: absolute;
   left: 344px;
   top: 130px;
@@ -90,7 +156,7 @@ img {
   height: 100px;
 }
 
-#tower {
+#korea #tower {
   position: absolute;
   left: 630px;
   top: 140px;
@@ -99,7 +165,7 @@ img {
   height: 200px;
 }
 
-#landmark {
+#korea #landmark {
   position: absolute;
   left: 200px;
   bottom: 50px;
@@ -108,7 +174,7 @@ img {
   height: 390px;;
 }
 
-#plant2 {
+#korea #plant2 {
   position: absolute;
   right: 140px;
   bottom: 6px;
@@ -121,7 +187,7 @@ img {
   animation-iteration-count: infinite;
 }
 
-#plant1 {
+#korea #plant1 {
   position: absolute;
   left: 15px;
   bottom: 0;
@@ -134,11 +200,83 @@ img {
   animation-iteration-count: infinite;
 }
 
-#ground {
+#korea #ground {
   position: absolute;
   bottom: var(--ground-bottom);
 
-  width: var(--content-width);
+  width: 100%
+}
+
+/* australia */
+#australia #sun {
+  position: absolute;
+  top: 40px;
+  left: 250px;
+
+  width: 150px;
+}
+
+#australia #native {
+  position: absolute;
+  top: 20px;
+  right: 190px;
+
+  width: 300px;
+}
+
+#australia #landmark {
+  position: absolute;
+  bottom: 45px;
+
+  width: 900px;
+}
+
+#australia #kangaroo {
+  position: absolute;
+  bottom: 72px;
+  right: 120px;
+
+  width: 200px;
+
+  animation-name: kangaroo-jump;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+#australia #ground {
+  position: absolute;
+  bottom: var(--ground-bottom);
+
+  width: 100%
+}
+
+#australia #plant {
+  position: absolute;
+  bottom: -5px;
+  left: 50px;
+
+  width: 460px;
+}
+
+#australia #boomerang {
+  position: absolute;
+  top: 200px;
+  left: 480px;
+
+  width: 100px;
+
+  animation-name: boomerang-fly;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+#australia #boomerang #rotate-wrapper {
+  width: inherit;
+
+  animation-name: boomerang-rotate;
+  animation-duration: 0.6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
 /* common */
