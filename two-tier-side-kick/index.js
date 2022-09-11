@@ -1,57 +1,46 @@
+/** ocean */
 const OCEAN_BIRD_CLIENT_ADJUSTMENT = -135
 
-const prevMouse = {
-  x: 0,
-  y: 0,
-}
+const prevBirdPosition = { x: 0, y: 0 }
+const nextBirdPosition = { x: 0, y: 0 }
 
-const mouse = {
-  x: 0,
-  y: 0,
-}
-
-function handleMouseMove (e) {
-  mouse.x = e.clientX
-  mouse.y = e.clientY
-}
-
-function handleOceanMouseMove(xFrom, yFrom, xTo, yTo) {
+function handleNextBirdPosition(e) {
   const content = document.querySelector('#content')
+  
+  nextBirdPosition.x = (e.clientX + OCEAN_BIRD_CLIENT_ADJUSTMENT) - content.offsetLeft
+  nextBirdPosition.y = (e.clientY + OCEAN_BIRD_CLIENT_ADJUSTMENT) - content.offsetTop
+}
+
+document.addEventListener('mousemove', handleNextBirdPosition)
+
+requestAnimationFrame(function render() {
+  const { x: xFrom, y: yFrom } = prevBirdPosition
+  const { x: xTo, y: yTo } = nextBirdPosition
+
   const bird = document.querySelector('#ocean #bird')
 
-  // const xFrom = 
-  // const yFrom =
-
-  const xTo = (e.clientX + OCEAN_BIRD_CLIENT_ADJUSTMENT) - content.offsetLeft
-  const yTo = (e.clientY + OCEAN_BIRD_CLIENT_ADJUSTMENT) - content.offsetTop
-
-  const xDiff = xTo - xFrom
-  const yDiff = yTo - yFrom
+  const xDiff = Math.abs(xTo - xFrom)
+  const yDiff = Math.abs(yTo - yFrom)
   const tangentValue = xDiff / yDiff
-  const degreeTo = Math.atan(tangentValue)
+  const degreeTo = Math.atan(tangentValue) * 10
 
-  console.log(`handleOceanMouseMove, x to: ${xTo}, y to: ${yTo}, degree to: ${degreeTo}`)
+  if (!isNaN(degreeTo) && degreeTo !== 0) {
+    bird.style.transform = `
+      translate(${xTo}px, ${yTo}px)
+      rotate(${degreeTo}deg)
+    `
 
-  bird.style.transform = `
-    translate(${xTo}px, ${yTo}px)
-    rotate(${degreeTo})
-  `
-}
+    console.log({ xDiff, yDiff, tangentValue, degreeTo })
+    console.log(`translate(${xTo}px, ${yTo}px) rotate(${degreeTo}deg)`)
+  }
 
-function render() {
-  console.log('render')
-  requestAnimationFrame(render)
+  prevBirdPosition.x = xTo
+  prevBirdPosition.y = yTo
 
-  const xFrom = prevMouse.x
-  const yFrom = prevMouse.y
+  window.setTimeout(() => {
+    console.log(`render()`)
+    requestAnimationFrame(render)
+  }, 100)
 
-  const xTo = mouse.x
-  const yTo = mouse.y
-
-  handleOceanMouseMove(xFrom, yFrom, xTo, yTo)
-
-  prevMouse.x = xTo
-  prevMouse.y = yTo
-}
-
-document.addEventListener('mousemove', handleMouseMove)
+  // requestAnimationFrame(render)
+})
