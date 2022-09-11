@@ -1,4 +1,8 @@
 /** ocean */
+/** TODO: Enhance mouse trackimg animation.
+ * problem: rotating degree is too small.
+ * solution: lower capture interval to make angle bigger.
+ */
 const OCEAN_BIRD_CLIENT_ADJUSTMENT = -135
 
 const prevBirdPosition = { x: 0, y: 0 }
@@ -13,7 +17,7 @@ function handleNextBirdPosition(e) {
 
 document.addEventListener('mousemove', handleNextBirdPosition)
 
-requestAnimationFrame(function render() {
+requestAnimationFrame(function handleBirdAnimation() {
   const { x: xFrom, y: yFrom } = prevBirdPosition
   const { x: xTo, y: yTo } = nextBirdPosition
 
@@ -24,23 +28,17 @@ requestAnimationFrame(function render() {
   const tangentValue = xDiff / yDiff
   const degreeTo = Math.atan(tangentValue) * 10
 
-  if (!isNaN(degreeTo) && degreeTo !== 0) {
-    bird.style.transform = `
-      translate(${xTo}px, ${yTo}px)
-      rotate(${degreeTo}deg)
-    `
-
-    console.log({ xDiff, yDiff, tangentValue, degreeTo })
-    console.log(`translate(${xTo}px, ${yTo}px) rotate(${degreeTo}deg)`)
-  }
-
   prevBirdPosition.x = xTo
   prevBirdPosition.y = yTo
 
-  window.setTimeout(() => {
-    console.log(`render()`)
-    requestAnimationFrame(render)
-  }, 100)
+  if (!isNaN(degreeTo) && degreeTo !== 0) {
+    bird.style.transform = `
+      translate(${xTo}px, ${yTo}px)
+    `
+    // rotate(${degreeTo}deg)
+  }
 
-  // requestAnimationFrame(render)
+  window.setTimeout(() => {
+    requestAnimationFrame(handleBirdAnimation)
+  }, 100)
 })
