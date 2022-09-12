@@ -15,9 +15,7 @@ function handleNextBirdPosition(e) {
   nextBirdPosition.y = (e.clientY + OCEAN_BIRD_CLIENT_ADJUSTMENT) - content.offsetTop
 }
 
-document.addEventListener('mousemove', handleNextBirdPosition)
-
-requestAnimationFrame(function handleBirdAnimation() {
+function handleBirdAnimation() {
   const { x: xFrom, y: yFrom } = prevBirdPosition
   const { x: xTo, y: yTo } = nextBirdPosition
 
@@ -41,4 +39,7 @@ requestAnimationFrame(function handleBirdAnimation() {
   window.setTimeout(() => {
     requestAnimationFrame(handleBirdAnimation)
   }, 100)
-})
+}
+
+// document.addEventListener('mousemove', handleNextBirdPosition)
+// requestAnimationFrame(handleBirdAnimation)

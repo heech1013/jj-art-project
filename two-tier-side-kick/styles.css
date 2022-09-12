@@ -329,6 +329,109 @@ img {
   width: 100%;
 }
 
+/* america */
+#america #sky {
+  position: absolute;
+  top: 0;
+
+  width: 100%;
+}
+
+#america #background {
+  position: absolute;
+  bottom: -5px;
+
+  width: 100%;
+}
+
+#america #landmark1 {
+  position: absolute;
+  top: 90px;
+  left: 100px;
+
+  width: 250px;
+}
+
+#america #landmark2 {
+  position: absolute;
+  top: 142px;
+  left: 285px;
+
+  width: 250px;
+}
+
+#america #landmark3 {
+  position: absolute;
+  top: 245px;
+  left: 455px;
+
+  width: 200px;
+}
+
+#america #landmark4 {
+  position: absolute;
+  top: 180px;
+  left: 670px;
+
+  width: 280px;
+}
+
+#america #rock {
+  position: absolute;
+  bottom: -5px;
+
+  width: 470px;
+}
+
+#america #plant {
+  position: absolute;
+  bottom: -5px;
+  left: 40px;
+
+  width: 95%;
+}
+
+#america #star1 {
+  position: absolute;
+  top: 50px;
+  left: 380px;
+
+  width: 50px;
+}
+
+#america #star2 {
+  position: absolute;
+  top: 80px;
+  left: 480px;
+
+  width: 50px;
+  transform: rotate(25deg);
+}
+
+#america #star3 {
+  position: absolute;
+  top: 130px;
+  left: 570px;
+
+  width: 50px;
+}
+
+#america #star4 {
+  position: absolute;
+  top: 60px;
+  left: 610px;
+
+  width: 50px;
+}
+
+#america #star5 {
+  position: absolute;
+  top: 90px;
+  left: 730px;
+
+  width: 50px;
+}
+
 /* common */
 #character {
   position: absolute;
