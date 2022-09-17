@@ -95,6 +95,12 @@ img {
   }
 }
 
+@keyframes star-shine {
+  100% {
+    left: 125%;
+  }
+}
+
 
 /* class */
 
@@ -397,6 +403,9 @@ img {
   left: 380px;
 
   width: 50px;
+
+  overflow: hidden;
+  cursor: pointer;
 }
 
 #america #star2 {
@@ -405,7 +414,10 @@ img {
   left: 480px;
 
   width: 50px;
+
   transform: rotate(25deg);
+  overflow: hidden;
+  cursor: pointer;
 }
 
 #america #star3 {
@@ -414,6 +426,9 @@ img {
   left: 570px;
 
   width: 50px;
+
+  overflow: hidden;
+  cursor: pointer;
 }
 
 #america #star4 {
@@ -422,6 +437,9 @@ img {
   left: 610px;
 
   width: 50px;
+
+  overflow: hidden;
+  cursor: pointer;
 }
 
 #america #star5 {
@@ -430,6 +448,39 @@ img {
   left: 730px;
 
   width: 50px;
+
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#america #star1::before,
+#america #star2::before,
+#america #star3::before,
+#america #star4::before,
+#america #star5::before {
+  position: absolute;
+  left: -75%;
+
+  display: block;
+  width: 70%;
+  height: 100%;
+
+  content: '';
+  transform: skewX(-25deg);
+  background: linear-gradient(
+    to right,
+    rgb(0 17 177 / 50%) 0%,
+    rgb(0 17 177 / 10%) 100%
+  );
+}
+
+#america #star1:hover::before,
+#america #star2:hover::before,
+#america #star3:hover::before,
+#america #star4:hover::before,
+#america #star5:hover::before {
+  /* animation: star-shine 0.85s; */
+  animation: star-shine 0.5s;
 }
 
 /* common */
