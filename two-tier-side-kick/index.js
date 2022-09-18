@@ -1,45 +1,56 @@
 /** ocean */
-/** TODO: Enhance mouse trackimg animation.
- * problem: rotating degree is too small.
- * solution: lower capture interval to make angle bigger.
- */
 const OCEAN_BIRD_CLIENT_ADJUSTMENT = -135
 
-const prevBirdPosition = { x: 0, y: 0 }
-const nextBirdPosition = { x: 0, y: 0 }
-
-function handleNextBirdPosition(e) {
-  const content = document.querySelector('#content')
-  
-  nextBirdPosition.x = (e.clientX + OCEAN_BIRD_CLIENT_ADJUSTMENT) - content.offsetLeft
-  nextBirdPosition.y = (e.clientY + OCEAN_BIRD_CLIENT_ADJUSTMENT) - content.offsetTop
+const DEGREE_BY_DIRECTION = {
+  TOP: -90,
+  TOP_RIGHT: -45,
+  RIGHT: 0,
+  DOWN_RIGHT: 45,
+  DOWN: 90,
+  DOWN_LEFT: 125,
+  LEFT: 180,
+  TOP_LEFT: -125,
 }
 
-function handleBirdAnimation() {
-  const { x: xFrom, y: yFrom } = prevBirdPosition
-  const { x: xTo, y: yTo } = nextBirdPosition
+let prevBirdX = 0
+let prevBirdY = 0
+let prevBirdDegree = DEGREE_BY_DIRECTION.RIGHT
 
+/** TODO: Enhance mouse trackimg animation. */
+document.addEventListener('mousemove', function handleBirdAnimation(e) {
+  const content = document.querySelector('#content')
   const bird = document.querySelector('#ocean #bird')
 
-  const xDiff = Math.abs(xTo - xFrom)
-  const yDiff = Math.abs(yTo - yFrom)
-  const tangentValue = xDiff / yDiff
-  const degreeTo = Math.atan(tangentValue) * 10
+  const xTo = (e.clientX + OCEAN_BIRD_CLIENT_ADJUSTMENT) - content.offsetLeft
+  const yTo = (e.clientY + OCEAN_BIRD_CLIENT_ADJUSTMENT) - content.offsetTop
 
-  prevBirdPosition.x = xTo
-  prevBirdPosition.y = yTo
+  const xDiff = prevBirdX - xTo
+  const yDiff = prevBirdY - yTo
 
-  if (!isNaN(degreeTo) && degreeTo !== 0) {
-    bird.style.transform = `
-      translate(${xTo}px, ${yTo}px)
-    `
-    // rotate(${degreeTo}deg)
-  }
+  const degreeTo = ((xDiff, yDiff) => {
+    if (yDiff > 0) {
+      if (xDiff > 0) return DEGREE_BY_DIRECTION.TOP_RIGHT
+      if (xDiff === 0) return DEGREE_BY_DIRECTION.TOP
+      if (xDiff < 0) return DEGREE_BY_DIRECTION.TOP_LEFT
+    }
+    if (yDiff === 0) {
+      if (xDiff > 0) return DEGREE_BY_DIRECTION.LEFT
+      if (xDiff === 0) return prevBirdDegree
+      if (xDiff < 0) return DEGREE_BY_DIRECTION.RIGHT
+    }
+    if (yDiff < 0) {
+      if (xDiff > 0) return DEGREE_BY_DIRECTION.DOWN_LEFT
+      if (xDiff === 0) return DEGREE_BY_DIRECTION.DOWN
+      if (xDiff < 0) return DEGREE_BY_DIRECTION.DOWN_RIGHT
+    }
+  })(xDiff, yDiff)
 
-  window.setTimeout(() => {
-    requestAnimationFrame(handleBirdAnimation)
-  }, 100)
-}
+  bird.style.transform = `
+    translate(${xTo}px, ${yTo}px)
+    rotate(${degreeTo}deg)
+  `
 
-// document.addEventListener('mousemove', handleNextBirdPosition)
-// requestAnimationFrame(handleBirdAnimation)
+  prevBirdX = xTo
+  prevBirdY = yTo
+  prevBirdDegree = degreeTo
+})
