@@ -338,71 +338,18 @@ img {
 /* america */
 #america #sky {
   position: absolute;
-  top: 0;
+  top: 30px;
+  left: 190px;
 
-  width: 100%;
-}
-
-#america #background {
-  position: absolute;
-  bottom: -5px;
-
-  width: 100%;
-}
-
-#america #landmark1 {
-  position: absolute;
-  top: 90px;
-  left: 100px;
-
-  width: 250px;
-}
-
-#america #landmark2 {
-  position: absolute;
-  top: 142px;
-  left: 285px;
-
-  width: 250px;
-}
-
-#america #landmark3 {
-  position: absolute;
-  top: 245px;
-  left: 455px;
-
-  width: 200px;
-}
-
-#america #landmark4 {
-  position: absolute;
-  top: 180px;
-  left: 670px;
-
-  width: 280px;
-}
-
-#america #rock {
-  position: absolute;
-  bottom: -5px;
-
-  width: 470px;
-}
-
-#america #plant {
-  position: absolute;
-  bottom: -5px;
-  left: 40px;
-
-  width: 95%;
+  width: 680px;
 }
 
 #america #star1 {
   position: absolute;
-  top: 50px;
-  left: 380px;
+  top: 105px;
+  left: 395px;
 
-  width: 50px;
+  width: 45px;
 
   overflow: hidden;
   cursor: pointer;
@@ -410,10 +357,10 @@ img {
 
 #america #star2 {
   position: absolute;
-  top: 80px;
+  top: 130px;
   left: 480px;
 
-  width: 50px;
+  width: 45px;
 
   transform: rotate(25deg);
   overflow: hidden;
@@ -422,10 +369,10 @@ img {
 
 #america #star3 {
   position: absolute;
-  top: 130px;
-  left: 570px;
+  top: 190px;
+  left: 560px;
 
-  width: 50px;
+  width: 45px;
 
   overflow: hidden;
   cursor: pointer;
@@ -433,10 +380,10 @@ img {
 
 #america #star4 {
   position: absolute;
-  top: 60px;
-  left: 610px;
+  top: 120px;
+  left: 620px;
 
-  width: 50px;
+  width: 45px;
 
   overflow: hidden;
   cursor: pointer;
@@ -444,10 +391,10 @@ img {
 
 #america #star5 {
   position: absolute;
-  top: 90px;
-  left: 730px;
+  top: 130px;
+  left: 720px;
 
-  width: 50px;
+  width: 45px;
 
   overflow: hidden;
   cursor: pointer;
@@ -479,8 +426,86 @@ img {
 #america #star3:hover::before,
 #america #star4:hover::before,
 #america #star5:hover::before {
-  /* animation: star-shine 0.85s; */
   animation: star-shine 0.5s;
+}
+
+#america #landmark_base {
+  position: absolute;
+  bottom: 25px;
+  left: 40px;
+
+  width: 880px;
+}
+
+#america #face1 {
+  position: absolute;
+  bottom: 292px;
+  left: 98px;
+
+  width: 260px;
+}
+
+#america #mouse1 {
+  position: absolute;
+  bottom: 342px;
+  left: 169px;
+
+  width: 80px;
+}
+
+#america #face2 {
+  position: absolute;
+  bottom: 235px;
+  left: 290px;
+
+  width: 240px;
+}
+
+#america #mouse2 {
+  position: absolute;
+  bottom: 304px;
+  left: 372px;
+
+  width: 80px;
+}
+
+#america #face3 {
+  position: absolute;
+  bottom: 165px;
+  left: 460px;
+
+  width: 200px;
+}
+
+#america #face4 {
+  position: absolute;
+  bottom: 165px;
+  left: 690px;
+
+  width: 210px;
+}
+
+#america #mouse4 {
+  position: absolute;
+  bottom: 215px;
+  left: 752px;
+
+  width: 90px;
+}
+
+#america #plant {
+  position: absolute;
+  bottom: -5px;
+  left: 40px;
+
+  width: 95%;
+}
+
+#america #ground {
+  position: absolute;
+  bottom: 13px;
+
+  width: 100%;
 }
 
 /* common */
