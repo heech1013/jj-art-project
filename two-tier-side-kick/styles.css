@@ -16,6 +16,19 @@ img {
   object-fit: contain;
 }
 
+/* class */
+.green1 { filter: invert(0%) sepia(25.7%) saturate(752.4%) hue-rotate(96deg) brightness(107.2%) contrast(94%) opacity(0.1); }
+.black1 { filter: invert(180%) sepia(32%) saturate(0%) hue-rotate(476deg) brightness(25%) contrast(97%); }
+.grey1 { filter: invert(80%) sepia(38%) saturate(0%) hue-rotate(203deg) brightness(169%) contrast(84%); }
+.grey2 { filter: invert(85%) sepia(1%) saturate(57%) hue-rotate(209deg) brightness(188%) contrast(107%) opacity(0.9); }
+.blue1 { filter: invert(51%) sepia(52%) saturate(5229%) hue-rotate(181deg) brightness(99%) contrast(102%); }
+.green2 { filter: invert(81%) sepia(52%) saturate(5189%) hue-rotate(131deg) brightness(159%) contrast(102%); }
+.pink1 { filter: invert(68%) sepia(90%) saturate(102%) hue-rotate(292deg) brightness(143%) contrast(102%); }
+.green3 { filter: invert(37%) sepia(23%) saturate(3172%) hue-rotate(133deg) brightness(81%) contrast(101%); }
+.pink2 { filter: invert(81%) sepia(67%) saturate(831%) hue-rotate(315deg) brightness(145%) contrast(123%) opacity(1); }
+.green4 { filter: invert(51%) sepia(90%) saturate(2703%) hue-rotate(91deg) brightness(119%) contrast(105%); }
+.brown1 { filter: invert(12%) sepia(65%) saturate(5392%) hue-rotate(355deg) brightness(60%) contrast(116%); }
+.green5 { filter: invert(42%) sepia(97%) saturate(1344%) hue-rotate(104deg) brightness(80%) contrast(103%); }
 /* animation */
 @keyframes plant-shake {
   0% {
@@ -100,9 +113,6 @@ img {
     left: 125%;
   }
 }
-
-
-/* class */
 
 /* id */
 #main {
@@ -506,6 +516,377 @@ img {
   bottom: 13px;
 
   width: 100%;
+}
+
+#peru #moon {
+  position: absolute;
+  bottom: 374px;
+  left: 54px;
+
+  width: 200px;
+}
+
+#peru #mountain_1_01 {
+  position: absolute;
+  bottom: 214px;
+  left: 380px;
+
+  width: 570px;
+}
+
+#peru #mountain_1_02 {
+  position: absolute;
+  bottom: 250px;
+  left: 421px;
+
+  width: 570px;
+}
+
+#peru #mountain_1_03 {
+  position: absolute;
+  bottom: 215px;
+  left: 436px;
+
+  width: 570px;
+}
+
+#peru #mountain_1_04 {
+  position: absolute;
+  bottom: 199px;
+  left: 427px;
+
+  width: 570px;
+}
+
+#peru #mountain_1_05 {
+  position: absolute;
+  bottom: 176px;
+  left: 435px;
+
+  width: 570px;
+}
+
+#peru #mountain_1_06 {
+  position: absolute;
+  bottom: 162px;
+  left: 448px;
+
+  width: 570px;
+}
+
+#peru #mountain_1_07 {
+  position: absolute;
+  bottom: 146px;
+  left: 460px;
+
+  width: 570px;
+}
+
+#peru #mountain_1_08 {
+  position: absolute;
+  bottom: 137px;
+  left: 471px;
+
+  width: 570px;
+}
+
+#peru #mountain_1_09 {
+  position: absolute;
+  bottom: 117px;
+  left: 481px;
+
+  width: 570px;
+}
+
+#peru #mountain_1_10 {
+  position: absolute;
+  bottom: 136px;
+  left: 526px;
+
+  width: 458px;
+}
+
+#peru #mountain_1_11 {
+  position: absolute;
+  bottom: 127px;
+  left: 538px;
+
+  width: 438px;
+}
+
+#peru #mountain_1_12 {
+  position: absolute;
+  bottom: 115px;
+  left: 547px;
+
+  width: 418px;
+}
+
+#peru #mountain_1_13 {
+  position: absolute;
+  bottom: 123px;
+  left: 557px;
+
+  width: 403px;
+}
+
+#peru #mountain_1_14 {
+  position: absolute;
+  bottom: 117px;
+  left: 573px;
+
+  width: 403px;
+}
+
+#peru #mountain_1_15 {
+  position: absolute;
+  bottom: 116px;
+  left: 584px;
+
+  width: 378px;
+}
+
+#peru #mountain_1_16 {
+  position: absolute;
+  bottom: 169px;
+  left: 622px;
+
+  width: 104px;
+}
+
+#peru #mountain_3_01 {
+  position: absolute;
+  bottom: 109px;
+
+  width: 950px;
+}
+
+#peru #mountain_3_02 {
+  position: absolute;
+  bottom: 101px;
+
+  width: 950px;
+}
+
+#peru #mountain_3_03 {
+  position: absolute;
+  bottom: 87px;
+
+  width: 950px;
+}
+
+#peru #mountain_3_04 {
+  position: absolute;
+  bottom: 84px;
+
+  width: 950px;
+}
+
+#peru #mountain_3_05 {
+  position: absolute;
+  bottom: 63px;
+
+  width: 950px;
+}
+
+#peru #mountain_3_06 {
+  position: absolute;
+  bottom: 48px;
+
+  width: 950px;
+}
+
+#peru #mountain_3_07 {
+  position: absolute;
+  bottom: 45px;
+
+  width: 950px;
+}
+
+#peru #mountain_3_08 {
+  position: absolute;
+  bottom: 31px;
+
+  width: 950px;
+}
+
+/* #peru #mountain_3_09 {
+  position: absolute;
+  bottom: 14px;
+
+  width: 952px;
+} */
+
+#peru #mountain_3_10 {
+  position: absolute;
+  bottom: 35px;
+
+  width: 932px;
+}
+
+#peru #mountain_3_11 {
+  position: absolute;
+  bottom: 38px;
+
+  width: 902px;
+}
+
+#peru #mountain_3_12 {
+  position: absolute;
+  bottom: 31px;
+
+  width: 850px;
+}
+
+#peru #mountain_3_13 {
+  position: absolute;
+  bottom: 34px;
+  left: 6px;
+
+  width: 753px;
+}
+
+#peru #mountain_3_14 {
+  position: absolute;
+  bottom: 35px;
+  left: 47px;
+
+  width: 541px;
+}
+
+#peru #mountain_3_15 {
+  position: absolute;
+  bottom: 31px;
+  left: 72px;
+
+  width: 478px;
+}
+
+#peru #mountain_3_16 {
+  position: absolute;
+  bottom: 36px;
+  left: 114px;
+
+  width: 398px;
+}
+
+#peru #mountain_3_17 { // 여기 조정할 차례, 이거만 채우면 그림이랑 비슷
+  position: absolute;
+  bottom: 36px;
+  left: 114px;
+
+  width: 398px;
+}
+
+#peru #ground {
+  position: absolute;
+  bottom: 30px;
+
+  width: 950px;
+}
+
+#peru #mountain_2_12 {
+  position: absolute;
+  bottom: -5px;
+  left: 94px;
+
+  width: 555px;
+}
+
+#peru #mountain_2_13 {
+  position: absolute;
+  bottom: -5px;
+  left: 107px;
+
+  width: 510px;
+}
+
+#peru #mountain_2_14 {
+  position: absolute;
+  bottom: -5px;
+  left: 123px;
+
+  width: 470px;
+}
+
+#peru #mountain_2_15 {
+  position: absolute;
+  bottom: -5px;
+  left: 137px;
+
+  width: 425px;
+}
+
+#peru #mountain_2_16 {
+  position: absolute;
+  bottom: -5px;
+  left: 147px;
+
+  width: 407px;
+}
+
+#peru #mountain_2_17 {
+  position: absolute;
+  bottom: -5px;
+  left: 162px;
+
+  width: 367px;
+}
+
+#peru #mountain_2_18 {
+  position: absolute;
+  bottom: -5px;
+  left: 173px;
+
+  width: 317px;
+}
+
+#peru #mountain_2_19 {
+  position: absolute;
+  bottom: -5px;
+  left: 187px;
+
+  width: 261px;
+}
+
+#peru #mountain_2_20 {
+  position: absolute;
+  bottom: -5px;
+  left: 201px;
+
+  width: 209px;
+}
+
+#peru #mountain_2_21 {
+  position: absolute;
+  bottom: -5px;
+  left: 224px;
+
+  width: 162px;
+}
+
+#peru #mountain_2_22 {
+  position: absolute;
+  bottom: -5px;
+  left: 231px;
+
+  width: 124px;
+}
+
+#peru #mountain_2_23 {
+  position: absolute;
+  bottom: -5px;
+  left: 250px;
+
+  width: 76px;
+}
+
+#peru #mountain_2_24 {
+  position: absolute;
+  bottom: -5px;
+  left: 259px;
+
+  width: 48px;
 }
 
 /* common */
