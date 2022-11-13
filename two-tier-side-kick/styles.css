@@ -17,18 +17,25 @@ img {
 }
 
 /* class */
-.green1 { filter: invert(0%) sepia(25.7%) saturate(752.4%) hue-rotate(96deg) brightness(107.2%) contrast(94%) opacity(0.1); }
-.black1 { filter: invert(180%) sepia(32%) saturate(0%) hue-rotate(476deg) brightness(25%) contrast(97%); }
-.grey1 { filter: invert(80%) sepia(38%) saturate(0%) hue-rotate(203deg) brightness(169%) contrast(84%); }
-.grey2 { filter: invert(85%) sepia(1%) saturate(57%) hue-rotate(209deg) brightness(188%) contrast(107%) opacity(0.9); }
-.blue1 { filter: invert(51%) sepia(52%) saturate(5229%) hue-rotate(181deg) brightness(99%) contrast(102%); }
-.green2 { filter: invert(81%) sepia(52%) saturate(5189%) hue-rotate(131deg) brightness(159%) contrast(102%); }
-.pink1 { filter: invert(68%) sepia(90%) saturate(102%) hue-rotate(292deg) brightness(143%) contrast(102%); }
-.green3 { filter: invert(37%) sepia(23%) saturate(3172%) hue-rotate(133deg) brightness(81%) contrast(101%); }
-.pink2 { filter: invert(81%) sepia(67%) saturate(831%) hue-rotate(315deg) brightness(145%) contrast(123%) opacity(1); }
-.green4 { filter: invert(51%) sepia(90%) saturate(2703%) hue-rotate(91deg) brightness(119%) contrast(105%); }
-.brown1 { filter: invert(12%) sepia(65%) saturate(5392%) hue-rotate(355deg) brightness(60%) contrast(116%); }
-.green5 { filter: invert(42%) sepia(97%) saturate(1344%) hue-rotate(104deg) brightness(80%) contrast(103%); }
+.color_black1 { filter: invert(180%) sepia(32%) saturate(0%) hue-rotate(476deg) brightness(25%) contrast(97%); }
+.color_grey1 { filter: invert(80%) sepia(38%) saturate(0%) hue-rotate(203deg) brightness(169%) contrast(84%); }
+.color_grey2 { filter: invert(85%) sepia(1%) saturate(57%) hue-rotate(209deg) brightness(188%) contrast(107%) opacity(0.9); }
+.color_brown1 { filter: invert(12%) sepia(65%) saturate(5392%) hue-rotate(355deg) brightness(60%) contrast(116%); }
+.color_blue1 { filter: invert(51%) sepia(52%) saturate(5229%) hue-rotate(181deg) brightness(99%) contrast(102%); }
+.color_blue2 { filter: invert(63%) sepia(55%) saturate(2207%) hue-rotate(207deg) brightness(128%) contrast(100%); }
+.color_blue3 { filter: invert(91%) sepia(71%) saturate(1570%) hue-rotate(209deg) brightness(125%) contrast(262%); }
+.color_blue4 { filter: invert(14%) sepia(93%) saturate(3525%) hue-rotate(193deg) brightness(69%) contrast(105%); }
+.color_green1 { filter: invert(0%) sepia(25.7%) saturate(752.4%) hue-rotate(96deg) brightness(107.2%) contrast(94%) opacity(0.1); }
+.color_green2 { filter: invert(81%) sepia(52%) saturate(5189%) hue-rotate(131deg) brightness(159%) contrast(102%); }
+.color_green3 { filter: invert(37%) sepia(23%) saturate(3172%) hue-rotate(133deg) brightness(81%) contrast(101%); }
+.color_green4 { filter: invert(51%) sepia(90%) saturate(2703%) hue-rotate(91deg) brightness(119%) contrast(105%); }
+.color_green5 { filter: invert(42%) sepia(97%) saturate(1344%) hue-rotate(104deg) brightness(80%) contrast(103%); }
+.color_red1 { filter: invert(79%) sepia(79%) saturate(3854%) hue-rotate(327deg) brightness(96%) contrast(243%); }
+.color_pink1 { filter: invert(68%) sepia(90%) saturate(102%) hue-rotate(292deg) brightness(143%) contrast(102%); }
+.color_pink2 { filter: invert(81%) sepia(67%) saturate(831%) hue-rotate(315deg) brightness(145%) contrast(123%); }
+.color_pink3 { filter: invert(13%) sepia(96%) saturate(6693%) hue-rotate(333deg) brightness(74%) contrast(107%); }
+.color_yellow1 { filter: invert(86%) sepia(36%) saturate(5060%) hue-rotate(23deg) brightness(169%) contrast(103%); }
+
 /* animation */
 @keyframes plant-shake {
   0% {
@@ -710,23 +717,24 @@ img {
   width: 950px;
 }
 
-/* #peru #mountain_3_09 {
+#peru #mountain_3_09 {
   position: absolute;
-  bottom: 14px;
+  bottom: 21px;
 
-  width: 952px;
-} */
+  width: 954px;
+}
 
 #peru #mountain_3_10 {
   position: absolute;
-  bottom: 35px;
+  bottom: 31px;
+  left: 3px;
 
   width: 932px;
 }
 
 #peru #mountain_3_11 {
   position: absolute;
-  bottom: 38px;
+  bottom: 34px;
 
   width: 902px;
 }
@@ -770,7 +778,7 @@ img {
   width: 398px;
 }
 
-#peru #mountain_3_17 { // 여기 조정할 차례, 이거만 채우면 그림이랑 비슷
+#peru #mountain_3_17 {
   position: absolute;
   bottom: 36px;
   left: 114px;

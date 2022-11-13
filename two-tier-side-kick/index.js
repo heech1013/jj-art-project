@@ -109,66 +109,74 @@ if (document.querySelector('#peru')) {
   }
 
   const colorMap = {
-    mountain_1_01: 'green1',
-    mountain_1_02: 'black1',
-    mountain_1_03: 'grey1',
-    mountain_1_04: 'grey2',
-    mountain_1_05: 'blue1',
-    mountain_1_06: 'green2',
-    mountain_1_07: 'pink1',
-    mountain_1_08: 'grey1',
-    mountain_1_09: 'grey2',
-    mountain_1_10: 'green2',
-    mountain_1_11: 'green3',
-    mountain_1_12: 'black1',
-    mountain_1_13: 'blue1',
-    mountain_1_14: 'pink2',
-    mountain_1_15: 'green2',
-    mountain_1_16: 'black1',
-    mountain_3_01: 'blue1',
-    mountain_3_02: 'green4',
-    mountain_3_03: 'pink2',
-    mountain_3_04: 'blue1',
-    mountain_3_05: 'grey1',
-    mountain_3_06: 'green4',
-    mountain_3_07: 'blue1',
-    mountain_3_08: 'brown1',
-    mountain_3_09: 'grey2',
-    mountain_3_10: 'green4',
-    mountain_3_11: 'green5',
-    mountain_3_12: 'grey2',
-    mountain_3_13: 'blue1',
-    mountain_3_14: 'grey2',
-    mountain_3_15: 'pink2',
-    mountain_3_16: 'green4',
-    mountain_3_17: 'green5',
-    mountain_2_12: true,
-    mountain_2_13: true,
-    mountain_2_14: true,
-    mountain_2_15: true,
-    mountain_2_16: true,
-    mountain_2_17: true,
-    mountain_2_18: true,
-    mountain_2_19: true,
-    mountain_2_20: true,
-    mountain_2_21: true,
-    mountain_2_22: true,
-    mountain_2_23: true,
-    mountain_2_24: true,
+    mountain_1_01: 'color_green1',
+    mountain_1_02: 'color_black1',
+    mountain_1_03: 'color_grey1',
+    mountain_1_04: 'color_grey2',
+    mountain_1_05: 'color_blue1',
+    mountain_1_06: 'color_green2',
+    mountain_1_07: 'color_pink1',
+    mountain_1_08: 'color_grey1',
+    mountain_1_09: 'color_grey2',
+    mountain_1_10: 'color_green2',
+    mountain_1_11: 'color_green3',
+    mountain_1_12: 'color_black1',
+    mountain_1_13: 'color_blue1',
+    mountain_1_14: 'color_pink2',
+    mountain_1_15: 'color_green2',
+    mountain_1_16: 'color_black1',
+    mountain_3_01: 'color_blue1',
+    mountain_3_02: 'color_green4',
+    mountain_3_03: 'color_pink2',
+    mountain_3_04: 'color_blue1',
+    mountain_3_05: 'color_grey1',
+    mountain_3_06: 'color_green4',
+    mountain_3_07: 'color_blue1',
+    mountain_3_08: 'color_brown1',
+    mountain_3_09: 'color_grey2',
+    mountain_3_10: 'color_green4',
+    mountain_3_11: 'color_green5',
+    mountain_3_12: 'color_grey2',
+    mountain_3_13: 'color_blue1',
+    mountain_3_14: 'color_grey2',
+    mountain_3_15: 'color_pink2',
+    mountain_3_16: 'color_green4',
+    mountain_3_17: 'color_green5',
+    mountain_2_12: 'color_green2',
+    mountain_2_13: 'color_pink1',
+    mountain_2_14: 'color_grey1',
+    mountain_2_15: 'color_grey2',
+    mountain_2_16: 'color_green2',
+    mountain_2_17: 'color_grey1',
+    mountain_2_18: 'color_grey2',
+    mountain_2_19: 'color_blue2',
+    mountain_2_20: 'color_green5',
+    mountain_2_21: 'color_green2',
+    mountain_2_22: 'color_grey2',
+    mountain_2_23: 'color_grey1',
+    mountain_2_24: 'color_green3',
   }
 
+  const colors = ['color_black1', 'color_grey1', 'color_grey2', 'color_brown1', 'color_blue1', 'color_blue2', 'color_blue3', 'color_blue4', 'color_green1', 'color_green2', 'color_green3', 'color_green4', 'color_green5', 'color_red1', 'color_pink1', 'color_pink2', 'color_pink3', 'color_yellow1']
+
   document.addEventListener('mouseover', (e) => {
-    console.log(e.target.closest('[id^=mountain_]'))
     const coloredMountain = e.target.closest('[id^=mountain_]')
 
-    if (
-      coloredMountain &&
-      freshness[coloredMountain.id]
-    ) {
-      freshness[coloredMountain.id] = false
-      const color = colorMap[coloredMountain.id]
-      console.log({ color })
-      coloredMountain.classList.add(color)
+    if (coloredMountain) {
+      if (freshness[coloredMountain.id]) {
+        freshness[coloredMountain.id] = false
+        const color = colorMap[coloredMountain.id]
+        coloredMountain.classList.add(color)
+      } else {
+        const randomColorIdx = Math.floor(Math.random() * colors.length)
+        const randomColor = colors[randomColorIdx]
+        coloredMountain.classList.forEach((item) => {
+          if (item.includes('color_')) {
+            coloredMountain.classList.remove(item)
+          }
+        })
+        coloredMountain.classList.add(randomColor)
+      }
     }
   })
 }
