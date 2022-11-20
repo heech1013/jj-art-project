@@ -897,6 +897,85 @@ img {
   width: 48px;
 }
 
+/* tanzania */
+#tanzania #mountain {
+  position: absolute;
+  bottom: 37px;
+
+  width: var(--content-width);
+}
+
+#tanzania #sun {
+  position: absolute;
+  bottom: 326px;
+  left: 126px;
+
+  width: 250px;
+}
+
+#tanzania #leopard_pattern_body {
+  position: absolute;
+  bottom: 486px;
+  left: 301px;
+
+  width: 110px;
+}
+
+#tanzania #leopard_head {
+  position: absolute;
+  bottom: 543px;
+  left: 398px;
+
+  width: 24px;
+}
+
+#tanzania #zebra_basic {
+  position: absolute;
+  bottom: var(--ground-bottom);
+  left: 70px;
+
+  width: 344px;
+}
+
+#tanzania #elephant_body {
+  position: absolute;
+  bottom: var(--ground-bottom);
+  left: 513px;
+
+  width: 374px;
+}
+
+#tanzania #elephant_head {
+  position: absolute;
+  bottom: 40px;
+  left: 463px;
+
+  width: 194px;
+}
+
+#tanzania #ground {
+  position: absolute;
+  bottom: 31px;
+
+  width: var(--content-width);
+}
+
+#tanzania #grass {
+  position: absolute;
+  bottom: 36px;
+  left: 33px;
+
+  width: 530px;
+}
+
+#tanzania #giraffe {
+  position: absolute;
+  bottom: -5px;
+  left: 590px;
+
+  width: 360px;
+}
+
 /* common */
 #character {
   position: absolute;
