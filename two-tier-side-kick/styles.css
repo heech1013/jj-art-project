@@ -121,6 +121,16 @@ img {
   }
 }
 
+@keyframes elephant-head-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* id */
 #main {
   display: flex;
@@ -921,6 +931,14 @@ img {
   width: 110px;
 }
 
+#tanzania #leopard_pattern {
+  position: absolute;
+  bottom: 487px;
+  left: 304px;
+
+  width: 105px;
+}
+
 #tanzania #leopard_head {
   position: absolute;
   bottom: 543px;
@@ -929,7 +947,7 @@ img {
   width: 24px;
 }
 
-#tanzania #zebra_basic {
+#tanzania #zebra {
   position: absolute;
   bottom: var(--ground-bottom);
   left: 70px;
@@ -951,6 +969,10 @@ img {
   left: 463px;
 
   width: 194px;
+}
+
+#tanzania #elephant_head:hover {
+  animation: elephant-head-rotate 1s linear infinite;
 }
 
 #tanzania #ground {

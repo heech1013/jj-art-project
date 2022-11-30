@@ -181,3 +181,24 @@ if (document.querySelector('#peru')) {
   })
 }
 
+/** tanzania */
+if (document.querySelector('#tanzania')) {
+  const zebraImgSrc = [
+    './assets/6_tanzania/얼룩말 기본.png',
+    './assets/6_tanzania/얼룩말 2.png',
+    './assets/6_tanzania/얼룩말 3.png',
+    './assets/6_tanzania/얼룩말 4.png',
+    './assets/6_tanzania/얼룩말 5.png',
+    './assets/6_tanzania/얼룩말 6.png',
+    './assets/6_tanzania/얼룩말 7.png',
+  ]
+  let currentZebraIdx = 0
+
+  const zebra = document.querySelector('#zebra')
+
+  zebra.addEventListener('click', () => {
+    currentZebraIdx = (currentZebraIdx + 1) % zebraImgSrc.length
+
+    zebra.querySelector('img').src = zebraImgSrc[currentZebraIdx]
+  })
+}
