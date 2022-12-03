@@ -193,12 +193,28 @@ if (document.querySelector('#tanzania')) {
     './assets/6_tanzania/얼룩말 7.png',
   ]
   let currentZebraIdx = 0
+  const ASH_COUNT = 15
 
   const zebra = document.querySelector('#zebra')
+  const leopardPattern = document.querySelector('#leopard_pattern')
 
   zebra.addEventListener('click', () => {
     currentZebraIdx = (currentZebraIdx + 1) % zebraImgSrc.length
 
     zebra.querySelector('img').src = zebraImgSrc[currentZebraIdx]
   })
+
+  leopardPattern.addEventListener('click', () => {
+    leopardPattern.classList.add('leopard-animation')
+
+    setTimeout(() => {
+      Array
+        .from({ length: ASH_COUNT }, (_, i) => i + 1)
+        .map((num) => {
+          const ash = document.querySelector(`#ash_${num}`)
+          ash.classList.add('visible', `ash-${num}-falling`)
+        })
+    }, 2000);
+  })
+  
 }

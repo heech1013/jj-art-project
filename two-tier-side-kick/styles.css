@@ -17,6 +17,14 @@ img {
 }
 
 /* class */
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
 .color_black1 { filter: invert(180%) sepia(32%) saturate(0%) hue-rotate(476deg) brightness(25%) contrast(97%); }
 .color_grey1 { filter: invert(80%) sepia(38%) saturate(0%) hue-rotate(203deg) brightness(169%) contrast(84%); }
 .color_grey2 { filter: invert(85%) sepia(1%) saturate(57%) hue-rotate(209deg) brightness(188%) contrast(107%) opacity(0.9); }
@@ -923,7 +931,24 @@ img {
   width: 250px;
 }
 
-#tanzania #leopard_pattern_body {
+@keyframes leopard-pattern-launch {
+  0% {
+    bottom: 487px;
+  }
+
+  100% {
+    bottom: 655px;
+  }
+}
+
+.leopard-animation {
+  animation-name: leopard-pattern-launch;
+  animation-duration: 0.15s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+#tanzania #leopard_body {
   position: absolute;
   bottom: 486px;
   left: 301px;
@@ -996,6 +1021,381 @@ img {
   left: 590px;
 
   width: 360px;
+}
+
+@keyframes ash-1-falling {
+  0% {
+    bottom: 1195px;
+  }
+
+  100% {
+    bottom: -15px;
+  }
+}
+
+.ash-1-falling {
+  animation-name: ash-1-falling;
+  animation-duration: 2.4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#tanzania #ash_1 {
+  position: absolute;
+  bottom: 595px;
+  left: 75px;
+
+  width: 25px;
+}
+
+@keyframes ash-2-falling {
+  0% {
+    bottom: 1166px;
+  }
+
+  100% {
+    bottom: -15px;
+  }
+}
+
+.ash-2-falling {
+  animation-name: ash-2-falling;
+  animation-duration: 3.1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#tanzania #ash_2 {
+  position: absolute;
+  bottom: 566px;
+  left: 865px;
+
+  width: 25px;
+}
+
+@keyframes ash-3-falling {
+  0% {
+    bottom: 1126px;
+  }
+
+  100% {
+    bottom: -15px;
+  }
+}
+
+.ash-3-falling {
+  animation-name: ash-3-falling;
+  animation-duration: 4.6s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#tanzania #ash_3 {
+  position: absolute;
+  bottom: 526px;
+  left: 555px;
+
+  width: 25px;
+}
+
+@keyframes ash-4-falling {
+  0% {
+    bottom: 1047px;
+  }
+
+  100% {
+    bottom: -15px;
+  }
+}
+
+.ash-4-falling {
+  animation-name: ash-4-falling;
+  animation-duration: 2.1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#tanzania #ash_4 {
+  position: absolute;
+  bottom: 447px;
+  left: 465px;
+
+  width: 25px;
+}
+
+@keyframes ash-5-falling {
+  0% {
+    bottom: 1007px;
+  }
+
+  100% {
+    bottom: -15px;
+  }
+}
+
+.ash-5-falling {
+  animation-name: ash-5-falling;
+  animation-duration: 3.9s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#tanzania #ash_5 {
+  position: absolute;
+  bottom: 407px;
+  left: 285px;
+
+  width: 25px;
+}
+
+@keyframes ash-6-falling {
+  0% {
+    bottom: 877px;
+  }
+
+  100% {
+    bottom: -15px;
+  }
+}
+
+.ash-6-falling {
+  animation-name: ash-6-falling;
+  animation-duration: 2.7s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#tanzania #ash_6 {
+  position: absolute;
+  bottom: 277px;
+  left: 205px;
+
+  width: 25px;
+}
+
+@keyframes ash-7-falling {
+  0% {
+    bottom: 787px;
+  }
+
+  100% {
+    bottom: -15px;
+  }
+}
+
+.ash-7-falling {
+  animation-name: ash-7-falling;
+  animation-duration: 2.4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#tanzania #ash_7 {
+  position: absolute;
+  bottom: 187px;
+  left: 835px;
+
+  width: 25px;
+}
+
+@keyframes ash-8-falling {
+  0% {
+    bottom: 867px;
+  }
+
+  100% {
+    bottom: -15px;
+  }
+}
+
+.ash-8-falling {
+  animation-name: ash-8-falling;
+  animation-duration: 3.7s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#tanzania #ash_8 {
+  position: absolute;
+  bottom: 267px;
+  left: 615px;
+
+  width: 25px;
+}
+
+@keyframes ash-9-falling {
+  0% {
+    bottom: 757px;
+  }
+
+  100% {
+    bottom: -15px;
+  }
+}
+
+.ash-9-falling {
+  animation-name: ash-9-falling;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#tanzania #ash_9 {
+  position: absolute;
+  bottom: 157px;
+  left: 118px;
+
+  width: 25px;
+}
+
+@keyframes ash-10-falling {
+  0% {
+    bottom: 687px;
+  }
+
+  100% {
+    bottom: -15px;
+  }
+}
+
+.ash-10-falling {
+  animation-name: ash-10-falling;
+  animation-duration: 2.2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#tanzania #ash_10 {
+  position: absolute;
+  bottom: 87px;
+  left: 389px;
+
+  width: 25px;
+}
+
+@keyframes ash-11-falling {
+  0% {
+    bottom: 987px;
+  }
+
+  100% {
+    bottom: -15px;
+  }
+}
+
+.ash-11-falling {
+  animation-name: ash-11-falling;
+  animation-duration: 3.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#tanzania #ash_11 {
+  position: absolute;
+  bottom: 387px;
+  left: 759px;
+
+  width: 25px;
+}
+
+@keyframes ash-12-falling {
+  0% {
+    bottom: 837px;
+  }
+
+  100% {
+    bottom: -15px;
+  }
+}
+
+.ash-12-falling {
+  animation-name: ash-12-falling;
+  animation-duration: 4.8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#tanzania #ash_12 {
+  position: absolute;
+  bottom: 237px;
+  left: 429px;
+
+  width: 25px;
+}
+
+@keyframes ash-13-falling {
+  0% {
+    bottom: 957px;
+  }
+
+  100% {
+    bottom: -15px;
+  }
+}
+
+.ash-13-falling {
+  animation-name: ash-13-falling;
+  animation-duration: 2.3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#tanzania #ash_13 {
+  position: absolute;
+  bottom: 357px;
+  left: 52px;
+
+  width: 25px;
+}
+
+@keyframes ash-14-falling {
+  0% {
+    bottom: 1137px;
+  }
+
+  100% {
+    bottom: -15px;
+  }
+}
+
+.ash-14-falling {
+  animation-name: ash-14-falling;
+  animation-duration: 3.1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#tanzania #ash_14 {
+  position: absolute;
+  bottom: 537px;
+  left: 341px;
+
+  width: 25px;
+}
+
+@keyframes ash-15-falling {
+  0% {
+    bottom: 740px;
+  }
+
+  100% {
+    bottom: -15px;
+  }
+}
+
+.ash-15-falling {
+  animation-name: ash-15-falling;
+  animation-duration: 4.2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#tanzania #ash_15 {
+  position: absolute;
+  bottom: 140px;
+  left: 661px;
+
+  width: 25px;
 }
 
 /* common */
