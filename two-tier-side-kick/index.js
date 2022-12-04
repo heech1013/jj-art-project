@@ -1,3 +1,21 @@
+/** globe */
+const globeIframe = document.querySelector('iframe#globe').contentDocument
+
+const cssLink = document.createElement("link");
+cssLink.href = './iframe.css';  
+cssLink.rel = 'stylesheet';  
+cssLink.type = 'text/css';  
+globeIframe.head.appendChild(cssLink); 
+
+const globeEl = document.createElement('div')
+globeIframe.body.appendChild(globeEl)
+
+const globe = Globe()(globeEl)
+  .width(400)
+  .height(250)
+  .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+  .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+
 /** ocean */
 if (document.querySelector('#ocean')) {
   const OCEAN_BIRD_CLIENT_ADJUSTMENT = -135
@@ -197,6 +215,8 @@ if (document.querySelector('#tanzania')) {
 
   const zebra = document.querySelector('#zebra')
   const leopardPattern = document.querySelector('#leopard_pattern')
+  const giraffe = document.querySelector('#giraffe')
+  const giraffeHead = document.querySelector('#giraffe_head')
 
   zebra.addEventListener('click', () => {
     currentZebraIdx = (currentZebraIdx + 1) % zebraImgSrc.length
@@ -212,9 +232,14 @@ if (document.querySelector('#tanzania')) {
         .from({ length: ASH_COUNT }, (_, i) => i + 1)
         .map((num) => {
           const ash = document.querySelector(`#ash_${num}`)
-          ash.classList.add('visible', `ash-${num}-falling`)
+          ash.classList.remove('hidden')
+          ash.classList.add(`ash-${num}-falling`)
         })
     }, 2000);
   })
   
+  giraffe.addEventListener('click', () => {
+    giraffe.classList.add('giraffe-stretch')
+    giraffeHead.classList.add('giraffe-head-down')
+  })
 }

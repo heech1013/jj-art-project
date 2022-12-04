@@ -3,6 +3,8 @@
   --content-width: 950px;
   --content-height: 650px;
   --ground-bottom: 40px;
+  --globe-width: 400px;
+  --globe-height: 250px;
 }
 
 body {
@@ -142,8 +144,7 @@ img {
 /* id */
 #main {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 
   width: 100vw;
   height: 100vh;
@@ -151,14 +152,63 @@ img {
   background-color: black;
 }
 
+#top_section {
+  flex-shrink: 1;
+  width: calc(var(--globe-width) + var(--content-width) + var(--globe-width));
+  height: var(--globe-height);
+}
+
+#center_section {
+  flex-shrink: 0;
+  display: flex;
+}
+
+#center_left_block {
+  flex-shrink: 1;
+  width: var(--globe-width);
+  height: 650px;
+}
+
 #content {
   position: relative;
+  flex-shrink: 0;
 
   width: var(--content-width);
   height: var(--content-height);
 
   overflow: hidden;
   
+  background-color: white;
+}
+
+#center_right_block {
+  flex-shrink: 0;
+  width: var(--globe-width);
+  height: var(--content-height);
+}
+
+#bottom_section {
+  flex-shrink: 0;
+  display: flex;
+}
+
+#bottom_left_block {
+  flex-shrink: 1;
+  width: var(--globe-width);
+  height: var(--globe-height);
+}
+
+#bottom_center_block {
+  flex-shrink: 0;
+  width: var(--content-width);
+  height: var(--globe-height);
+}
+
+iframe#globe {
+  flex-shrink: 0;
+  width: var(--globe-width);
+  height: var(--globe-height);
+  border: none;
   background-color: white;
 }
 
@@ -1015,12 +1065,56 @@ img {
   width: 530px;
 }
 
+@keyframes giraffe-stretch {
+  0% {
+    transform: scaleY(1);
+  }
+
+  100% {
+    transform: scaleY(3);
+  }
+}
+
+.giraffe-stretch {
+  animation-name: giraffe-stretch;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
 #tanzania #giraffe {
   position: absolute;
-  bottom: -5px;
+  bottom: -15px;
   left: 590px;
-
+  
   width: 360px;
+  transform-origin: bottom;
+}
+
+@keyframes giraffe-head-down {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-400px);
+  }
+}
+
+.giraffe-head-down {
+  animation-name: giraffe-head-down;
+  animation-duration: 1s;
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
+}
+
+#tanzania #giraffe_head {
+  position: absolute;
+  bottom: 670px;
+  left: 60px;
+
+  width: 175px;
+  rotate: 180deg;
 }
 
 @keyframes ash-1-falling {
