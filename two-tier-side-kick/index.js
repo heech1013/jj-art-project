@@ -10,11 +10,28 @@ globeIframe.head.appendChild(cssLink);
 const globeEl = document.createElement('div')
 globeIframe.body.appendChild(globeEl)
 
+const places = [
+  { name: 'Korea', latitude: 37.566536, longitude: 126.977966 },
+  { name: 'Australia', latitude: -25.344427, longitude: 131.036880 },
+  { name: 'Pacific Ocean', latitude: -8.783195, longitude: -124.508522 },
+  { name: 'America', latitude: 43.879105, longitude: -103.459068 },
+  { name: 'Peru', latitude: -13.867871, longitude: -71.303055 },
+  { name: 'Tanzania', latitude: -6.5247123, longitude: 35.7878438 },
+  { name: 'Denmark', latitude: 55.6867243, longitude: 12.5700724 },
+]
+
 const globe = Globe()(globeEl)
   .width(400)
   .height(250)
   .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
   .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+  .labelsData(places)
+  .labelText(place => place.name)
+  .labelLat(place => place.latitude)
+  .labelLng(place => place.longitude)
+  .labelSize(1)
+  .labelDotRadius(0.5)
+  .labelColor(() => 'rgba(255, 165, 0, 0.75)')
 
 /** ocean */
 if (document.querySelector('#ocean')) {
