@@ -4,6 +4,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>two-tier side kick</title>
     <link rel="stylesheet" href="./styles.css">
+
+    <!-- Splide -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    
+    <!-- Globe.GL -->
     <script src="https://unpkg.com/three"></script>
     <script src="https://unpkg.com/globe.gl"></script>
   </head>
@@ -15,364 +21,386 @@
         <div id="center_left_block"></div>
         <div id="content">
 
-          <!-- <div id="korea">
-            <div id="sun">
-              <img class="image" src="./assets/1_korea/1_korea_sun.png">
-            </div>
-            <div id="mountain1">
-              <img class="image" src="./assets/1_korea/1_korea_mountain.png">
-            </div>
-            <div id="mountain2">
-              <img class="image" src="./assets/1_korea/1_korea_mountain2.png">
-            </div>
-            <div id="tiger">
-              <img class="image" src="./assets/1_korea/1_korea_tiger.png">
-            </div>
-            <div id="tower">
-              <img class="image" src="./assets/1_korea/1_korea_tower.png">
-            </div>
-            <div id="landmark">
-              <img class="image" src="./assets/1_korea/1_korea_landmark.png">
-            </div>
-            <div id="plant2">
-              <img class="image" src="./assets/1_korea/1_korea_plant2.png">
-            </div>
-            <div id="ground">
-              <img class="image" src="./assets/1_korea/1_korea_ground.png">
-            </div>
-            <div id="plant1">
-              <img class="image" src="./assets/1_korea/1_korea_plant1.png">
-            </div>
-          </div> -->
+          <!-- <section class="splide" aria-label="Splide Basic HTML Example">
+            <div class="splide__track">
+              <ul class="splide__list"> -->
+                <!-- <li class="splide__slide">Slide 01</li>
+                <li class="splide__slide">Slide 02</li>
+                <li class="splide__slide">Slide 03</li> -->
+              
+                <!-- <li class="splide__slide"> -->
+                  <div id="korea">
+                    <div id="sun">
+                      <img class="image" src="./assets/1_korea/1_korea_sun.png">
+                    </div>
+                    <div id="mountain1">
+                      <img class="image" src="./assets/1_korea/1_korea_mountain.png">
+                    </div>
+                    <div id="mountain2">
+                      <img class="image" src="./assets/1_korea/1_korea_mountain2.png">
+                    </div>
+                    <div id="tiger">
+                      <img class="image" src="./assets/1_korea/1_korea_tiger.png">
+                    </div>
+                    <div id="tower">
+                      <img class="image" src="./assets/1_korea/1_korea_tower.png">
+                    </div>
+                    <div id="landmark">
+                      <img class="image" src="./assets/1_korea/1_korea_landmark.png">
+                    </div>
+                    <div id="plant2">
+                      <img class="image" src="./assets/1_korea/1_korea_plant2.png">
+                    </div>
+                    <div id="ground">
+                      <img class="image" src="./assets/1_korea/1_korea_ground.png">
+                    </div>
+                    <div id="plant1">
+                      <img class="image" src="./assets/1_korea/1_korea_plant1.png">
+                    </div>
+                  </div>
+                <!-- </li> -->
 
-          <!-- <div id="australia">
-            <div id="sun">
-              <img src="./assets/2_australia/2_australia_sun.png">
-            </div>
-            <div id="native">
-              <img src="./assets/2_australia/2_australia_native.png">
-            </div>
-            <div id="landmark">
-              <img src="./assets/2_australia/2_australia_landmark.png">
-            </div>
-            <div id="kangaroo">
-              <img src="./assets/2_australia/2_australia_kangaroo.png">
-            </div>
-            <div id="ground">
-              <img src="./assets/2_australia/2_australia_ground.png">
-            </div>
-            <div id="plant">
-              <img src="./assets/2_australia/2_australia_plant.png">
-            </div>
-            <div id="boomerang">
-              <div id="rotate-wrapper">
-                <img src="./assets/2_australia/2_australia_boomerang.png">
-              </div>
-            </div>
-          </div> -->
+                <!-- <li class="splide__slide"> -->
+                  <div id="australia">
+                    <div id="sun">
+                      <img src="./assets/2_australia/2_australia_sun.png">
+                    </div>
+                    <div id="native">
+                      <img src="./assets/2_australia/2_australia_native.png">
+                    </div>
+                    <div id="landmark">
+                      <img src="./assets/2_australia/2_australia_landmark.png">
+                    </div>
+                    <div id="kangaroo">
+                      <img src="./assets/2_australia/2_australia_kangaroo.png">
+                    </div>
+                    <div id="ground">
+                      <img src="./assets/2_australia/2_australia_ground.png">
+                    </div>
+                    <div id="plant">
+                      <img src="./assets/2_australia/2_australia_plant.png">
+                    </div>
+                    <div id="boomerang">
+                      <div id="rotate-wrapper">
+                        <img src="./assets/2_australia/2_australia_boomerang.png">
+                      </div>
+                    </div>
+                  </div>
+                <!-- </li> -->
 
-          <!-- <div id="ocean">
-            <div id="sun">
-              <img src="./assets/3_ocean/3_ocean_sun.png">
-            </div>
-            <div id="wave1">
-              <img src="./assets/3_ocean/3_ocean_wave.png">
-            </div>
-            <div id="boat">
-              <img src="./assets/3_ocean/3_ocean_boat.png">
-            </div>
-            <div id="shark">
-              <img src="./assets/3_ocean/3_ocean_shark.png">
-            </div>
-            <div id="bird">
-              <img src="./assets/3_ocean/3_ocean_bird.png">
-            </div>
-            <div id="wave2">
-              <img src="./assets/3_ocean/3_ocean_wave.png">
-            </div>
-          </div> -->
+                <!-- <li class="splide__slide"> -->
+                  <div id="ocean">
+                    <div id="sun">
+                      <img src="./assets/3_ocean/3_ocean_sun.png">
+                    </div>
+                    <div id="wave1">
+                      <img src="./assets/3_ocean/3_ocean_wave.png">
+                    </div>
+                    <div id="boat">
+                      <img src="./assets/3_ocean/3_ocean_boat.png">
+                    </div>
+                    <div id="shark">
+                      <img src="./assets/3_ocean/3_ocean_shark.png">
+                    </div>
+                    <div id="bird">
+                      <img src="./assets/3_ocean/3_ocean_bird.png">
+                    </div>
+                    <div id="wave2">
+                      <img src="./assets/3_ocean/3_ocean_wave.png">
+                    </div>
+                  </div>
+                <!-- </li> -->
 
-          <!-- <div id="america">
-            <div id="sky">
-              <img class="image" src="./assets/4_america/3_america_sky.png">
-            </div>
-            <div id="star1">
-              <img class="image" src="./assets/4_america/3_america_star.png">
-            </div>
-            <div id="star2">
-              <img class="image" src="./assets/4_america/3_america_star.png">
-            </div>
-            <div id="star3">
-              <img class="image" src="./assets/4_america/3_america_star.png">
-            </div>
-            <div id="star4">
-              <img class="image" src="./assets/4_america/3_america_star.png">
-            </div>
-            <div id="star5">
-              <img class="image" src="./assets/4_america/3_america_star.png">
-            </div>
-            <div id="landmark_base">
-              <img class="image" src="./assets/4_america/3_america_landmark_base.png">
-            </div>
-            <div id="face3">
-              <img class="image" src="./assets/4_america/3_america_face_3.png">
-            </div>
-            <div id="face2">
-              <img class="image" src="./assets/4_america/3_america_face_2.png">
-            </div>
-            <div id="mouse2">
-              <img class="image" src="./assets/4_america/3_america_mouse_2.png">
-            </div>
-            <div id="face1">
-              <img class="image" src="./assets/4_america/3_america_face_1.png">
-            </div>
-            <div id="mouse1">
-              <img class="image" src="./assets/4_america/3_america_mouse_1.png">
-            </div>
-            <div id="face4">
-              <img class="image" src="./assets/4_america/3_america_face_4.png">
-            </div>
-            <div id="mouse4">
-              <img class="image" src="./assets/4_america/3_america_mouse_4.png">
-            </div>
-            <div id="ground">
-              <img class="image" src="./assets/4_america/3_america_ground.png">
-            </div>
-            <div id="plant">
-              <img class="image" src="./assets/4_america/3_america_plant.png">
-            </div>
-          </div> -->
+                <!-- <li class="splide__slide"></li> -->
+                  <div id="america">
+                    <div id="sky">
+                      <img class="image" src="./assets/4_america/3_america_sky.png">
+                    </div>
+                    <div id="star1">
+                      <img class="image" src="./assets/4_america/3_america_star.png">
+                    </div>
+                    <div id="star2">
+                      <img class="image" src="./assets/4_america/3_america_star.png">
+                    </div>
+                    <div id="star3">
+                      <img class="image" src="./assets/4_america/3_america_star.png">
+                    </div>
+                    <div id="star4">
+                      <img class="image" src="./assets/4_america/3_america_star.png">
+                    </div>
+                    <div id="star5">
+                      <img class="image" src="./assets/4_america/3_america_star.png">
+                    </div>
+                    <div id="landmark_base">
+                      <img class="image" src="./assets/4_america/3_america_landmark_base.png">
+                    </div>
+                    <div id="face3">
+                      <img class="image" src="./assets/4_america/3_america_face_3.png">
+                    </div>
+                    <div id="face2">
+                      <img class="image" src="./assets/4_america/3_america_face_2.png">
+                    </div>
+                    <div id="mouse2">
+                      <img class="image" src="./assets/4_america/3_america_mouse_2.png">
+                    </div>
+                    <div id="face1">
+                      <img class="image" src="./assets/4_america/3_america_face_1.png">
+                    </div>
+                    <div id="mouse1">
+                      <img class="image" src="./assets/4_america/3_america_mouse_1.png">
+                    </div>
+                    <div id="face4">
+                      <img class="image" src="./assets/4_america/3_america_face_4.png">
+                    </div>
+                    <div id="mouse4">
+                      <img class="image" src="./assets/4_america/3_america_mouse_4.png">
+                    </div>
+                    <div id="ground">
+                      <img class="image" src="./assets/4_america/3_america_ground.png">
+                    </div>
+                    <div id="plant">
+                      <img class="image" src="./assets/4_america/3_america_plant.png">
+                    </div>
+                  </div>
+                <!-- </li> -->
 
-          <!-- <div id="peru">
-            <div id="moon">
-              <img class="image" src="./assets/5_peru/moon.png">
-            </div>
-            <div id="mountain_3_01">
-              <img class="image" src="./assets/5_peru/mountain_3_01.png">
-            </div>
-            <div id="mountain_3_02">
-              <img class="image" src="./assets/5_peru/mountain_3_02.png">
-            </div>
-            <div id="mountain_3_03">
-              <img class="image" src="./assets/5_peru/mountain_3_03.png">
-            </div>
-            <div id="mountain_3_04">
-              <img class="image" src="./assets/5_peru/mountain_3_04.png">
-            </div>
-            <div id="mountain_3_05">
-              <img class="image" src="./assets/5_peru/mountain_3_05.png">
-            </div>
-            <div id="mountain_3_06">
-              <img class="image" src="./assets/5_peru/mountain_3_06.png">
-            </div>
-            <div id="mountain_3_07">
-              <img class="image" src="./assets/5_peru/mountain_3_07.png">
-            </div>
-            <div id="mountain_3_08">
-              <img class="image" src="./assets/5_peru/mountain_3_08.png">
-            </div>
-            <div id="mountain_3_09">
-              <img class="image" src="./assets/5_peru/mountain_3_09.png">
-            </div>
-            <div id="mountain_3_10">
-              <img class="image" src="./assets/5_peru/mountain_3_10.png">
-            </div>
-            <div id="mountain_3_11">
-              <img class="image" src="./assets/5_peru/mountain_3_11.png">
-            </div>
-            <div id="mountain_3_12">
-              <img class="image" src="./assets/5_peru/mountain_3_12.png">
-            </div>
-            <div id="mountain_3_13">
-              <img class="image" src="./assets/5_peru/mountain_3_13.png">
-            </div>
-            <div id="mountain_3_14">
-              <img class="image" src="./assets/5_peru/mountain_3_14.png">
-            </div>
-            <div id="mountain_3_15">
-              <img class="image" src="./assets/5_peru/mountain_3_15.png">
-            </div>
-            <div id="mountain_3_16">
-              <img class="image" src="./assets/5_peru/mountain_3_16.png">
-            </div>
-            <div id="mountain_3_17">
-              <img class="image" src="./assets/5_peru/mountain_3_17.png">
-            </div>
-            <div id="mountain_1_01">
-              <img class="image" src="./assets/5_peru/mountain_1_01.png">
-            </div>
-            <div id="mountain_1_02">
-              <img class="image" src="./assets/5_peru/mountain_1_02.png">
-            </div>
-            <div id="mountain_1_03">
-              <img class="image" src="./assets/5_peru/mountain_1_03.png">
-            </div>
-            <div id="mountain_1_04">
-              <img class="image" src="./assets/5_peru/mountain_1_04.png">
-            </div>
-            <div id="mountain_1_05">
-              <img class="image" src="./assets/5_peru/mountain_1_05.png">
-            </div>
-            <div id="mountain_1_06">
-              <img class="image" src="./assets/5_peru/mountain_1_06.png">
-            </div>
-            <div id="mountain_1_07">
-              <img class="image" src="./assets/5_peru/mountain_1_07.png">
-            </div>
-            <div id="mountain_1_08">
-              <img class="image" src="./assets/5_peru/mountain_1_08.png">
-            </div>
-            <div id="mountain_1_09">
-              <img class="image" src="./assets/5_peru/mountain_1_09.png">
-            </div>
-            <div id="mountain_1_10">
-              <img class="image" src="./assets/5_peru/mountain_1_10.png">
-            </div>
-            <div id="mountain_1_11">
-              <img class="image" src="./assets/5_peru/mountain_1_11.png">
-            </div>
-            <div id="mountain_1_12">
-              <img class="image" src="./assets/5_peru/mountain_1_12.png">
-            </div>
-            <div id="mountain_1_13">
-              <img class="image" src="./assets/5_peru/mountain_1_13.png">
-            </div>
-            <div id="mountain_1_14">
-              <img class="image" src="./assets/5_peru/mountain_1_14.png">
-            </div>
-            <div id="mountain_1_15">
-              <img class="image" src="./assets/5_peru/mountain_1_15.png">
-            </div>
-            <div id="mountain_1_16">
-              <img class="image" src="./assets/5_peru/mountain_1_16.png">
-            </div>
-            <div id="ground">
-              <img class="image" src="./assets/5_peru/ground.png">
-            </div>
-            <div id="mountain_2_12">
-              <img class="image" src="./assets/5_peru/mountain_2_12.png">
-            </div>
-            <div id="mountain_2_13">
-              <img class="image" src="./assets/5_peru/mountain_2_13.png">
-            </div>
-            <div id="mountain_2_14">
-              <img class="image" src="./assets/5_peru/mountain_2_14.png">
-            </div>
-            <div id="mountain_2_15">
-              <img class="image" src="./assets/5_peru/mountain_2_15.png">
-            </div>
-            <div id="mountain_2_16">
-              <img class="image" src="./assets/5_peru/mountain_2_16.png">
-            </div>
-            <div id="mountain_2_17">
-              <img class="image" src="./assets/5_peru/mountain_2_17.png">
-            </div>
-            <div id="mountain_2_18">
-              <img class="image" src="./assets/5_peru/mountain_2_18.png">
-            </div>
-            <div id="mountain_2_19">
-              <img class="image" src="./assets/5_peru/mountain_2_19.png">
-            </div>
-            <div id="mountain_2_20">
-              <img class="image" src="./assets/5_peru/mountain_2_20.png">
-            </div>
-            <div id="mountain_2_21">
-              <img class="image" src="./assets/5_peru/mountain_2_21.png">
-            </div>
-            <div id="mountain_2_22">
-              <img class="image" src="./assets/5_peru/mountain_2_22.png">
-            </div>
-            <div id="mountain_2_23">
-              <img class="image" src="./assets/5_peru/mountain_2_23.png">
-            </div>
-            <div id="mountain_2_24">
-              <img class="image" src="./assets/5_peru/mountain_2_24.png">
-            </div>
-          </div> -->
+                <!-- <li class="splide__slide"></li> -->
+                  <div id="peru">
+                    <div id="moon">
+                      <img class="image" src="./assets/5_peru/moon.png">
+                    </div>
+                    <div id="mountain_3_01">
+                      <img class="image" src="./assets/5_peru/mountain_3_01.png">
+                    </div>
+                    <div id="mountain_3_02">
+                      <img class="image" src="./assets/5_peru/mountain_3_02.png">
+                    </div>
+                    <div id="mountain_3_03">
+                      <img class="image" src="./assets/5_peru/mountain_3_03.png">
+                    </div>
+                    <div id="mountain_3_04">
+                      <img class="image" src="./assets/5_peru/mountain_3_04.png">
+                    </div>
+                    <div id="mountain_3_05">
+                      <img class="image" src="./assets/5_peru/mountain_3_05.png">
+                    </div>
+                    <div id="mountain_3_06">
+                      <img class="image" src="./assets/5_peru/mountain_3_06.png">
+                    </div>
+                    <div id="mountain_3_07">
+                      <img class="image" src="./assets/5_peru/mountain_3_07.png">
+                    </div>
+                    <div id="mountain_3_08">
+                      <img class="image" src="./assets/5_peru/mountain_3_08.png">
+                    </div>
+                    <div id="mountain_3_09">
+                      <img class="image" src="./assets/5_peru/mountain_3_09.png">
+                    </div>
+                    <div id="mountain_3_10">
+                      <img class="image" src="./assets/5_peru/mountain_3_10.png">
+                    </div>
+                    <div id="mountain_3_11">
+                      <img class="image" src="./assets/5_peru/mountain_3_11.png">
+                    </div>
+                    <div id="mountain_3_12">
+                      <img class="image" src="./assets/5_peru/mountain_3_12.png">
+                    </div>
+                    <div id="mountain_3_13">
+                      <img class="image" src="./assets/5_peru/mountain_3_13.png">
+                    </div>
+                    <div id="mountain_3_14">
+                      <img class="image" src="./assets/5_peru/mountain_3_14.png">
+                    </div>
+                    <div id="mountain_3_15">
+                      <img class="image" src="./assets/5_peru/mountain_3_15.png">
+                    </div>
+                    <div id="mountain_3_16">
+                      <img class="image" src="./assets/5_peru/mountain_3_16.png">
+                    </div>
+                    <div id="mountain_3_17">
+                      <img class="image" src="./assets/5_peru/mountain_3_17.png">
+                    </div>
+                    <div id="mountain_1_01">
+                      <img class="image" src="./assets/5_peru/mountain_1_01.png">
+                    </div>
+                    <div id="mountain_1_02">
+                      <img class="image" src="./assets/5_peru/mountain_1_02.png">
+                    </div>
+                    <div id="mountain_1_03">
+                      <img class="image" src="./assets/5_peru/mountain_1_03.png">
+                    </div>
+                    <div id="mountain_1_04">
+                      <img class="image" src="./assets/5_peru/mountain_1_04.png">
+                    </div>
+                    <div id="mountain_1_05">
+                      <img class="image" src="./assets/5_peru/mountain_1_05.png">
+                    </div>
+                    <div id="mountain_1_06">
+                      <img class="image" src="./assets/5_peru/mountain_1_06.png">
+                    </div>
+                    <div id="mountain_1_07">
+                      <img class="image" src="./assets/5_peru/mountain_1_07.png">
+                    </div>
+                    <div id="mountain_1_08">
+                      <img class="image" src="./assets/5_peru/mountain_1_08.png">
+                    </div>
+                    <div id="mountain_1_09">
+                      <img class="image" src="./assets/5_peru/mountain_1_09.png">
+                    </div>
+                    <div id="mountain_1_10">
+                      <img class="image" src="./assets/5_peru/mountain_1_10.png">
+                    </div>
+                    <div id="mountain_1_11">
+                      <img class="image" src="./assets/5_peru/mountain_1_11.png">
+                    </div>
+                    <div id="mountain_1_12">
+                      <img class="image" src="./assets/5_peru/mountain_1_12.png">
+                    </div>
+                    <div id="mountain_1_13">
+                      <img class="image" src="./assets/5_peru/mountain_1_13.png">
+                    </div>
+                    <div id="mountain_1_14">
+                      <img class="image" src="./assets/5_peru/mountain_1_14.png">
+                    </div>
+                    <div id="mountain_1_15">
+                      <img class="image" src="./assets/5_peru/mountain_1_15.png">
+                    </div>
+                    <div id="mountain_1_16">
+                      <img class="image" src="./assets/5_peru/mountain_1_16.png">
+                    </div>
+                    <div id="ground">
+                      <img class="image" src="./assets/5_peru/ground.png">
+                    </div>
+                    <div id="mountain_2_12">
+                      <img class="image" src="./assets/5_peru/mountain_2_12.png">
+                    </div>
+                    <div id="mountain_2_13">
+                      <img class="image" src="./assets/5_peru/mountain_2_13.png">
+                    </div>
+                    <div id="mountain_2_14">
+                      <img class="image" src="./assets/5_peru/mountain_2_14.png">
+                    </div>
+                    <div id="mountain_2_15">
+                      <img class="image" src="./assets/5_peru/mountain_2_15.png">
+                    </div>
+                    <div id="mountain_2_16">
+                      <img class="image" src="./assets/5_peru/mountain_2_16.png">
+                    </div>
+                    <div id="mountain_2_17">
+                      <img class="image" src="./assets/5_peru/mountain_2_17.png">
+                    </div>
+                    <div id="mountain_2_18">
+                      <img class="image" src="./assets/5_peru/mountain_2_18.png">
+                    </div>
+                    <div id="mountain_2_19">
+                      <img class="image" src="./assets/5_peru/mountain_2_19.png">
+                    </div>
+                    <div id="mountain_2_20">
+                      <img class="image" src="./assets/5_peru/mountain_2_20.png">
+                    </div>
+                    <div id="mountain_2_21">
+                      <img class="image" src="./assets/5_peru/mountain_2_21.png">
+                    </div>
+                    <div id="mountain_2_22">
+                      <img class="image" src="./assets/5_peru/mountain_2_22.png">
+                    </div>
+                    <div id="mountain_2_23">
+                      <img class="image" src="./assets/5_peru/mountain_2_23.png">
+                    </div>
+                    <div id="mountain_2_24">
+                      <img class="image" src="./assets/5_peru/mountain_2_24.png">
+                    </div>
+                  </div>
+                <!-- </li> -->
 
-          <div id="tanzania">
-            <div id="sun">
-              <img src="./assets/6_tanzania/해.png">
+                <!-- <li class="splide__slide"></li> -->
+                  <div id="tanzania">
+                    <div id="sun">
+                      <img src="./assets/6_tanzania/해.png">
+                    </div>
+                    <div id="mountain">
+                      <img src="./assets/6_tanzania/산.png">
+                    </div>
+                    <div id="leopard_body">
+                      <img src="./assets/6_tanzania/표범 민무늬.png">
+                    </div>
+                    <div id="leopard_pattern">
+                      <img src="./assets/6_tanzania/표범 점.png">
+                    </div>
+                    <div id="leopard_head">
+                      <img src="./assets/6_tanzania/표범 얼굴.png">
+                    </div>
+                    <div id="zebra">
+                      <img src="./assets/6_tanzania/얼룩말 기본.png">
+                    </div>
+                    <div id="elephant_body">
+                      <img src="./assets/6_tanzania/코끼리 몸통.png">
+                    </div>
+                    <div id="elephant_head">
+                      <img src="./assets/6_tanzania/코끼리 얼굴.png">
+                    </div>
+                    <div id="grass">
+                      <img src="./assets/6_tanzania/풀.png">
+                    </div>
+                    <div id="ground">
+                      <img src="./assets/6_tanzania/땅.png">
+                    </div>
+                    <div id="giraffe">
+                      <img src="./assets/6_tanzania/기린.png">
+                    </div>
+                    <div id="giraffe_head">
+                      <img src="./assets/6_tanzania/기린 머리.png">
+                    </div>
+                    <div id="ash_1" class="hidden">
+                      <img src="./assets/6_tanzania/화산송이 1.png">
+                    </div>
+                    <div id="ash_2" class="hidden">
+                      <img src="./assets/6_tanzania/화산송이 2.png">
+                    </div>
+                    <div id="ash_3" class="hidden">
+                      <img src="./assets/6_tanzania/화산송이 3.png">
+                    </div>
+                    <div id="ash_4" class="hidden">
+                      <img src="./assets/6_tanzania/화산송이 4.png">
+                    </div>
+                    <div id="ash_5" class="hidden">
+                      <img src="./assets/6_tanzania/화산송이 5.png">
+                    </div>
+                    <div id="ash_6" class="hidden">
+                      <img src="./assets/6_tanzania/화산송이 6.png">
+                    </div>
+                    <div id="ash_7" class="hidden">
+                      <img src="./assets/6_tanzania/화산송이 7.png">
+                    </div>
+                    <div id="ash_8" class="hidden">
+                      <img src="./assets/6_tanzania/화산송이 8.png">
+                    </div>
+                    <div id="ash_9" class="hidden">
+                      <img src="./assets/6_tanzania/화산송이 9.png">
+                    </div>
+                    <div id="ash_10" class="hidden">
+                      <img src="./assets/6_tanzania/화산송이 10.png">
+                    </div>
+                    <div id="ash_11" class="hidden">
+                      <img src="./assets/6_tanzania/화산송이 11.png">
+                    </div>
+                    <div id="ash_12" class="hidden">
+                      <img src="./assets/6_tanzania/화산송이 12.png">
+                    </div>
+                    <div id="ash_13" class="hidden">
+                      <img src="./assets/6_tanzania/화산송이 13.png">
+                    </div>
+                    <div id="ash_14" class="hidden">
+                      <img src="./assets/6_tanzania/화산송이 14.png">
+                    </div>
+                    <div id="ash_15" class="hidden">
+                      <img src="./assets/6_tanzania/화산송이 15.png">
+                    </div>
+                  </div>
+                <!-- </li> -->
+              <!-- </ul>
             </div>
-            <div id="mountain">
-              <img src="./assets/6_tanzania/산.png">
-            </div>
-            <div id="leopard_body">
-              <img src="./assets/6_tanzania/표범 민무늬.png">
-            </div>
-            <div id="leopard_pattern">
-              <img src="./assets/6_tanzania/표범 점.png">
-            </div>
-            <div id="leopard_head">
-              <img src="./assets/6_tanzania/표범 얼굴.png">
-            </div>
-            <div id="zebra">
-              <img src="./assets/6_tanzania/얼룩말 기본.png">
-            </div>
-            <div id="elephant_body">
-              <img src="./assets/6_tanzania/코끼리 몸통.png">
-            </div>
-            <div id="elephant_head">
-              <img src="./assets/6_tanzania/코끼리 얼굴.png">
-            </div>
-            <div id="grass">
-              <img src="./assets/6_tanzania/풀.png">
-            </div>
-            <div id="ground">
-              <img src="./assets/6_tanzania/땅.png">
-            </div>
-            <div id="giraffe">
-              <img src="./assets/6_tanzania/기린.png">
-            </div>
-            <div id="giraffe_head">
-              <img src="./assets/6_tanzania/기린 머리.png">
-            </div>
-            <div id="ash_1" class="hidden">
-              <img src="./assets/6_tanzania/화산송이 1.png">
-            </div>
-            <div id="ash_2" class="hidden">
-              <img src="./assets/6_tanzania/화산송이 2.png">
-            </div>
-            <div id="ash_3" class="hidden">
-              <img src="./assets/6_tanzania/화산송이 3.png">
-            </div>
-            <div id="ash_4" class="hidden">
-              <img src="./assets/6_tanzania/화산송이 4.png">
-            </div>
-            <div id="ash_5" class="hidden">
-              <img src="./assets/6_tanzania/화산송이 5.png">
-            </div>
-            <div id="ash_6" class="hidden">
-              <img src="./assets/6_tanzania/화산송이 6.png">
-            </div>
-            <div id="ash_7" class="hidden">
-              <img src="./assets/6_tanzania/화산송이 7.png">
-            </div>
-            <div id="ash_8" class="hidden">
-              <img src="./assets/6_tanzania/화산송이 8.png">
-            </div>
-            <div id="ash_9" class="hidden">
-              <img src="./assets/6_tanzania/화산송이 9.png">
-            </div>
-            <div id="ash_10" class="hidden">
-              <img src="./assets/6_tanzania/화산송이 10.png">
-            </div>
-            <div id="ash_11" class="hidden">
-              <img src="./assets/6_tanzania/화산송이 11.png">
-            </div>
-            <div id="ash_12" class="hidden">
-              <img src="./assets/6_tanzania/화산송이 12.png">
-            </div>
-            <div id="ash_13" class="hidden">
-              <img src="./assets/6_tanzania/화산송이 13.png">
-            </div>
-            <div id="ash_14" class="hidden">
-              <img src="./assets/6_tanzania/화산송이 14.png">
-            </div>
-            <div id="ash_15" class="hidden">
-              <img src="./assets/6_tanzania/화산송이 15.png">
-            </div>
-          </div>
+          </section> -->
 
           <div id="character">
             <img class="image" src="./assets/0_common/character_illust.png">

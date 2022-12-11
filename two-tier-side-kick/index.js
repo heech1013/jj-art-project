@@ -1,3 +1,9 @@
+// /** carousel */
+// document.addEventListener('DOMContentLoaded', function initializeSplide() {
+//   const splide = new Splide('.splide')
+//   splide.mount()
+// })
+
 /** globe */
 const globeIframe = document.querySelector('iframe#globe').contentDocument
 
@@ -32,6 +38,7 @@ const globe = Globe()(globeEl)
   .labelSize(1)
   .labelDotRadius(0.5)
   .labelColor(() => 'rgba(255, 165, 0, 0.75)')
+  .pointOfView({ lat: 37.566536, lng: 126.977966, altitude: 0.5 }, 3000)
 
 /** ocean */
 if (document.querySelector('#ocean')) {
