@@ -1,29 +1,25 @@
-// /** carousel */
-// document.addEventListener('DOMContentLoaded', function initializeSplide() {
-//   const splide = new Splide('.splide')
-//   splide.mount()
-// })
-
 /** globe */
+const VIEW_ALT = 0.5
+const VIEW_TRANSITION = 3000
 const globeIframe = document.querySelector('iframe#globe').contentDocument
 
-const cssLink = document.createElement("link");
-cssLink.href = './iframe.css';  
-cssLink.rel = 'stylesheet';  
-cssLink.type = 'text/css';  
-globeIframe.head.appendChild(cssLink); 
+const iframeCssLink = document.createElement("link");
+iframeCssLink.href = './iframe.css';  
+iframeCssLink.rel = 'stylesheet';  
+iframeCssLink.type = 'text/css';  
+globeIframe.head.appendChild(iframeCssLink); 
 
 const globeEl = document.createElement('div')
 globeIframe.body.appendChild(globeEl)
 
-const places = [
-  { name: 'Korea', latitude: 37.566536, longitude: 126.977966 },
-  { name: 'Australia', latitude: -25.344427, longitude: 131.036880 },
-  { name: 'Pacific Ocean', latitude: -8.783195, longitude: -124.508522 },
-  { name: 'America', latitude: 43.879105, longitude: -103.459068 },
-  { name: 'Peru', latitude: -13.867871, longitude: -71.303055 },
-  { name: 'Tanzania', latitude: -6.5247123, longitude: 35.7878438 },
-  { name: 'Denmark', latitude: 55.6867243, longitude: 12.5700724 },
+const countryPoints = [
+  { name: 'Korea', lat: 37.566536, lng: 126.977966 },
+  { name: 'Australia', lat: -25.344427, lng: 131.036880 },
+  { name: 'Pacific Ocean', lat: -8.783195, lng: -124.508522 },
+  { name: 'America', lat: 43.879105, lng: -103.459068 },
+  { name: 'Peru', lat: -13.867871, lng: -71.303055 },
+  { name: 'Tanzania', lat: -6.5247123, lng: 35.7878438 },
+  { name: 'Denmark', lat: 55.6867243, lng: 12.5700724 },
 ]
 
 const globe = Globe()(globeEl)
@@ -31,14 +27,101 @@ const globe = Globe()(globeEl)
   .height(250)
   .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
   .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
-  .labelsData(places)
+  .labelsData(countryPoints)
   .labelText(place => place.name)
-  .labelLat(place => place.latitude)
-  .labelLng(place => place.longitude)
+  .labelLat(place => place.lat)
+  .labelLng(place => place.lng)
   .labelSize(1)
   .labelDotRadius(0.5)
   .labelColor(() => 'rgba(255, 165, 0, 0.75)')
-  .pointOfView({ lat: 37.566536, lng: 126.977966, altitude: 0.5 }, 3000)
+  .pointOfView({ lat: countryPoints[0].lat, lng: countryPoints[0].lng, altitude: VIEW_ALT }, VIEW_TRANSITION)
+
+/** arrow */
+const KICKED_IN_ANIMATION_DURATION = 1500
+const KICKED_OUT_ANIMATION_DURATION = 700
+
+const countries = ['korea', 'australia', 'ocean', 'america', 'peru', 'tanzania']
+let currentCountryIdx = 0
+
+const leftArrow = document.querySelector('#left_arrow')
+const rightArrow = document.querySelector('#right_arrow')
+
+leftArrow.addEventListener('click', () => {
+  leftArrow.classList.add('hidden')
+  rightArrow.classList.add('hidden')
+
+  const currentCountryId = countries[currentCountryIdx]
+  const currentCountry = document.querySelector(`#${currentCountryId}`)
+  currentCountry.classList.add('kicked_out')
+
+  setTimeout(() => {
+    currentCountry.classList.add('unmounted')
+    currentCountry.classList.remove('kicked_out')
+  }, 1500)
+
+  currentCountryIdx--
+  const prevCountryId = countries[currentCountryIdx]
+  const prevCountry = document.querySelector(`#${prevCountryId}`)
+  prevCountry.classList.remove('unmounted')
+
+  setTimeout(() => {
+    prevCountry.classList.add('kicked_in')
+  }, 1500);
+
+  setTimeout(() => {
+    prevCountry.classList.remove('kicked_in')
+
+    if (0 < currentCountryIdx) {
+      leftArrow.classList.remove('hidden')
+    }
+    if (currentCountryIdx < countries.length - 1) {
+      rightArrow.classList.remove('hidden')
+    }
+  }, 2200);
+})
+
+function handleCountryMovement() {
+  const currentCountryId = countries[currentCountryIdx]
+  const currentCountry = document.querySelector(`#${currentCountryId}`)
+  
+  currentCountryIdx += 1
+  const nextCountryId = countries[currentCountryIdx]
+  const nextCountry = document.querySelector(`#${nextCountryId}`)
+  
+  currentCountry.classList.add('kicked_out')
+  
+  setTimeout(function handleAfterKickedOutAnimation() {
+    currentCountry.classList.add('unmounted')
+    currentCountry.classList.remove('kicked_out')
+
+    nextCountry.classList.remove('unmounted')
+    nextCountry.classList.add('kicked_in')
+
+    setTimeout(function handleAfterKickedInAnimation() {
+      nextCountry.classList.remove('kicked_in')
+  
+      if (0 < currentCountryIdx) {
+        leftArrow.classList.remove('hidden')
+      }
+      if (currentCountryIdx < countries.length - 1) {
+        rightArrow.classList.remove('hidden')
+      }
+    }, KICKED_OUT_ANIMATION_DURATION)
+  }, KICKED_IN_ANIMATION_DURATION)
+}
+
+function handleGlobeMovement() {
+  const { lat, lng } = countryPoints[currentCountryIdx]
+  globe.pointOfView({ lat, lng, altitude: VIEW_ALT }, VIEW_TRANSITION)
+}
+
+rightArrow.addEventListener('click', () => {
+  leftArrow.classList.add('hidden')
+  rightArrow.classList.add('hidden')
+
+  handleCountryMovement()
+  handleGlobeMovement()
+})
 
 /** ocean */
 if (document.querySelector('#ocean')) {
@@ -264,6 +347,7 @@ if (document.querySelector('#tanzania')) {
   
   giraffe.addEventListener('click', () => {
     giraffe.classList.add('giraffe-stretch')
+    giraffeHead.classList.remove('hidden')
     giraffeHead.classList.add('giraffe-head-down')
   })
 }
