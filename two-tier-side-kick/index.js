@@ -43,42 +43,7 @@ const KICKED_OUT_ANIMATION_DURATION = 700
 const countries = ['korea', 'australia', 'ocean', 'america', 'peru', 'tanzania']
 let currentCountryIdx = 0
 
-const leftArrow = document.querySelector('#left_arrow')
 const rightArrow = document.querySelector('#right_arrow')
-
-leftArrow.addEventListener('click', () => {
-  leftArrow.classList.add('hidden')
-  rightArrow.classList.add('hidden')
-
-  const currentCountryId = countries[currentCountryIdx]
-  const currentCountry = document.querySelector(`#${currentCountryId}`)
-  currentCountry.classList.add('kicked_out')
-
-  setTimeout(() => {
-    currentCountry.classList.add('unmounted')
-    currentCountry.classList.remove('kicked_out')
-  }, 1500)
-
-  currentCountryIdx--
-  const prevCountryId = countries[currentCountryIdx]
-  const prevCountry = document.querySelector(`#${prevCountryId}`)
-  prevCountry.classList.remove('unmounted')
-
-  setTimeout(() => {
-    prevCountry.classList.add('kicked_in')
-  }, 1500);
-
-  setTimeout(() => {
-    prevCountry.classList.remove('kicked_in')
-
-    if (0 < currentCountryIdx) {
-      leftArrow.classList.remove('hidden')
-    }
-    if (currentCountryIdx < countries.length - 1) {
-      rightArrow.classList.remove('hidden')
-    }
-  }, 2200);
-})
 
 function handleCountryMovement() {
   const currentCountryId = countries[currentCountryIdx]
@@ -100,9 +65,6 @@ function handleCountryMovement() {
     setTimeout(function handleAfterKickedInAnimation() {
       nextCountry.classList.remove('kicked_in')
   
-      if (0 < currentCountryIdx) {
-        leftArrow.classList.remove('hidden')
-      }
       if (currentCountryIdx < countries.length - 1) {
         rightArrow.classList.remove('hidden')
       }
@@ -116,7 +78,6 @@ function handleGlobeMovement() {
 }
 
 rightArrow.addEventListener('click', () => {
-  leftArrow.classList.add('hidden')
   rightArrow.classList.add('hidden')
 
   handleCountryMovement()
