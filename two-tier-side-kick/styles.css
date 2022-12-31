@@ -31,24 +31,24 @@ img {
   visibility: visible;
 }
 
-.color_black1 { filter: invert(180%) sepia(32%) saturate(0%) hue-rotate(476deg) brightness(25%) contrast(97%); }
-.color_grey1 { filter: invert(80%) sepia(38%) saturate(0%) hue-rotate(203deg) brightness(169%) contrast(84%); }
-.color_grey2 { filter: invert(85%) sepia(1%) saturate(57%) hue-rotate(209deg) brightness(188%) contrast(107%) opacity(0.9); }
-.color_brown1 { filter: invert(12%) sepia(65%) saturate(5392%) hue-rotate(355deg) brightness(60%) contrast(116%); }
-.color_blue1 { filter: invert(51%) sepia(52%) saturate(5229%) hue-rotate(181deg) brightness(99%) contrast(102%); }
-.color_blue2 { filter: invert(63%) sepia(55%) saturate(2207%) hue-rotate(207deg) brightness(128%) contrast(100%); }
-.color_blue3 { filter: invert(91%) sepia(71%) saturate(1570%) hue-rotate(209deg) brightness(125%) contrast(262%); }
-.color_blue4 { filter: invert(14%) sepia(93%) saturate(3525%) hue-rotate(193deg) brightness(69%) contrast(105%); }
-.color_green1 { filter: invert(0%) sepia(25.7%) saturate(752.4%) hue-rotate(96deg) brightness(107.2%) contrast(94%) opacity(0.1); }
-.color_green2 { filter: invert(81%) sepia(52%) saturate(5189%) hue-rotate(131deg) brightness(159%) contrast(102%); }
-.color_green3 { filter: invert(37%) sepia(23%) saturate(3172%) hue-rotate(133deg) brightness(81%) contrast(101%); }
-.color_green4 { filter: invert(51%) sepia(90%) saturate(2703%) hue-rotate(91deg) brightness(119%) contrast(105%); }
-.color_green5 { filter: invert(42%) sepia(97%) saturate(1344%) hue-rotate(104deg) brightness(80%) contrast(103%); }
-.color_red1 { filter: invert(79%) sepia(79%) saturate(3854%) hue-rotate(327deg) brightness(96%) contrast(243%); }
-.color_pink1 { filter: invert(68%) sepia(90%) saturate(102%) hue-rotate(292deg) brightness(143%) contrast(102%); }
-.color_pink2 { filter: invert(81%) sepia(67%) saturate(831%) hue-rotate(315deg) brightness(145%) contrast(123%); }
-.color_pink3 { filter: invert(13%) sepia(96%) saturate(6693%) hue-rotate(333deg) brightness(74%) contrast(107%); }
-.color_yellow1 { filter: invert(86%) sepia(36%) saturate(5060%) hue-rotate(23deg) brightness(169%) contrast(103%); }
+.color_black1 { filter: invert(180%) sepia(32%) saturate(0%) hue-rotate(476deg) brightness(25%) contrast(97%) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
+.color_grey1 { filter: invert(80%) sepia(38%) saturate(0%) hue-rotate(203deg) brightness(169%) contrast(84%) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
+.color_grey2 { filter: invert(85%) sepia(1%) saturate(57%) hue-rotate(209deg) brightness(188%) contrast(107%) opacity(0.9) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
+.color_brown1 { filter: invert(12%) sepia(65%) saturate(5392%) hue-rotate(355deg) brightness(60%) contrast(116%) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
+.color_blue1 { filter: invert(51%) sepia(52%) saturate(5229%) hue-rotate(181deg) brightness(99%) contrast(102%) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
+.color_blue2 { filter: invert(63%) sepia(55%) saturate(2207%) hue-rotate(207deg) brightness(128%) contrast(100%) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
+.color_blue3 { filter: invert(91%) sepia(71%) saturate(1570%) hue-rotate(209deg) brightness(125%) contrast(262%) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
+.color_blue4 { filter: invert(14%) sepia(93%) saturate(3525%) hue-rotate(193deg) brightness(69%) contrast(105%) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
+.color_green1 { filter: invert(0%) sepia(25.7%) saturate(752.4%) hue-rotate(96deg) brightness(107.2%) contrast(94%) opacity(0.1) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
+.color_green2 { filter: invert(81%) sepia(52%) saturate(5189%) hue-rotate(131deg) brightness(159%) contrast(102%) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
+.color_green3 { filter: invert(37%) sepia(23%) saturate(3172%) hue-rotate(133deg) brightness(81%) contrast(101%) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
+.color_green4 { filter: invert(51%) sepia(90%) saturate(2703%) hue-rotate(91deg) brightness(119%) contrast(105%) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
+.color_green5 { filter: invert(42%) sepia(97%) saturate(1344%) hue-rotate(104deg) brightness(80%) contrast(103%) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
+.color_red1 { filter: invert(79%) sepia(79%) saturate(3854%) hue-rotate(327deg) brightness(96%) contrast(243%) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
+.color_pink1 { filter: invert(68%) sepia(90%) saturate(102%) hue-rotate(292deg) brightness(143%) contrast(102%) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
+.color_pink2 { filter: invert(81%) sepia(67%) saturate(831%) hue-rotate(315deg) brightness(145%) contrast(123%) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
+.color_pink3 { filter: invert(13%) sepia(96%) saturate(6693%) hue-rotate(333deg) brightness(74%) contrast(107%) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
+.color_yellow1 { filter: invert(86%) sepia(36%) saturate(5060%) hue-rotate(23deg) brightness(169%) contrast(103%) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
 
 /* animation */
 @keyframes kicked_out {
@@ -219,45 +219,45 @@ iframe#globe {
   position: absolute;
   left: 344px;
   top: 130px;
-
   width: 100px;
   height: 100px;
+  filter: drop-shadow(0px 2px 1px black);
 }
 
 #korea #tower {
   position: absolute;
   left: 630px;
   top: 140px;
-
   width: 150px;
   height: 200px;
+  filter: drop-shadow(2px 1px 1px black);
 }
 
 #korea #landmark {
   position: absolute;
   left: 200px;
   bottom: 50px;
-
   width: 550px;
-  height: 390px;;
+  height: 390px;
+  filter: drop-shadow(2px 2px 1px black);
 }
 
 #korea #plant2 {
   position: absolute;
   right: 140px;
   bottom: 6px;
-
   width: 160px;
   height: 390px;
+  filter: drop-shadow(2px 2px 2px black);
 }
 
 #korea #plant1 {
   position: absolute;
   left: 15px;
   bottom: 0;
-
   width: 280px;
   height: 420px;
+  filter: drop-shadow(1px 2px 2px black);
 }
 
 #korea #ground {
@@ -286,15 +286,15 @@ iframe#globe {
   position: absolute;
   top: 20px;
   right: 190px;
-
   width: 300px;
+  filter: drop-shadow(2px 1px 0px black);
 }
 
 #australia #landmark {
   position: absolute;
   bottom: 45px;
   width: 900px;
-  filter: drop-shadow(1px -1px 1px black);
+  filter: drop-shadow(1.5px 0px 1px black);
 }
 
 @keyframes kangaroo-jump {
@@ -313,8 +313,8 @@ iframe#globe {
   position: absolute;
   bottom: 72px;
   right: 120px;
-
   width: 200px;
+  filter: drop-shadow(1px 1.7px 1px black);
 
   animation-name: kangaroo-jump;
   animation-duration: 1s;
@@ -324,16 +324,16 @@ iframe#globe {
 #australia #ground {
   position: absolute;
   bottom: var(--ground-bottom);
-
-  width: 100%
+  width: 100%;
+  filter: drop-shadow(1.5px 1.5px 1px black);
 }
 
 #australia #plant {
   position: absolute;
   bottom: -5px;
   left: 50px;
-
   width: 460px;
+  filter: drop-shadow(1px 2px 0px black);
 }
 
 @keyframes boomerang-fly {
@@ -376,7 +376,6 @@ iframe#globe {
   position: absolute;
   top: 200px;
   left: 480px;
-
   width: 100px;
 
   animation-name: boomerang-fly;
@@ -476,64 +475,59 @@ iframe#globe {
   position: absolute;
   top: 30px;
   left: 190px;
-
   width: 680px;
+  filter: drop-shadow(-1px 3px 1px black);
 }
 
 #america #star1 {
   position: absolute;
   top: 105px;
   left: 395px;
-
   width: 45px;
-
   overflow: hidden;
   cursor: pointer;
+  filter: drop-shadow(1px 2px 1px black);
 }
 
 #america #star2 {
   position: absolute;
   top: 130px;
   left: 480px;
-
   width: 45px;
-
   transform: rotate(25deg);
   overflow: hidden;
   cursor: pointer;
+  filter: drop-shadow(1px 2px 1px black);
 }
 
 #america #star3 {
   position: absolute;
   top: 190px;
   left: 560px;
-
   width: 45px;
-
   overflow: hidden;
   cursor: pointer;
+  filter: drop-shadow(1px 2px 1px black);
 }
 
 #america #star4 {
   position: absolute;
   top: 120px;
   left: 620px;
-
   width: 45px;
-
   overflow: hidden;
   cursor: pointer;
+  filter: drop-shadow(1px 2px 1px black);
 }
 
 #america #star5 {
   position: absolute;
   top: 130px;
   left: 720px;
-
   width: 45px;
-
   overflow: hidden;
   cursor: pointer;
+  filter: drop-shadow(1px 2px 1px black);
 }
 
 #america #star1::before,
@@ -575,78 +569,78 @@ iframe#globe {
   position: absolute;
   bottom: 25px;
   left: 40px;
-
   width: 880px;
+  filter: drop-shadow(2px 1px 0px black);
 }
 
 #america #face1 {
   position: absolute;
   bottom: 292px;
   left: 98px;
-
   width: 260px;
+  filter: drop-shadow(2px 2px 2px black);
 }
 
 #america #mouse1 {
   position: absolute;
   bottom: 342px;
   left: 169px;
-
   width: 80px;
+  filter: drop-shadow(2px 2px 2px black);
 }
 
 #america #face2 {
   position: absolute;
   bottom: 235px;
   left: 290px;
-
   width: 240px;
+  filter: drop-shadow(2px 2px 2px black);
 }
 
 #america #mouse2 {
   position: absolute;
   bottom: 304px;
   left: 372px;
-
   width: 80px;
+  filter: drop-shadow(2px 2px 2px black);
 }
 
 #america #face3 {
   position: absolute;
   bottom: 165px;
   left: 460px;
-
   width: 200px;
+  filter: drop-shadow(2px 2px 2px black);
 }
 
 #america #face4 {
   position: absolute;
   bottom: 165px;
   left: 690px;
-
   width: 210px;
+  filter: drop-shadow(2px 1.2px 1px black);
 }
 
 #america #mouse4 {
   position: absolute;
   bottom: 215px;
   left: 752px;
-
   width: 90px;
+  filter: drop-shadow(2px 1px 2px black);
 }
 
 #america #plant {
   position: absolute;
   bottom: -5px;
   left: 40px;
-
   width: 95%;
+  filter: drop-shadow(1px 1px 2px black);
+  z-index: 1;
 }
 
 #america #ground {
   position: absolute;
   bottom: 13px;
-
   width: 100%;
 }
 
@@ -661,8 +655,8 @@ iframe#globe {
   position: absolute;
   bottom: 374px;
   left: 54px;
-
   width: 200px;
+  filter: drop-shadow(1px 1px 1px black);
 }
 
 #peru #mountain_1_01 {
@@ -1038,16 +1032,16 @@ iframe#globe {
 #tanzania #mountain {
   position: absolute;
   bottom: 37px;
-
   width: var(--content-width);
+  filter: drop-shadow(2px 1px 2px black);
 }
 
 #tanzania #sun {
   position: absolute;
   bottom: 326px;
   left: 126px;
-
   width: 250px;
+  filter: drop-shadow(2px -1px 1px black);
 }
 
 @keyframes leopard-pattern-launch {
@@ -1071,8 +1065,8 @@ iframe#globe {
   position: absolute;
   bottom: 486px;
   left: 301px;
-
   width: 110px;
+  filter: drop-shadow(0.5px 1px 1px black);
 }
 
 #tanzania #leopard_pattern {
@@ -1087,32 +1081,32 @@ iframe#globe {
   position: absolute;
   bottom: 543px;
   left: 398px;
-
   width: 24px;
+  filter: drop-shadow(0.5px 1px 1px black);
 }
 
 #tanzania #zebra {
   position: absolute;
   bottom: var(--ground-bottom);
   left: 70px;
-
   width: 344px;
+  filter: drop-shadow(2px 2px 1px black);
 }
 
 #tanzania #elephant_body {
   position: absolute;
   bottom: var(--ground-bottom);
   left: 513px;
-
   width: 374px;
+  filter: drop-shadow(1px 1px 1px black);
 }
 
 #tanzania #elephant_head {
   position: absolute;
   bottom: 40px;
   left: 463px;
-
   width: 194px;
+  filter: drop-shadow(1px 2px 1px black);
 }
 
 @keyframes elephant-head-rotate {
@@ -1165,9 +1159,9 @@ iframe#globe {
   position: absolute;
   bottom: -15px;
   left: 590px;
-  
   width: 360px;
   transform-origin: bottom;
+  filter: drop-shadow(2px 2px 1px black);
 }
 
 @keyframes giraffe-head-down {
