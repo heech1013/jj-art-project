@@ -1574,8 +1574,7 @@ iframe#globe {
 /* common */
 #character {
   position: absolute;
-  top: 370px;
-  left: 370px;
-
-  width: 250px;
+  top: 403px;
+  left: 400px;
+  width: 220px;
 }
