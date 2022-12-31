@@ -1,5 +1,5 @@
 /** globe */
-const VIEW_ALT = 0.5
+const VIEW_ALT = 1.5
 const VIEW_TRANSITION = 3000
 const globeIframe = document.querySelector('iframe#globe').contentDocument
 
@@ -24,7 +24,7 @@ const countryPoints = [
 
 const globe = Globe()(globeEl)
   .width(400)
-  .height(250)
+  .height(400)
   .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
   .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
   .labelsData(countryPoints)
