@@ -23,8 +23,9 @@ const countryPoints = [
 ]
 
 const globe = Globe()(globeEl)
-  .width(400)
-  .height(400)
+  .width(470)
+  .height(470)
+  .backgroundColor('white')
   .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
   .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
   .labelsData(countryPoints)
@@ -37,8 +38,7 @@ const globe = Globe()(globeEl)
   .pointOfView({ lat: countryPoints[0].lat, lng: countryPoints[0].lng, altitude: VIEW_ALT }, VIEW_TRANSITION)
 
 /** arrow */
-const KICKED_IN_ANIMATION_DURATION = 1500
-const KICKED_OUT_ANIMATION_DURATION = 700
+const KICKED_ANIMATION_DURATION = 700
 
 const countries = ['korea', 'australia', 'ocean', 'america', 'peru', 'tanzania']
 let currentCountryIdx = 0
@@ -54,22 +54,27 @@ function handleCountryMovement() {
   const nextCountry = document.querySelector(`#${nextCountryId}`)
   
   currentCountry.classList.add('kicked_out')
-  
+  nextCountry.classList.remove('unmounted')
+  nextCountry.classList.add('kicked_in')
+
   setTimeout(function handleAfterKickedOutAnimation() {
-    currentCountry.classList.add('unmounted')
     currentCountry.classList.remove('kicked_out')
+    currentCountry.classList.add('unmounted')
+    nextCountry.classList.remove('kicked_in')
 
-    nextCountry.classList.remove('unmounted')
-    nextCountry.classList.add('kicked_in')
+    if (currentCountryIdx < countries.length - 1) {
+      rightArrow.classList.remove('hidden')
+    }
+  }, KICKED_ANIMATION_DURATION);
 
-    setTimeout(function handleAfterKickedInAnimation() {
-      nextCountry.classList.remove('kicked_in')
-  
-      if (currentCountryIdx < countries.length - 1) {
-        rightArrow.classList.remove('hidden')
-      }
-    }, KICKED_OUT_ANIMATION_DURATION)
-  }, KICKED_IN_ANIMATION_DURATION)
+  const countryName = document.querySelector('#country_name')
+  countryName.innerText = nextCountryId.charAt(0).toUpperCase() + nextCountryId.slice(1)
+
+  const currentMascot = document.querySelector(`#${currentCountryId}_mascot`)
+  const nextMascot = document.querySelector(`#${nextCountryId}_mascot`)
+
+  currentMascot.classList.add('unmounted')
+  nextMascot.classList.remove('unmounted')
 }
 
 function handleGlobeMovement() {
