@@ -13,14 +13,84 @@ globeIframe.head.appendChild(iframeCssLink);
 const globeEl = document.createElement('div')
 globeIframe.body.appendChild(globeEl)
 
-const countryPoints = [
-  { name: 'Korea', lat: 37.566536, lng: 126.977966 },
-  { name: 'Australia', lat: -25.344427, lng: 131.036880 },
-  { name: 'Pacific Ocean', lat: -8.783195, lng: -124.508522 },
-  { name: 'America', lat: 43.879105, lng: -103.459068 },
-  { name: 'Peru', lat: -13.867871, lng: -71.303055 },
-  { name: 'Tanzania', lat: -6.5247123, lng: 35.7878438 },
-  { name: 'Denmark', lat: 55.6867243, lng: 12.5700724 },
+const countries = [
+  {
+    id: 'korea',
+    name: 'Korea',
+    capital: 'Seoul',
+    language: 'Korean',
+    population: '51,844,834',
+    area: '100,363km²',
+    gdp: '$2.735 trillion',
+    lat: 37.566536,
+    lng: 126.977966,
+  },
+  {
+    id: 'australia',
+    name: 'Australia',
+    capital: 'Canberra',
+    language: 'English',
+    population: '26,040,100',
+    area: '7,692,0243km²',
+    gdp: '$1.615 trillion',
+    lat: -25.344427,
+    lng: 131.036880,
+  },
+  {
+    id: 'ocean',
+    name: 'Pacific Ocean',
+    capital: '-',
+    language: '-',
+    population: '-',
+    area: '165,250,0003km²',
+    gdp: '-',
+    lat: -8.783195,
+    lng: -124.508522,
+  },
+  {
+    id: 'america',
+    name: 'USA',
+    capital: 'Washington, D.C.',
+    language: 'English',
+    population: '333,287,557',
+    area: '9,833,5203km²',
+    gdp: '$25.035 trillion',
+    lat: 43.879105,
+    lng: -103.459068,
+  },
+  {
+    id: 'peru',
+    name: 'Peru',
+    capital: 'Lima',
+    language: 'Spanish',
+    population: '34,352,719',
+    area: '1,285,2163km²',
+    gdp: '$513.715 billion',
+    lat: -13.867871,
+    lng: -71.303055,
+  },
+  {
+    id: 'tanzania',
+    name: 'Tanzania',
+    capital: 'Dodoma',
+    language: 'Swahili',
+    population: '61,741,120',
+    area: '947,3033km²',
+    gdp: '$207.5 billion',
+    lat: -6.5247123,
+    lng: 35.7878438,
+  },
+  {
+    id: 'denmark',
+    name: 'Denmark',
+    capital: 'Copenhagen',
+    language: 'Danish',
+    population: '5,928,364',
+    area: '42,9433km²',
+    gdp: '$411.0 billion',
+    lat: 55.6867243,
+    lng: 12.5700724,
+  },
 ]
 
 const globe = Globe()(globeEl)
@@ -29,29 +99,35 @@ const globe = Globe()(globeEl)
   .backgroundColor('white')
   .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
   .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
-  .labelsData(countryPoints)
+  .labelsData(countries)
   .labelText(place => place.name)
   .labelLat(place => place.lat)
   .labelLng(place => place.lng)
   .labelSize(3.5)
-  .labelDotRadius(1)
+  .labelDotRadius(0.5)
   .labelColor(() => 'rgba(255, 255, 255, 255)')
-  .pointOfView({ lat: countryPoints[0].lat, lng: countryPoints[0].lng, altitude: VIEW_ALT }, INITAIL_TRANSITION)
+  .htmlElementsData(countries)
+  .htmlElement(() => {
+    const el = document.createElement('img')
+    el.src = "./assets/0_common/mark.png"
+    el.style.width = '15px'
+    return el
+  })
+  .pointOfView({ lat: countries[0].lat, lng: countries[0].lng, altitude: VIEW_ALT }, INITAIL_TRANSITION)
 
 /** arrow */
 const KICKED_ANIMATION_DURATION = 700
 
-const countries = ['korea', 'australia', 'ocean', 'america', 'peru', 'tanzania', 'denmark']
 let currentCountryIdx = 0
 
 const rightArrow = document.querySelector('#right_arrow')
 
 function handleCountryMovement() {
-  const currentCountryId = countries[currentCountryIdx]
+  const currentCountryId = countries[currentCountryIdx].id
   const currentCountry = document.querySelector(`#${currentCountryId}`)
   
   currentCountryIdx += 1
-  const nextCountryId = countries[currentCountryIdx]
+  const nextCountryId = countries[currentCountryIdx].id
   const nextCountry = document.querySelector(`#${nextCountryId}`)
   
   currentCountry.classList.add('kicked_out')
@@ -68,18 +144,23 @@ function handleCountryMovement() {
     }
   }, KICKED_ANIMATION_DURATION);
 
-  const countryName = document.querySelector('#country_name')
-  countryName.innerText = nextCountryId.charAt(0).toUpperCase() + nextCountryId.slice(1)
-
   const currentMascot = document.querySelector(`#${currentCountryId}_mascot`)
   const nextMascot = document.querySelector(`#${nextCountryId}_mascot`)
 
   currentMascot?.classList.add('unmounted')
   nextMascot?.classList.remove('unmounted')
+
+  const metaValues = document.querySelectorAll('#meta_value')
+  metaValues[0].textContent = countries[currentCountryIdx].name
+  metaValues[1].textContent = countries[currentCountryIdx].capital
+  metaValues[2].textContent = countries[currentCountryIdx].language
+  metaValues[3].textContent = countries[currentCountryIdx].population
+  metaValues[4].textContent = countries[currentCountryIdx].area
+  metaValues[5].textContent = countries[currentCountryIdx].gdp
 }
 
 function handleGlobeMovement() {
-  const { lat, lng } = countryPoints[currentCountryIdx]
+  const { lat, lng } = countries[currentCountryIdx]
   globe.pointOfView({ lat, lng, altitude: VIEW_ALT }, VIEW_TRANSITION)
 }
 
