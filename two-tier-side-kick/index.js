@@ -1,6 +1,7 @@
 /** globe */
 const VIEW_ALT = 1.5
-const VIEW_TRANSITION = 3000
+const INITAIL_TRANSITION = 2500
+const VIEW_TRANSITION = 800
 const globeIframe = document.querySelector('iframe#globe').contentDocument
 
 const iframeCssLink = document.createElement("link");
@@ -32,10 +33,10 @@ const globe = Globe()(globeEl)
   .labelText(place => place.name)
   .labelLat(place => place.lat)
   .labelLng(place => place.lng)
-  .labelSize(1)
-  .labelDotRadius(0.5)
-  .labelColor(() => 'rgba(255, 165, 0, 0.75)')
-  .pointOfView({ lat: countryPoints[0].lat, lng: countryPoints[0].lng, altitude: VIEW_ALT }, VIEW_TRANSITION)
+  .labelSize(3.5)
+  .labelDotRadius(1)
+  .labelColor(() => 'rgba(255, 255, 255, 255)')
+  .pointOfView({ lat: countryPoints[0].lat, lng: countryPoints[0].lng, altitude: VIEW_ALT }, INITAIL_TRANSITION)
 
 /** arrow */
 const KICKED_ANIMATION_DURATION = 700
