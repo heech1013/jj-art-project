@@ -40,7 +40,7 @@ const globe = Globe()(globeEl)
 /** arrow */
 const KICKED_ANIMATION_DURATION = 700
 
-const countries = ['korea', 'australia', 'ocean', 'america', 'peru', 'tanzania']
+const countries = ['korea', 'australia', 'ocean', 'america', 'peru', 'tanzania', 'denmark']
 let currentCountryIdx = 0
 
 const rightArrow = document.querySelector('#right_arrow')
@@ -73,8 +73,8 @@ function handleCountryMovement() {
   const currentMascot = document.querySelector(`#${currentCountryId}_mascot`)
   const nextMascot = document.querySelector(`#${nextCountryId}_mascot`)
 
-  currentMascot.classList.add('unmounted')
-  nextMascot.classList.remove('unmounted')
+  currentMascot?.classList.add('unmounted')
+  nextMascot?.classList.remove('unmounted')
 }
 
 function handleGlobeMovement() {
