@@ -149,6 +149,7 @@ function handleCountryMovement() {
 
   currentMascot?.classList.add('unmounted')
   nextMascot?.classList.remove('unmounted')
+  nextMascot?.classList.add('mascot_showing')
 
   const metaValues = document.querySelectorAll('#meta_value')
   metaValues[0].textContent = countries[currentCountryIdx].name

@@ -101,6 +101,23 @@ img {
   margin-left: 10px;
 }
 
+@keyframes mascot_showing {
+  0% {
+    transform: translateY(1000px);
+  }
+  
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.mascot_showing {
+  animation-name: mascot_showing;
+  animation-duration: 0.4s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
 #korea_mascot {
   position: absolute;
   top: 845px;
@@ -121,6 +138,46 @@ img {
   left: -239px;
   width: 630px;
   rotate: 24deg;
+}
+
+#america_mascot {
+  position: absolute;
+  top: 746px;
+  left: -196px;
+  width: 530px;
+  rotate: 24deg;
+}
+
+#peru_mascot_body {
+  position: absolute;
+  top: 827px;
+  left: -339px;
+  width: 740px;
+  rotate: 14deg;
+}
+
+#peru_mascot_face {
+  position: absolute;
+  top: 1020px;
+  left: 302px;
+  width: 100px;
+  rotate: 19deg;
+}
+
+#tanzania_mascot {
+  position: absolute;
+  top: 917px;
+  left: -379px;
+  width: 1020px;
+  rotate: -7deg;
+}
+
+#denmark_mascot {
+  position: absolute;
+  top: 807px;
+  left: -259px;
+  width: 720px;
+  rotate: 11deg;
 }
 
 #center_section {
