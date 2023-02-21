@@ -15,6 +15,12 @@ globeIframe.body.appendChild(globeEl)
 
 const countries = [
   {
+    id: 'home',
+    name: '', // unused
+    lat: 37.566536, // unused
+    lng: 126.977966, // unused
+  },
+  {
     id: 'korea',
     name: 'Korea',
     capital: 'Seoul',
@@ -93,27 +99,34 @@ const countries = [
   },
 ]
 
-const globe = Globe()(globeEl)
-  .width(470)
-  .height(470)
-  .backgroundColor('white')
-  .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-  .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
-  .labelsData(countries)
-  .labelText(place => place.name)
-  .labelLat(place => place.lat)
-  .labelLng(place => place.lng)
-  .labelSize(3.5)
-  .labelDotRadius(0.5)
-  .labelColor(() => 'rgba(255, 255, 255, 255)')
-  .htmlElementsData(countries)
-  .htmlElement(() => {
-    const el = document.createElement('img')
-    el.src = "./assets/0_common/mark.png"
-    el.style.width = '15px'
-    return el
-  })
-  .pointOfView({ lat: countries[0].lat, lng: countries[0].lng, altitude: VIEW_ALT }, INITAIL_TRANSITION)
+let globe
+let isGlobeInitialized = false
+
+const initGlobe = () => {
+  isGlobeInitialized = true
+
+  globe = Globe()(globeEl)
+    .width(470)
+    .height(470)
+    .backgroundColor('white')
+    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+    .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+    .labelsData(countries)
+    .labelText(place => place.name)
+    .labelLat(place => place.lat)
+    .labelLng(place => place.lng)
+    .labelSize(3.5)
+    .labelDotRadius(0.5)
+    .labelColor(() => 'rgba(255, 255, 255, 255)')
+    .htmlElementsData(countries)
+    .htmlElement(() => {
+      const el = document.createElement('img')
+      el.src = "./assets/0_common/mark.png"
+      el.style.width = '15px'
+      return el
+    })
+    .pointOfView({ lat: countries[1].lat, lng: countries[1].lng, altitude: VIEW_ALT }, INITAIL_TRANSITION)
+}
 
 /** arrow */
 const KICKED_ANIMATION_DURATION = 700
@@ -125,6 +138,16 @@ const rightArrow = document.querySelector('#right_arrow')
 function handleCountryMovement() {
   const currentCountryId = countries[currentCountryIdx].id
   const currentCountry = document.querySelector(`#${currentCountryId}`)
+
+  if (currentCountryIdx === 0) {
+    const teacher1 = document.querySelector('#teacher1')
+    const teacher2 = document.querySelector('#teacher2')
+
+    setTimeout(() => {
+      teacher1.classList.add('unmounted')
+      teacher2.classList.remove('unmounted')
+    }, 125);
+  }
   
   currentCountryIdx += 1
   const nextCountryId = countries[currentCountryIdx].id
@@ -161,16 +184,48 @@ function handleCountryMovement() {
 }
 
 function handleGlobeMovement() {
+  if (currentCountryIdx === 1) { return }
+
   const { lat, lng } = countries[currentCountryIdx]
   globe.pointOfView({ lat, lng, altitude: VIEW_ALT }, VIEW_TRANSITION)
 }
 
 rightArrow.addEventListener('click', () => {
   rightArrow.classList.add('hidden')
+  if (currentCountryIdx === 0) {
+    const book = document.querySelector('#book')
+    book.classList.add('unmounted')
+
+    const metaBlock = document.querySelector('#meta_block')
+    metaBlock.classList.remove('unmounted')
+  }
+
+  if (!isGlobeInitialized) {
+    initGlobe()
+  }
 
   handleCountryMovement()
   handleGlobeMovement()
 })
+
+/** home */
+if (document.querySelector('#home')) {
+  const book = document.querySelector('#book')
+  const bookOpened = document.querySelector('#book_opened')
+  const bookOpenedBackground = document.querySelector('#book_opened_background')
+
+  book.addEventListener('click', () => {
+    bookOpened.classList.remove('unmounted')
+    bookOpenedBackground.classList.remove('unmounted')
+
+    bookOpenedBackground.addEventListener('click', () => {
+      if (bookOpened.classList.contains('unmounted')) { return }
+      bookOpened.classList.add('unmounted')
+      bookOpenedBackground.classList.add('unmounted')
+    })
+  })
+
+}
 
 /** ocean */
 if (document.querySelector('#ocean')) {
