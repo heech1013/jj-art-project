@@ -37,6 +37,14 @@ img {
   visibility: visible;
 }
 
+.blue_cursor {
+  cursor: url('./assets/0_common/blue-cursor.png'), auto;
+}
+
+.red_cursor {
+  cursor: url('./assets/0_common/red-cursor.png'), pointer;
+}
+
 .color_black1 { filter: invert(180%) sepia(32%) saturate(0%) hue-rotate(476deg) brightness(25%) contrast(97%) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
 .color_grey1 { filter: invert(80%) sepia(38%) saturate(0%) hue-rotate(203deg) brightness(169%) contrast(84%) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
 .color_grey2 { filter: invert(85%) sepia(1%) saturate(57%) hue-rotate(209deg) brightness(188%) contrast(107%) opacity(0.9) drop-shadow(0px 1px 1px rgb(91, 91, 91)); }
@@ -78,13 +86,6 @@ img {
 #left_section {
   flex-shrink: 0;
   width: 700px;
-}
-
-#book {
-  position: absolute;
-  top: 650px;
-  left: 281px;
-  width: 370px;
 }
 
 #book_opened {
@@ -317,6 +318,13 @@ iframe#globe {
   top: 40px;
   left: 40px;
   width: 870px;
+}
+
+#home #book {
+  position: absolute;
+  top: 455px;
+  left: 38px;
+  width: 100px;
 }
 
 #home #teacher1 {
@@ -644,7 +652,6 @@ iframe#globe {
   left: 395px;
   width: 45px;
   overflow: hidden;
-  cursor: pointer;
   filter: drop-shadow(1px 2px 1px black);
 }
 
@@ -655,7 +662,6 @@ iframe#globe {
   width: 45px;
   transform: rotate(25deg);
   overflow: hidden;
-  cursor: pointer;
   filter: drop-shadow(1px 2px 1px black);
 }
 
@@ -665,7 +671,6 @@ iframe#globe {
   left: 560px;
   width: 45px;
   overflow: hidden;
-  cursor: pointer;
   filter: drop-shadow(1px 2px 1px black);
 }
 
@@ -675,7 +680,6 @@ iframe#globe {
   left: 620px;
   width: 45px;
   overflow: hidden;
-  cursor: pointer;
   filter: drop-shadow(1px 2px 1px black);
 }
 
@@ -685,7 +689,6 @@ iframe#globe {
   left: 720px;
   width: 45px;
   overflow: hidden;
-  cursor: pointer;
   filter: drop-shadow(1px 2px 1px black);
 }
 

@@ -128,6 +128,11 @@ const initGlobe = () => {
     .pointOfView({ lat: countries[1].lat, lng: countries[1].lng, altitude: VIEW_ALT }, INITAIL_TRANSITION)
 }
 
+function showUpHand() {
+  const hand = document.querySelector('#hand')
+  hand.classList.remove('unmounted')
+}
+
 /** arrow */
 const KICKED_ANIMATION_DURATION = 700
 
@@ -202,6 +207,7 @@ rightArrow.addEventListener('click', () => {
 
   if (!isGlobeInitialized) {
     initGlobe()
+    showUpHand()
   }
 
   handleCountryMovement()
