@@ -146,64 +146,59 @@ img {
 
 #korea_mascot {
   position: absolute;
-  top: 845px;
-  left: -560px;
-  width: 1050px;
+  top: 924px;
+  left: -397px;
+  width: 883px;
 }
 
 #australia_mascot {
   position: absolute;
-  top: 865px;
-  left: -290px;
-  width: 790px;
+  top: 863px;
+  left: 125px;
+  width: 358px;
 }
 
 #ocean_mascot {
   position: absolute;
-  top: 827px;
-  left: -239px;
-  width: 630px;
-  rotate: 24deg;
+  top: 840px;
+  left: 93px;
+  width: 596px;
 }
 
 #america_mascot {
   position: absolute;
-  top: 746px;
-  left: -196px;
-  width: 530px;
-  rotate: 24deg;
+  top: 850px;
+  left: 115px;
+  width: 370px;
 }
 
 #peru_mascot_body {
   position: absolute;
-  top: 827px;
-  left: -339px;
+  top: 835px;
+  left: -274px;
   width: 740px;
-  rotate: 14deg;
 }
 
 #peru_mascot_face {
   position: absolute;
-  top: 1020px;
-  left: 302px;
+  top: 964px;
+  left: 315px;
   width: 100px;
-  rotate: 19deg;
 }
 
 #tanzania_mascot {
   position: absolute;
-  top: 917px;
-  left: -379px;
-  width: 1020px;
+  top: 902px;
+  left: -306px;
+  width: 894px;
   rotate: -7deg;
 }
 
 #denmark_mascot {
   position: absolute;
-  top: 807px;
-  left: -259px;
-  width: 720px;
-  rotate: 11deg;
+  top: 832px;
+  left: -130px;
+  width: 638px;
 }
 
 #center_section {
@@ -213,9 +208,9 @@ img {
 
 #monitor {
   position: absolute;
-  width: 1128px;
+  width: 1127px;
   top: 218px;
-  left: -40px;
+  left: -39px;
   pointer-events: none;
 }
 
@@ -329,14 +324,14 @@ iframe#globe {
 
 #home #teacher1 {
   position: absolute;
-  top: 385px;
+  top: 388px;
   left: 625px;
   width: 160px;
 }
 
 #home #teacher2 {
   position: absolute;
-  top: 309px;
+  top: 320px;
   left: 617px;
   width: 200px;
 }
@@ -358,9 +353,9 @@ iframe#globe {
   position: absolute;
   top: 50px;
   right: 100px;
-
   width: 200px;
   height: 200px;
+  filter: drop-shadow(0px 2px 1px black);
 }
 
 #korea #mountain1 {
@@ -406,7 +401,7 @@ iframe#globe {
   bottom: 50px;
   width: 550px;
   height: 390px;
-  filter: drop-shadow(2px 2px 1px black);
+  filter: drop-shadow(0px 2px 1px black);
 }
 
 #korea #plant2 {
@@ -415,7 +410,7 @@ iframe#globe {
   bottom: 6px;
   width: 160px;
   height: 390px;
-  filter: drop-shadow(2px 2px 2px black);
+  filter: drop-shadow(0px 2px 1px black);
 }
 
 #korea #plant1 {
@@ -424,7 +419,7 @@ iframe#globe {
   bottom: 0;
   width: 280px;
   height: 420px;
-  filter: drop-shadow(1px 2px 2px black);
+  filter: drop-shadow(0px 2px 1px black);
 }
 
 #korea #ground {
@@ -454,7 +449,7 @@ iframe#globe {
   top: 20px;
   right: 190px;
   width: 300px;
-  filter: drop-shadow(2px 1px 0px black);
+  filter: drop-shadow(2px 1px 1px black);
 }
 
 #australia #landmark {
@@ -589,7 +584,6 @@ iframe#globe {
   position: absolute;
   top: 50px;
   right: 130px;
-
   width: 160px;
 }
 
@@ -602,10 +596,9 @@ iframe#globe {
 
 #ocean #boat {
   position: absolute;
-  left: 40px;
-  bottom: 35px;
-
-  width: 420px;
+  left: 37px;
+  bottom: 9px;
+  width: 442px;
 }
 
 #ocean #shark {
@@ -818,135 +811,123 @@ iframe#globe {
   bottom: 374px;
   left: 54px;
   width: 200px;
-  filter: drop-shadow(1px 1px 1px black);
+  filter: drop-shadow(0px 2px 1px black);
+}
+
+.fresh_filter {
+  filter: drop-shadow(0px 1px 1px black);
 }
 
 #peru #mountain_1_01 {
   position: absolute;
-  bottom: 214px;
-  left: 380px;
-
-  width: 570px;
+  bottom: 313px;
+  left: 449px;
+  width: 502px;
 }
 
 #peru #mountain_1_02 {
   position: absolute;
-  bottom: 250px;
-  left: 421px;
-
-  width: 570px;
+  bottom: 298px;
+  left: 452px;
+  width: 498px;
 }
 
 #peru #mountain_1_03 {
   position: absolute;
-  bottom: 215px;
-  left: 436px;
-
-  width: 570px;
+  bottom: 278px;
+  left: 462px;
+  width: 493px;
 }
 
 #peru #mountain_1_04 {
   position: absolute;
-  bottom: 199px;
-  left: 427px;
-
-  width: 570px;
+  bottom: 255px;
+  left: 476px;
+  width: 474px;
 }
 
 #peru #mountain_1_05 {
   position: absolute;
-  bottom: 176px;
-  left: 435px;
-
-  width: 570px;
+  bottom: 243px;
+  left: 484px;
+  width: 472px;
 }
 
 #peru #mountain_1_06 {
   position: absolute;
-  bottom: 162px;
-  left: 448px;
-
-  width: 570px;
+  bottom: 235px;
+  left: 492px;
+  width: 465px;
 }
 
 #peru #mountain_1_07 {
   position: absolute;
-  bottom: 146px;
-  left: 460px;
-
-  width: 570px;
+  bottom: 225px;
+  left: 504px;
+  width: 454px;
 }
 
 #peru #mountain_1_08 {
   position: absolute;
-  bottom: 137px;
-  left: 471px;
-
-  width: 570px;
+  bottom: 217px;
+  left: 518px;
+  width: 437px;
 }
 
 #peru #mountain_1_09 {
   position: absolute;
-  bottom: 117px;
-  left: 481px;
-
-  width: 570px;
+  bottom: 208px;
+  left: 530px;
+  width: 421px;
 }
 
 #peru #mountain_1_10 {
   position: absolute;
-  bottom: 136px;
-  left: 526px;
-
-  width: 458px;
+  bottom: 192px;
+  left: 544px;
+  width: 406px;
 }
 
 #peru #mountain_1_11 {
   position: absolute;
-  bottom: 127px;
-  left: 538px;
-
-  width: 438px;
+  bottom: 183px;
+  left: 559px;
+  width: 391px;
 }
 
 #peru #mountain_1_12 {
   position: absolute;
-  bottom: 115px;
-  left: 547px;
-
-  width: 418px;
+  bottom: 170px;
+  left: 574px;
+  width: 376px;
 }
 
 #peru #mountain_1_13 {
   position: absolute;
-  bottom: 123px;
-  left: 557px;
-
-  width: 403px;
+  bottom: 152px;
+  left: 586px;
+  width: 369px;
 }
 
 #peru #mountain_1_14 {
   position: absolute;
-  bottom: 117px;
-  left: 573px;
-
-  width: 403px;
+  bottom: 134px;
+  left: 605px;
+  width: 356px;
 }
 
 #peru #mountain_1_15 {
   position: absolute;
-  bottom: 116px;
-  left: 584px;
-
-  width: 378px;
+  bottom: 126px;
+  left: 624px;
+  width: 327px;
 }
 
 #peru #mountain_1_16 {
   position: absolute;
-  bottom: 169px;
-  left: 622px;
-
-  width: 104px;
+  bottom: 194px;
+  left: 645px;
+  width: 84px;
 }
 
 #peru #mountain_3_01 {
@@ -1007,7 +988,7 @@ iframe#globe {
 
 #peru #mountain_3_09 {
   position: absolute;
-  bottom: 21px;
+  bottom: 37px;
 
   width: 954px;
 }
@@ -1195,7 +1176,6 @@ iframe#globe {
   position: absolute;
   bottom: 37px;
   width: var(--content-width);
-  filter: drop-shadow(2px 1px 2px black);
 }
 
 #tanzania #sun {
@@ -1203,7 +1183,7 @@ iframe#globe {
   bottom: 326px;
   left: 126px;
   width: 250px;
-  filter: drop-shadow(2px -1px 1px black);
+  filter: drop-shadow(0px 2px 1px black);
 }
 
 @keyframes leopard-pattern-launch {
@@ -1228,7 +1208,7 @@ iframe#globe {
   bottom: 486px;
   left: 301px;
   width: 110px;
-  filter: drop-shadow(0.5px 1px 1px black);
+  filter: drop-shadow(0px 0px 0px black);
 }
 
 #tanzania #leopard_pattern {
@@ -1323,7 +1303,7 @@ iframe#globe {
   left: 590px;
   width: 360px;
   transform-origin: bottom;
-  filter: drop-shadow(2px 2px 1px black);
+  filter: drop-shadow(0px 2px 0px black);
 }
 
 @keyframes giraffe-head-down {
@@ -1733,6 +1713,7 @@ iframe#globe {
   top: 51px;
   left: 101px;
   width: 235px;
+  filter: drop-shadow(0px 2px 1px black);
 }
 
 #denmark #building_1 {
@@ -1740,6 +1721,7 @@ iframe#globe {
   top: 283px;
   left: 41px;
   width: 195px;
+  filter: drop-shadow(0px 2px 1px black);
 }
 
 #denmark #closed_window_1_1 {
@@ -1796,6 +1778,7 @@ iframe#globe {
   top: 219px;
   left: 227px;
   width: 210px;
+  filter: drop-shadow(0px 2px 1px black);
 }
 
 #denmark #closed_window_2_1 {
@@ -1866,6 +1849,7 @@ iframe#globe {
   top: 206px;
   left: 707px;
   width: 213px;
+  filter: drop-shadow(0px 2px 1px black);
 }
 
 #denmark #closed_window_4_1 {
@@ -1985,6 +1969,7 @@ iframe#globe {
   top: 196px;
   left: 432px;
   width: 280px;
+  filter: drop-shadow(0px 2px 1px black);
 }
 
 #denmark #closed_window_3_1 {
@@ -2101,7 +2086,7 @@ iframe#globe {
 
 #denmark #water {
   position: absolute;
-  top: 602px;
+  top: 606px;
   width: 950px;
 }
 

@@ -401,6 +401,7 @@ if (document.querySelector('#peru')) {
       if (freshness[coloredMountain.id]) {
         freshness[coloredMountain.id] = false
         const color = colorMap[coloredMountain.id]
+        coloredMountain.classList.remove('fresh_filter')
         coloredMountain.classList.add(color)
       } else {
         const randomColorIdx = Math.floor(Math.random() * colors.length)
