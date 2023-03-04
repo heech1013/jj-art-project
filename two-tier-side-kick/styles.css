@@ -252,6 +252,23 @@ img {
   width: 600px;
 }
 
+@keyframes hand_showing {
+  0% {
+    transform: translateX(500px);
+  }
+  
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.hand_showing {
+  animation-name: hand_showing;
+  animation-duration: 0.7s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
 #hand {
   position: absolute;
   top: 1170px;

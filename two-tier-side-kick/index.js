@@ -132,6 +132,7 @@ const initGlobe = () => {
 function showUpHand() {
   const hand = document.querySelector('#hand')
   hand.classList.remove('unmounted')
+  hand.classList.add('hand_showing')
 }
 
 /** arrow */
@@ -210,7 +211,9 @@ rightArrow.addEventListener('click', () => {
   }
 
   if (!isGlobeInitialized) {
-    initGlobe()
+    setTimeout(() => {
+      initGlobe()
+    }, 400);
     showUpHand()
   }
 
