@@ -23,6 +23,7 @@ img {
   height: inherit;
 
   object-fit: contain;
+  user-select: none;
 }
 
 .unmounted {
@@ -112,10 +113,12 @@ img {
 
   font-size: 40px;
   letter-spacing: 1px;
+  user-select: none;
 }
 
 #meta_row {
   display: flex;
+  align-items: center;
   margin-top: 6px;
 }
 
@@ -140,6 +143,23 @@ img {
 .mascot_showing {
   animation-name: mascot_showing;
   animation-duration: 0.4s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes mascot_hiding {
+  0% {
+    transform: translateY(0px);
+  }
+  
+  100% {
+    transform: translateY(1000px);
+  }
+}
+
+.mascot_hiding {
+  animation-name: mascot_hiding;
+  animation-duration: 0.2s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
@@ -387,7 +407,14 @@ iframe#globe {
   left: 344px;
   top: 130px;
   width: 100px;
-  height: 100px;
+  filter: drop-shadow(0px 2px 1px black);
+}
+
+#korea #tiger_cry {
+  position: absolute;
+  left: 314px;
+  top: 40px;
+  width: 130px;
   filter: drop-shadow(0px 2px 1px black);
 }
 
@@ -449,12 +476,54 @@ iframe#globe {
   width: 150px;
 }
 
+
 #australia #native {
   position: absolute;
   top: 20px;
   right: 190px;
   width: 300px;
   filter: drop-shadow(2px 1px 0px black);
+}
+
+@keyframes native_hand_up {
+  0% {
+    transform: translateY(0);
+  }
+  
+  100% {
+    transform: translateY(-205px);
+  }
+}
+
+.native_hand_up {
+  animation-name: native_hand_up;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes native_hand_down {
+  0% {
+    transform: translateY(-205px);
+  }
+  
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.native_hand_down {
+  animation-name: native_hand_down;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: backwards;
+}
+
+#australia #native_hand {
+  position: absolute;
+  top: 360px;
+  right: 500px;
+  width: 140px;
 }
 
 #australia #landmark {
@@ -464,28 +533,12 @@ iframe#globe {
   filter: drop-shadow(1.5px 0px 1px black);
 }
 
-@keyframes kangaroo-jump {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-30px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
 #australia #kangaroo {
   position: absolute;
   bottom: 72px;
   right: 120px;
   width: 200px;
   filter: drop-shadow(1px 1.7px 1px black);
-
-  animation-name: kangaroo-jump;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
 }
 
 #australia #ground {
@@ -497,85 +550,10 @@ iframe#globe {
 
 #australia #plant {
   position: absolute;
-  bottom: -5px;
+  bottom: -1px;
   left: 50px;
-  width: 460px;
+  width: 400px;
   filter: drop-shadow(1px 2px 0px black);
-}
-
-@keyframes boomerang-fly {
-  0% {
-    transform: translate(0px, 0px);
-  }
-  10% {
-    transform: translate(-130px, 60px);
-  }
-  20% {
-    transform: translate(-240px, 120px);
-  }
-  30% {
-    transform: translate(-300px, 130px);
-  }
-  40% {
-    transform: translate(-370px, 60px);
-  }
-  50% {
-    transform: translate(-450px, 0px);
-  }
-  60% {
-    transform: translate(-370px, -60px);
-  }
-  70% {
-    transform: translate(-300px, -120px);
-  }
-  80% {
-    transform: translate(-240px, -60px);
-  }
-  90% {
-    transform: translate(-130px, -30px);
-  }
-  100% {
-    transform: translate(0px, 0px);
-  }
-}
-
-#australia #boomerang {
-  position: absolute;
-  top: 200px;
-  left: 480px;
-  width: 100px;
-
-  animation-name: boomerang-fly;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-@keyframes boomerang-rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(90deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  75% {
-    transform: rotate(270deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-#australia #boomerang #rotate-wrapper {
-  width: inherit;
-
-  animation-name: boomerang-rotate;
-  animation-duration: 0.6s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
 }
 
 /* ocean */
@@ -591,6 +569,26 @@ iframe#globe {
   right: 130px;
 
   width: 160px;
+}
+
+@keyframes wave1_move {
+  0% {
+    transform: translateY(15px);
+  }
+
+  50% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(15px);
+  }
+}
+
+.wave1_move {
+  animation-name: wave1_move;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
 }
 
 #ocean #wave1 {
@@ -616,12 +614,73 @@ iframe#globe {
   width: 140px;
 }
 
+@keyframes bird-fly {
+  0% {
+    transform: translateX(-100px) rotate(-12deg);
+  }
+  
+  100% {
+    transform: translateX(1400px) rotate(-12deg);
+  }
+}
+
+.bird-fly {
+  animation-name: bird-fly;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
 #ocean #bird {
   position: absolute;
-
   width: 140px;
+  top: 80px;
+  left: -140px;
+  z-index: 2;
+}
 
-  transition: transform 1s cubic-bezier(0.35, 1.19, 0.42, 1.52);
+@keyframes poop_falling {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(600px);
+  }
+}
+
+.poop_falling {
+  animation-name: poop_falling;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+#ocean #poop {
+  position: absolute;
+  top: 200px;
+  width: 20px;
+  z-index: 1;
+}
+
+@keyframes wave2_move {
+  0% {
+    transform: translateY(10px);
+  }
+
+  50% {
+    transform: translateY(40px);
+  }
+
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+.wave2_move {
+  animation-name: wave2_move;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
 }
 
 #ocean #wave2 {
@@ -629,6 +688,7 @@ iframe#globe {
   bottom: -5px;
 
   width: 100%;
+  z-index: 2;
 }
 
 /* america */
@@ -751,6 +811,33 @@ iframe#globe {
   filter: drop-shadow(2px 2px 2px black);
 }
 
+#america #lower_lip_1 {
+  position: absolute;
+  bottom: 336px;
+  left: 187px;
+  width: 40px;
+  filter: drop-shadow(2px 2px 2px black);
+}
+
+@keyframes sing {
+  0% {
+    transform: translateY(0);
+  }
+  
+  50% {
+    transform: translateY(13px);
+  }
+  
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.sing {
+  animation-name: sing;
+  animation-duration: 1s;
+}
+
 #america #face2 {
   position: absolute;
   bottom: 235px;
@@ -767,11 +854,28 @@ iframe#globe {
   filter: drop-shadow(2px 2px 2px black);
 }
 
+#america #lower_lip_2 {
+  position: absolute;
+  bottom: 294px;
+  left: 395px;
+  width: 40px;
+  filter: drop-shadow(2px 2px 2px black);
+  rotate: 9deg;
+}
+
 #america #face3 {
   position: absolute;
   bottom: 165px;
   left: 460px;
   width: 200px;
+  filter: drop-shadow(2px 2px 2px black);
+}
+
+#america #lower_lip_3 {
+  position: absolute;
+  bottom: 196px;
+  left: 560px;
+  width: 50px;
   filter: drop-shadow(2px 2px 2px black);
 }
 
@@ -788,6 +892,14 @@ iframe#globe {
   bottom: 215px;
   left: 752px;
   width: 90px;
+  filter: drop-shadow(2px 1px 2px black);
+}
+
+#america #lower_lip_4 {
+  position: absolute;
+  bottom: 205px;
+  left: 776px;
+  width: 60px;
   filter: drop-shadow(2px 1px 2px black);
 }
 
@@ -818,7 +930,6 @@ iframe#globe {
   bottom: 374px;
   left: 54px;
   width: 200px;
-  filter: drop-shadow(1px 1px 1px black);
 }
 
 #peru #mountain_1_01 {
@@ -1271,20 +1382,6 @@ iframe#globe {
   filter: drop-shadow(1px 2px 1px black);
 }
 
-@keyframes elephant-head-rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-#tanzania #elephant_head:hover {
-  animation: elephant-head-rotate 1s linear infinite;
-}
-
 #tanzania #ground {
   position: absolute;
   bottom: 31px;
@@ -1317,6 +1414,23 @@ iframe#globe {
   animation-fill-mode: forwards;
 }
 
+@keyframes giraffe-stretch-back {
+  0% {
+    transform: scaleY(3);
+  }
+
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.giraffe-stretch-back {
+  animation-name: giraffe-stretch-back;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
 #tanzania #giraffe {
   position: absolute;
   bottom: -15px;
@@ -1340,6 +1454,22 @@ iframe#globe {
   animation-name: giraffe-head-down;
   animation-duration: 1s;
   animation-delay: 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes giraffe-head-up {
+  0% {
+    transform: translateY(-400px);
+  }
+  
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.giraffe-head-up {
+  animation-name: giraffe-head-up;
+  animation-duration: 0.3s;
   animation-fill-mode: forwards;
 }
 
@@ -1756,6 +1886,13 @@ iframe#globe {
   width: 37px;
 }
 
+#denmark #open_window_1_2 {
+  position: absolute;
+  top: 435.5px;
+  left: 101px;
+  width: 72px;
+}
+
 #denmark #closed_window_1_3 {
   position: absolute;
   top: 437px;
@@ -1854,6 +1991,13 @@ iframe#globe {
   width: 40px;
 }
 
+#denmark #open_window_2_8 {
+  position: absolute;
+  top: 517px;
+  left: 295px;
+  width: 76px;
+}
+
 #denmark #closed_window_2_9 {
   position: absolute;
   top: 517px;
@@ -1915,6 +2059,13 @@ iframe#globe {
   top: 420px;
   left: 814px;
   width: 35px;
+}
+
+#denmark #open_window_4_7 {
+  position: absolute;
+  top: 420px;
+  left: 798px;
+  width: 69px;
 }
 
 #denmark #closed_window_4_8 {
@@ -2006,6 +2157,13 @@ iframe#globe {
   top: 348px;
   left: 583px;
   width: 36px;
+}
+
+#denmark #open_window_3_3 {
+  position: absolute;
+  top: 347px;
+  left: 566px;
+  width: 70px;
 }
 
 #denmark #closed_window_3_4 {

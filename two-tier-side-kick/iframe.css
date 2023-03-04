@@ -1,3 +1,12 @@
 body {
   margin: 0;
+  user-select: none;
+}
+
+body div {
+  pointer-events: none;
+}
+
+.blue_cursor {
+  cursor: url('./assets/0_common/blue-cursor.png'), auto;
 }

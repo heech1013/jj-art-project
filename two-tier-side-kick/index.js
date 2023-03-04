@@ -12,6 +12,7 @@ globeIframe.head.appendChild(iframeCssLink);
 
 const globeEl = document.createElement('div')
 globeIframe.body.appendChild(globeEl)
+globeIframe.body.classList.add('blue_cursor')
 
 const countries = [
   {
@@ -175,9 +176,12 @@ function handleCountryMovement() {
   const currentMascot = document.querySelector(`#${currentCountryId}_mascot`)
   const nextMascot = document.querySelector(`#${nextCountryId}_mascot`)
 
-  currentMascot?.classList.add('unmounted')
-  nextMascot?.classList.remove('unmounted')
-  nextMascot?.classList.add('mascot_showing')
+  currentMascot?.classList.add('mascot_hiding')
+  setTimeout(() => {
+    currentMascot?.classList.add('unmounted')
+    nextMascot?.classList.remove('unmounted')
+    nextMascot?.classList.add('mascot_showing')
+  }, 200);
 
   const metaValues = document.querySelectorAll('#meta_value')
   metaValues[0].textContent = countries[currentCountryIdx].name
@@ -233,62 +237,96 @@ if (document.querySelector('#home')) {
 
 }
 
+/** korea */
+if (document.querySelector('#korea')) {
+  const tiger = document.querySelector('#korea #tiger')
+  const cryingTiger = document.querySelector('#korea #tiger_cry')
+
+  tiger.addEventListener('click', () => {
+    tiger.classList.add('unmounted')
+    cryingTiger.classList.remove('unmounted')
+    
+    setTimeout(() => {
+      tiger.classList.remove('unmounted')
+      cryingTiger.classList.add('unmounted')
+    }, 1000);
+  })
+}
+
+/** australia */
+if (document.querySelector('#australia')) {
+  const native = document.querySelector('#australia #native')
+  const nativeHand = document.querySelector('#australia #native_hand')
+
+  native.addEventListener('click', () => {
+    nativeHand.classList.add('native_hand_up')
+
+    setTimeout(() => {
+      nativeHand.classList.remove('native_hand_up')
+      nativeHand.classList.add('native_hand_down')
+      
+      setTimeout(() => {
+        nativeHand.classList.remove('native_hand_down')
+      }, 300);
+    }, 1000)
+  })
+}
+
 /** ocean */
 if (document.querySelector('#ocean')) {
-  const OCEAN_BIRD_CLIENT_ADJUSTMENT = -135
+  const bird = document.querySelector('#ocean #bird')
 
-  const DEGREE_BY_DIRECTION = {
-    TOP: -90,
-    TOP_RIGHT: -45,
-    RIGHT: 0,
-    DOWN_RIGHT: 45,
-    DOWN: 90,
-    DOWN_LEFT: 125,
-    LEFT: 180,
-    TOP_LEFT: -125,
-  }
+  bird.addEventListener('click', (e) => {
+    const monitorFrame = document.querySelector('#content')
+    const ocean = document.querySelector('#ocean')
+    const poop = document.createElement('div')
+    poop.id = 'poop'
 
-  let prevBirdX = 0
-  let prevBirdY = 0
-  let prevBirdDegree = DEGREE_BY_DIRECTION.RIGHT
+    const left = e.clientX - monitorFrame.getBoundingClientRect().left
+    poop.style.left = `${left}px`
 
-  /** TODO: Enhance mouse trackimg animation. */
-  document.addEventListener('mousemove', function handleBirdAnimation(e) {
-    const content = document.querySelector('#content')
-    const bird = document.querySelector('#ocean #bird')
+    const poopImg = document.createElement('img')
+    poopImg.src = './assets/3_ocean/poop.png'
 
-    const xTo = (e.clientX + OCEAN_BIRD_CLIENT_ADJUSTMENT) - content.offsetLeft
-    const yTo = (e.clientY + OCEAN_BIRD_CLIENT_ADJUSTMENT) - content.offsetTop
+    poop.appendChild(poopImg)
+    ocean.appendChild(poop)
+    poop.classList.add('poop_falling')
+  
+    setTimeout(() => {
+      poop.remove()
+    }, 1000);
+  })
 
-    const xDiff = prevBirdX - xTo
-    const yDiff = prevBirdY - yTo
+}
 
-    const degreeTo = ((xDiff, yDiff) => {
-      if (yDiff > 0) {
-        if (xDiff > 0) return DEGREE_BY_DIRECTION.TOP_RIGHT
-        if (xDiff === 0) return DEGREE_BY_DIRECTION.TOP
-        if (xDiff < 0) return DEGREE_BY_DIRECTION.TOP_LEFT
-      }
-      if (yDiff === 0) {
-        if (xDiff > 0) return DEGREE_BY_DIRECTION.LEFT
-        if (xDiff === 0) return prevBirdDegree
-        if (xDiff < 0) return DEGREE_BY_DIRECTION.RIGHT
-      }
-      if (yDiff < 0) {
-        if (xDiff > 0) return DEGREE_BY_DIRECTION.DOWN_LEFT
-        if (xDiff === 0) return DEGREE_BY_DIRECTION.DOWN
-        if (xDiff < 0) return DEGREE_BY_DIRECTION.DOWN_RIGHT
-      }
-    })(xDiff, yDiff)
+/** america */
+if (document.querySelector('#america')) {
+  const faceLips = [
+    { 
+      face: document.querySelector('#face1'),
+      lip: document.querySelector('#lower_lip_1') 
+    },
+    { 
+      face: document.querySelector('#face2'),
+      lip: document.querySelector('#lower_lip_2') 
+    },
+    { 
+      face: document.querySelector('#face3'),
+      lip: document.querySelector('#lower_lip_3') 
+    },
+    { 
+      face: document.querySelector('#face4'),
+      lip: document.querySelector('#lower_lip_4') 
+    },
+  ]
 
-    bird.style.transform = `
-      translate(${xTo}px, ${yTo}px)
-      rotate(${degreeTo}deg)
-    `
-
-    prevBirdX = xTo
-    prevBirdY = yTo
-    prevBirdDegree = degreeTo
+  faceLips.forEach(({ face, lip }) => {
+    face.addEventListener('click', () => {
+      lip.classList.add('sing')
+      setTimeout(() => {
+        lip.classList.remove('sing')
+      }, 1000)
+    })
   })
 }
 
@@ -394,6 +432,11 @@ if (document.querySelector('#peru')) {
 
   const colors = ['color_black1', 'color_grey1', 'color_grey2', 'color_brown1', 'color_blue1', 'color_blue2', 'color_blue3', 'color_blue4', 'color_green1', 'color_green2', 'color_green3', 'color_green4', 'color_green5', 'color_red1', 'color_pink1', 'color_pink2', 'color_pink3', 'color_yellow1']
 
+  const getRandomColor = () => {
+    const randomColorIdx = Math.floor(Math.random() * colors.length)
+    return colors[randomColorIdx]
+  }
+
   document.addEventListener('mouseover', (e) => {
     const coloredMountain = e.target.closest('[id^=mountain_]')
 
@@ -403,8 +446,7 @@ if (document.querySelector('#peru')) {
         const color = colorMap[coloredMountain.id]
         coloredMountain.classList.add(color)
       } else {
-        const randomColorIdx = Math.floor(Math.random() * colors.length)
-        const randomColor = colors[randomColorIdx]
+        const randomColor = getRandomColor()
         coloredMountain.classList.forEach((item) => {
           if (item.includes('color_')) {
             coloredMountain.classList.remove(item)
@@ -414,10 +456,25 @@ if (document.querySelector('#peru')) {
       }
     }
   })
+
+  const moon = document.querySelector('#peru #moon')
+
+  moon.addEventListener('mouseover', () => {
+    const randomColor = getRandomColor()
+    moon.classList.forEach((item) => {
+      if (item.includes('color_')) {
+        moon.classList.remove(item)
+      }
+    })
+    moon.classList.add(randomColor)
+  })
 }
 
 /** tanzania */
 if (document.querySelector('#tanzania')) {
+  
+  
+  const zebra = document.querySelector('#zebra')
   const zebraImgSrc = [
     './assets/6_tanzania/얼룩말 기본.png',
     './assets/6_tanzania/얼룩말 2.png',
@@ -428,12 +485,6 @@ if (document.querySelector('#tanzania')) {
     './assets/6_tanzania/얼룩말 7.png',
   ]
   let currentZebraIdx = 0
-  const ASH_COUNT = 15
-
-  const zebra = document.querySelector('#zebra')
-  const leopardPattern = document.querySelector('#leopard_pattern')
-  const giraffe = document.querySelector('#giraffe')
-  const giraffeHead = document.querySelector('#giraffe_head')
 
   zebra.addEventListener('click', () => {
     currentZebraIdx = (currentZebraIdx + 1) % zebraImgSrc.length
@@ -441,6 +492,9 @@ if (document.querySelector('#tanzania')) {
     zebra.querySelector('img').src = zebraImgSrc[currentZebraIdx]
   })
 
+  const ASH_COUNT = 15
+  const leopardPattern = document.querySelector('#leopard_pattern')
+  
   leopardPattern.addEventListener('click', () => {
     leopardPattern.classList.add('leopard-animation')
 
@@ -454,10 +508,49 @@ if (document.querySelector('#tanzania')) {
         })
     }, 2000);
   })
+
+  const giraffe = document.querySelector('#giraffe')
+  const giraffeHead = document.querySelector('#giraffe_head')
   
   giraffe.addEventListener('click', () => {
-    giraffe.classList.add('giraffe-stretch')
-    giraffeHead.classList.remove('hidden')
-    giraffeHead.classList.add('giraffe-head-down')
+    if (!giraffe.classList.contains('giraffe-stretch')) {
+      giraffe.style.pointerEvents = 'none'
+      
+      giraffeHead.classList.remove('giraffe-head-up')
+      giraffe.classList.remove('giraffe-stretch-back')
+
+      giraffe.classList.add('giraffe-stretch')
+      giraffeHead.classList.remove('hidden')
+      giraffeHead.classList.add('giraffe-head-down')
+
+      setTimeout(() => {
+        giraffe.style.pointerEvents = 'auto'
+      }, 3000);
+    }
+    else {
+      giraffe.classList.remove('giraffe-stretch')
+      giraffeHead.classList.remove('giraffe-head-down')
+
+      giraffeHead.classList.add('giraffe-head-up')
+      giraffe.classList.add('giraffe-stretch-back')
+    }
+  })
+}
+
+/** denmark */
+if (document.querySelector('#denmark')) {
+  const windowsToOpen = ['window_1_2', 'window_2_8', 'window_3_3', 'window_4_7']
+
+  windowsToOpen.forEach((windowId) => {
+    const closedWindow = document.querySelector(`#closed_${windowId}`)
+    const openedWindow = document.querySelector(`#open_${windowId}`)
+
+    closedWindow.addEventListener('click', () => {
+      openedWindow.classList.remove('unmounted')
+
+      openedWindow.addEventListener('click', () => {
+        openedWindow.classList.add('unmounted')
+      })
+    })
   })
 }
