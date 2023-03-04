@@ -272,14 +272,9 @@ iframe#globe {
 
 #right_arrow {
   position: absolute;
-  right: 30px;
-  bottom: 310px;
-  width: 30px;
-  height: 30px;
-  transform: rotate(-45deg);
-  border: solid #bdbdbd;
-  border-width: 0 7px 7px 0;
-  padding: 3px;
+  right: 20px;
+  bottom: 280px;
+  width: 40px;
 }
 
 .country {
