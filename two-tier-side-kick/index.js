@@ -462,6 +462,8 @@ if (document.querySelector('#peru')) {
   })
 
   const moon = document.querySelector('#peru #moon')
+  const ground = document.querySelector('#peru #ground')
+  const mascot = document.querySelector('#peru_mascot_body')
 
   moon.addEventListener('mouseover', () => {
     const randomColor = getRandomColor()
@@ -472,6 +474,39 @@ if (document.querySelector('#peru')) {
     })
     moon.classList.add(randomColor)
   })
+
+  ground.addEventListener('mouseover', () => {
+    const randomColor = getRandomColor()
+    ground.classList.forEach((item) => {
+      if (item.includes('color_')) {
+        ground.classList.remove(item)
+      }
+    })
+    ground.classList.add(randomColor)
+  })
+
+  mascot.addEventListener('mouseover', () => {
+    const randomColor = getRandomColor()
+    mascot.classList.forEach((item) => {
+      if (item.includes('color_')) {
+        mascot.classList.remove(item)
+      }
+    })
+    mascot.classList.add(randomColor)
+  })
+
+  // [moon, mascot].forEach((el) => {
+  //   el.addEventListener('mouseover', () => {
+  //     const randomColor = getRandomColor()
+
+  //     el.classList.forEach((item) => {
+  //       if (item.includes('color_')) {
+  //         el.classList.remove(item)
+  //       }
+  //     })
+  //     el.classList.add(randomColor)
+  //   })
+  // })
 }
 
 /** tanzania */
