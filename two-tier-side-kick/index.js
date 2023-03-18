@@ -494,19 +494,6 @@ if (document.querySelector('#peru')) {
     })
     mascot.classList.add(randomColor)
   })
-
-  // [moon, mascot].forEach((el) => {
-  //   el.addEventListener('mouseover', () => {
-  //     const randomColor = getRandomColor()
-
-  //     el.classList.forEach((item) => {
-  //       if (item.includes('color_')) {
-  //         el.classList.remove(item)
-  //       }
-  //     })
-  //     el.classList.add(randomColor)
-  //   })
-  // })
 }
 
 /** tanzania */
