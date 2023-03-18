@@ -112,20 +112,6 @@ const initGlobe = () => {
     .backgroundColor('white')
     .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
     .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
-    .labelsData(countries)
-    .labelText(place => place.name)
-    .labelLat(place => place.lat)
-    .labelLng(place => place.lng)
-    .labelSize(3.5)
-    .labelDotRadius(0.5)
-    .labelColor(() => 'rgba(255, 255, 255, 255)')
-    .htmlElementsData(countries)
-    .htmlElement(() => {
-      const el = document.createElement('img')
-      el.src = "./assets/0_common/mark.png"
-      el.style.width = '15px'
-      return el
-    })
     .pointOfView({ lat: countries[1].lat, lng: countries[1].lng, altitude: VIEW_ALT }, INITAIL_TRANSITION)
 }
 
