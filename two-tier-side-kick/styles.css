@@ -87,8 +87,8 @@ img {
 #book_opened {
   position: absolute;
   top: 70px;
-  left: 191px;
-  width: 1610px;
+  left: 770px;
+  width: 1410px;
   z-index: 1;
 }
 
@@ -136,7 +136,7 @@ img {
 
 .mascot_showing {
   animation-name: mascot_showing;
-  animation-duration: 0.4s;
+  animation-duration: 0.6s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
@@ -153,7 +153,7 @@ img {
 
 .mascot_hiding {
   animation-name: mascot_hiding;
-  animation-duration: 0.2s;
+  animation-duration: 0.6s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
@@ -1307,6 +1307,14 @@ iframe#globe {
   left: 259px;
 
   width: 48px;
+}
+
+#peru #alpaca {
+  position: absolute;
+  bottom: 484px;
+  left: 784px;
+  width: 68px;
+  rotate: 49deg;
 }
 
 /* tanzania */

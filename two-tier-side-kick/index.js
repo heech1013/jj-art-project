@@ -100,22 +100,13 @@ const countries = [
   },
 ]
 
-let globe
-let isGlobeInitialized = false
-
-const initGlobe = () => {
-  isGlobeInitialized = true
-
-  globe = Globe()(globeEl)
-    .width(470)
-    .height(470)
-    .backgroundColor('white')
-    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-    .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
-    .pointOfView({ lat: countries[1].lat, lng: countries[1].lng, altitude: VIEW_ALT }, INITAIL_TRANSITION)
-}
-
-initGlobe()
+const globe = Globe()(globeEl)
+  .width(470)
+  .height(470)
+  .backgroundColor('white')
+  .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+  .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+  .pointOfView({ lat: countries[1].lat, lng: countries[1].lng, altitude: VIEW_ALT }, INITAIL_TRANSITION)
 
 /** arrow */
 const KICKED_ANIMATION_DURATION = 700
@@ -156,16 +147,6 @@ function handleCountryMovement() {
     }
   }, KICKED_ANIMATION_DURATION);
 
-  const currentMascot = document.querySelector(`#${currentCountryId}_mascot`)
-  const nextMascot = document.querySelector(`#${nextCountryId}_mascot`)
-
-  currentMascot?.classList.add('mascot_hiding')
-  setTimeout(() => {
-    currentMascot?.classList.add('unmounted')
-    nextMascot?.classList.remove('unmounted')
-    nextMascot?.classList.add('mascot_showing')
-  }, 200);
-
   const metaValues = document.querySelectorAll('#meta_value')
   metaValues[0].textContent = countries[currentCountryIdx].name
   metaValues[1].textContent = countries[currentCountryIdx].capital
@@ -173,6 +154,17 @@ function handleCountryMovement() {
   metaValues[3].textContent = countries[currentCountryIdx].population
   metaValues[4].textContent = countries[currentCountryIdx].area
   metaValues[5].textContent = countries[currentCountryIdx].gdp
+
+  const mascot = document.querySelector(`#${currentCountryId}_mascot`)
+
+  if (mascot?.classList.contains('mascot_showing')) {
+    mascot.classList.remove('mascot_showing')
+    mascot.classList.add('mascot_hiding')
+    setTimeout(() => {
+      mascot.classList.add('unmounted')
+      mascot.classList.remove('mascot_hiding')
+    }, 200);
+  }
 }
 
 function handleGlobeMovement() {
@@ -180,6 +172,22 @@ function handleGlobeMovement() {
 
   const { lat, lng } = countries[currentCountryIdx]
   globe.pointOfView({ lat, lng, altitude: VIEW_ALT }, VIEW_TRANSITION)
+}
+
+const addMascotClickEventListener = (target, mascot) => {
+  target.addEventListener('click', () => {
+    if (mascot.classList.contains('unmounted')) {
+      mascot.classList.remove('unmounted')
+      mascot.classList.add('mascot_showing')
+    } else {
+      mascot.classList.remove('mascot_showing')
+      mascot.classList.add('mascot_hiding')
+      setTimeout(() => {
+        mascot.classList.add('unmounted')
+        mascot.classList.remove('mascot_hiding')
+      }, 200);
+    }
+  })
 }
 
 rightArrow.addEventListener('click', () => {
@@ -226,6 +234,9 @@ if (document.querySelector('#korea')) {
       cryingTiger.classList.add('unmounted')
     }, 1000);
   })
+
+  const mascot = document.querySelector('#korea_mascot')
+  addMascotClickEventListener(tiger, mascot)
 }
 
 /** australia */
@@ -245,6 +256,11 @@ if (document.querySelector('#australia')) {
       }, 300);
     }, 1000)
   })
+
+  const kangaroo = document.querySelector('#australia #kangaroo')
+  const mascot = document.querySelector('#australia_mascot')
+  
+  addMascotClickEventListener(kangaroo, mascot)
 }
 
 /** ocean */
@@ -272,6 +288,10 @@ if (document.querySelector('#ocean')) {
     }, 1000);
   })
 
+  const shark = document.querySelector('#ocean #shark')
+  const mascot = document.querySelector('#ocean_mascot')
+
+  addMascotClickEventListener(shark, mascot)
 }
 
 /** america */
@@ -303,6 +323,11 @@ if (document.querySelector('#america')) {
       }, 1000)
     })
   })
+
+  const sky = document.querySelector('#america #sky')
+  const mascot = document.querySelector('#america_mascot')
+
+  addMascotClickEventListener(sky, mascot)
 }
 
 /** peru */
@@ -405,7 +430,26 @@ if (document.querySelector('#peru')) {
     mountain_2_24: 'color_green3',
   }
 
-  const colors = ['color_black1', 'color_grey1', 'color_grey2', 'color_brown1', 'color_blue1', 'color_blue2', 'color_blue3', 'color_blue4', 'color_green1', 'color_green2', 'color_green3', 'color_green4', 'color_green5', 'color_red1', 'color_pink1', 'color_pink2', 'color_pink3', 'color_yellow1']
+  const colors = [
+    'color_black1',
+    'color_grey1',
+    'color_grey2',
+    'color_brown1',
+    'color_blue1',
+    'color_blue2',
+    'color_blue3',
+    'color_blue4',
+    'color_green1',
+    'color_green2',
+    'color_green3',
+    'color_green4',
+    'color_green5',
+    'color_red1',
+    'color_pink1',
+    'color_pink2',
+    'color_pink3',
+    'color_yellow1',
+  ]
 
   const getRandomColor = () => {
     const randomColorIdx = Math.floor(Math.random() * colors.length)
@@ -435,43 +479,44 @@ if (document.querySelector('#peru')) {
 
   const moon = document.querySelector('#peru #moon')
   const ground = document.querySelector('#peru #ground')
-  const mascot = document.querySelector('#peru_mascot_body')
+  const alpaca = document.querySelector('#peru #alpaca')
+  const mascot = document.querySelector('#peru_mascot')
+  const mascotBody = document.querySelector('#peru_mascot_body')
 
-  moon.addEventListener('mouseover', () => {
-    const randomColor = getRandomColor()
-    moon.classList.forEach((item) => {
-      if (item.includes('color_')) {
-        moon.classList.remove(item)
+  const addColoringEventListener = (element, linkedElement) => {
+    element.addEventListener('mouseover', () => {
+      const randomColor = getRandomColor()
+
+      element.classList.forEach((item) => {
+        if (item.includes('color_')) {
+          element.classList.remove(item)
+        }
+      })
+
+      element.classList.add(randomColor)
+
+      if (linkedElement) {
+        linkedElement.classList.forEach((item) => {
+          if (item.includes('color_')) {
+            linkedElement.classList.remove(item)
+          }
+        })
+
+        linkedElement.classList.add(randomColor)
       }
     })
-    moon.classList.add(randomColor)
-  })
+  }
 
-  ground.addEventListener('mouseover', () => {
-    const randomColor = getRandomColor()
-    ground.classList.forEach((item) => {
-      if (item.includes('color_')) {
-        ground.classList.remove(item)
-      }
-    })
-    ground.classList.add(randomColor)
-  })
+  addColoringEventListener(moon)
+  addColoringEventListener(ground)
+  addColoringEventListener(mascotBody, alpaca)
+  addColoringEventListener(alpaca, mascotBody)
 
-  mascot.addEventListener('mouseover', () => {
-    const randomColor = getRandomColor()
-    mascot.classList.forEach((item) => {
-      if (item.includes('color_')) {
-        mascot.classList.remove(item)
-      }
-    })
-    mascot.classList.add(randomColor)
-  })
+  addMascotClickEventListener(alpaca, mascot)
 }
 
 /** tanzania */
 if (document.querySelector('#tanzania')) {
-  
-  
   const zebra = document.querySelector('#zebra')
   const zebraImgSrc = [
     './assets/6_tanzania/얼룩말 기본.png',
@@ -533,6 +578,13 @@ if (document.querySelector('#tanzania')) {
       giraffe.classList.add('giraffe-stretch-back')
     }
   })
+
+  const elephantBody = document.querySelector('#tanzania #elephant_body')
+  const elephantHead = document.querySelector('#tanzania #elephant_head')
+  const mascot = document.querySelector('#tanzania_mascot')
+
+  addMascotClickEventListener(elephantHead, mascot)
+  addMascotClickEventListener(elephantBody, mascot)
 }
 
 /** denmark */
@@ -551,4 +603,9 @@ if (document.querySelector('#denmark')) {
       })
     })
   })
+
+  const boat = document.querySelector('#denmark #boat')
+  const mascot = document.querySelector('#denmark_mascot')
+
+  addMascotClickEventListener(boat, mascot)
 }
