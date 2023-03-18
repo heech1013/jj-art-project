@@ -77,16 +77,11 @@ img {
 #frame {
   display: flex;
   position: relative;
-  width: 2470px;
-  height: 1380px;
+  width: 2270px;
+  height: 1280px;
   overflow: hidden;
   background-color: white;
-  transform: translateZ(0); /* set as containing block for position fixed element  */
-}
-
-#left_section {
-  flex-shrink: 0;
-  width: 700px;
+  transform: translateZ(0);  /* set as containing block for position fixed element  */
 }
 
 #book_opened {
@@ -108,9 +103,8 @@ img {
 
 #meta_block {
   position: absolute;
-  top: 55px;
-  left: 75px;
-
+  top: 145px;
+  left: 125px;
   font-size: 40px;
   letter-spacing: 1px;
   user-select: none;
@@ -167,70 +161,97 @@ img {
 #korea_mascot {
   position: absolute;
   top: 924px;
-  left: -397px;
+  right: -397px;
   width: 883px;
+}
+
+#korea_mascot img {
+  transform: scaleX(-1);
+}
+
+#australia_mascot img {
+  transform: scaleX(-1);
 }
 
 #australia_mascot {
   position: absolute;
   top: 863px;
-  left: 125px;
+  right: 125px;
   width: 358px;
+}
+
+#ocean_mascot img {
+  transform: scaleX(-1);
 }
 
 #ocean_mascot {
   position: absolute;
   top: 840px;
-  left: 93px;
+  right: 93px;
   width: 596px;
+}
+
+#america_mascot img {
+  transform: scaleX(-1);
 }
 
 #america_mascot {
   position: absolute;
   top: 850px;
-  left: 115px;
+  right: 115px;
   width: 370px;
+}
+
+#peru_mascot_body img {
+  transform: scaleX(-1);
 }
 
 #peru_mascot_body {
   position: absolute;
   top: 835px;
-  left: -274px;
+  left: 1830px;
   width: 740px;
+}
+
+#peru_mascot_face img {
+  transform: scaleX(-1);
 }
 
 #peru_mascot_face {
   position: absolute;
   top: 964px;
-  left: 315px;
+  left: 1875px;
   width: 100px;
+}
+
+#tanzania_mascot img {
+  transform: scaleX(-1);
 }
 
 #tanzania_mascot {
   position: absolute;
   top: 902px;
-  left: -306px;
+  right: -306px;
   width: 894px;
   rotate: -7deg;
+}
+
+#denmark_mascot img {
+  transform: scaleX(-1);
 }
 
 #denmark_mascot {
   position: absolute;
   top: 832px;
-  left: -130px;
+  right: -130px;
   width: 638px;
-}
-
-#center_section {
-  position: relative;
-  width: 1170px;
 }
 
 #monitor {
   position: absolute;
   width: 1127px;
-  top: 218px;
-  left: -39px;
+  top: 118px;
+  left: 867px;
   pointer-events: none;
 }
 
@@ -238,18 +259,12 @@ img {
   display: flex;
   flex-shrink: 0;
   position: absolute;
-  top: 282px;
-  left: 47px;
+  top: 182px;
+  left: 953px;
   width: var(--content-width);
   height: var(--content-height);
   overflow: hidden;
   background-color: white;
-}
-
-#right_section {
-  flex-shrink: 0;
-  position: relative;
-  width: 600px;
 }
 
 @keyframes hand_showing {
@@ -271,15 +286,19 @@ img {
 
 #hand {
   position: absolute;
-  top: 1170px;
-  right: -40px;
+  top: 990px;
+  left: -50px;
   width: 530px;
+}
+
+#hand img {
+  transform: scaleX(-1);
 }
 
 iframe#globe {
   position: absolute;
-  top: 770px;
-  left: 10px;
+  top: 590px;
+  left: 120px;
   flex-shrink: 0;
   width: var(--globe-width);
   height: var(--globe-height);

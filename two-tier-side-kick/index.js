@@ -115,11 +115,7 @@ const initGlobe = () => {
     .pointOfView({ lat: countries[1].lat, lng: countries[1].lng, altitude: VIEW_ALT }, INITAIL_TRANSITION)
 }
 
-function showUpHand() {
-  const hand = document.querySelector('#hand')
-  hand.classList.remove('unmounted')
-  hand.classList.add('hand_showing')
-}
+initGlobe()
 
 /** arrow */
 const KICKED_ANIMATION_DURATION = 700
@@ -191,16 +187,6 @@ rightArrow.addEventListener('click', () => {
   if (currentCountryIdx === 0) {
     const book = document.querySelector('#book')
     book.classList.add('unmounted')
-
-    const metaBlock = document.querySelector('#meta_block')
-    metaBlock.classList.remove('unmounted')
-  }
-
-  if (!isGlobeInitialized) {
-    setTimeout(() => {
-      initGlobe()
-    }, 400);
-    showUpHand()
   }
 
   handleCountryMovement()
