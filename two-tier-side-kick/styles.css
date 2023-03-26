@@ -77,8 +77,8 @@ img {
 #frame {
   display: flex;
   position: relative;
-  width: 2270px;
-  height: 1280px;
+  width: 1950px;
+  height: 1200px;
   overflow: hidden;
   background-color: white;
   transform: translateZ(0);  /* set as containing block for position fixed element  */
@@ -86,9 +86,9 @@ img {
 
 #book_opened {
   position: absolute;
-  top: 70px;
-  left: 770px;
-  width: 1410px;
+  top: 80px;
+  left: 600px;
+  width: 1330px;
   z-index: 1;
 }
 
@@ -160,8 +160,8 @@ img {
 
 #korea_mascot {
   position: absolute;
-  top: 924px;
-  right: -397px;
+  top: 845px;
+  right: -475px;
   width: 883px;
 }
 
@@ -171,8 +171,8 @@ img {
 
 #australia_mascot {
   position: absolute;
-  top: 863px;
-  right: 1200px;
+  top: 757px;
+  right: 1080px;
   width: 358px;
 }
 
@@ -182,16 +182,16 @@ img {
 
 #ocean_mascot {
   position: absolute;
-  top: 150px;
-  right: -80px;
-  width: 400px;
-  rotate: -110deg
+  top: 28px;
+  right: -144px;
+  width: 390px;
+  rotate: -130deg;
 }
 
 #america_mascot {
   position: absolute;
-  top: 780px;
-  right: 1410px;
+  top: 694px;
+  right: 1102px;
   width: 370px;
 }
 
@@ -201,8 +201,8 @@ img {
 
 #peru_mascot_body {
   position: absolute;
-  top: 835px;
-  left: 1830px;
+  top: 316px;
+  left: 1699px;
   width: 740px;
 }
 
@@ -212,31 +212,31 @@ img {
 
 #peru_mascot_face {
   position: absolute;
-  top: 964px;
-  left: 1875px;
-  width: 100px;
+  top: 436px;
+  left: 1742px;
+  width: 110px;
 }
 
 #tanzania_mascot {
   position: absolute;
-  top: 800px;
-  right: 1000px;
-  width: 894px;
+  top: 777px;
+  right: 736px;
+  width: 790px;
 }
 
 
 #denmark_mascot {
   position: absolute;
-  top: 800px;
-  right: 1400px;
-  width: 638px;
+  top: 752px;
+  right: 924px;
+  width: 548px;
 }
 
 #monitor {
   position: absolute;
   width: 1127px;
-  top: 118px;
-  left: 867px;
+  top: 95px;
+  left: 725px;
   pointer-events: none;
 }
 
@@ -244,8 +244,8 @@ img {
   display: flex;
   flex-shrink: 0;
   position: absolute;
-  top: 182px;
-  left: 953px;
+  top: 158px;
+  left: 811px;
   width: var(--content-width);
   height: var(--content-height);
   overflow: hidden;
@@ -271,7 +271,7 @@ img {
 
 #hand {
   position: absolute;
-  top: 990px;
+  top: 975px;
   left: -50px;
   width: 530px;
 }
@@ -282,7 +282,7 @@ img {
 
 iframe#globe {
   position: absolute;
-  top: 590px;
+  top: 575px;
   left: 120px;
   flex-shrink: 0;
   width: var(--globe-width);
