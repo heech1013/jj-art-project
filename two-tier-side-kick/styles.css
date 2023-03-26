@@ -137,7 +137,7 @@ img {
 .mascot_showing {
   animation-name: mascot_showing;
   animation-duration: 0.6s;
-  animation-timing-function: linear;
+  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   animation-fill-mode: forwards;
 }
 
@@ -153,8 +153,8 @@ img {
 
 .mascot_hiding {
   animation-name: mascot_hiding;
-  animation-duration: 0.6s;
-  animation-timing-function: linear;
+  animation-duration: 0.35s;
+  animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
   animation-fill-mode: forwards;
 }
 
@@ -169,14 +169,10 @@ img {
   transform: scaleX(-1);
 }
 
-#australia_mascot img {
-  transform: scaleX(-1);
-}
-
 #australia_mascot {
   position: absolute;
   top: 863px;
-  right: 125px;
+  right: 1200px;
   width: 358px;
 }
 
@@ -186,19 +182,16 @@ img {
 
 #ocean_mascot {
   position: absolute;
-  top: 840px;
-  right: 93px;
-  width: 596px;
-}
-
-#america_mascot img {
-  transform: scaleX(-1);
+  top: 150px;
+  right: -80px;
+  width: 400px;
+  rotate: -110deg
 }
 
 #america_mascot {
   position: absolute;
-  top: 850px;
-  right: 115px;
+  top: 780px;
+  right: 1410px;
   width: 370px;
 }
 
@@ -224,26 +217,18 @@ img {
   width: 100px;
 }
 
-#tanzania_mascot img {
-  transform: scaleX(-1);
-}
-
 #tanzania_mascot {
   position: absolute;
-  top: 902px;
-  right: -306px;
+  top: 800px;
+  right: 1000px;
   width: 894px;
-  rotate: -7deg;
 }
 
-#denmark_mascot img {
-  transform: scaleX(-1);
-}
 
 #denmark_mascot {
   position: absolute;
-  top: 832px;
-  right: -130px;
+  top: 800px;
+  right: 1400px;
   width: 638px;
 }
 
