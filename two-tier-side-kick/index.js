@@ -163,7 +163,7 @@ function handleCountryMovement() {
     setTimeout(() => {
       mascot.classList.add('unmounted')
       mascot.classList.remove('mascot_hiding')
-    }, 200);
+    }, 400);
   }
 }
 
@@ -185,7 +185,7 @@ const addMascotClickEventListener = (target, mascot) => {
       setTimeout(() => {
         mascot.classList.add('unmounted')
         mascot.classList.remove('mascot_hiding')
-      }, 200);
+      }, 400);
     }
   })
 }
