@@ -154,17 +154,6 @@ function handleCountryMovement() {
   metaValues[3].textContent = countries[currentCountryIdx].population
   metaValues[4].textContent = countries[currentCountryIdx].area
   metaValues[5].textContent = countries[currentCountryIdx].gdp
-
-  const mascot = document.querySelector(`#${currentCountryId}_mascot`)
-
-  if (mascot?.classList.contains('mascot_showing')) {
-    mascot.classList.remove('mascot_showing')
-    mascot.classList.add('mascot_hiding')
-    setTimeout(() => {
-      mascot.classList.add('unmounted')
-      mascot.classList.remove('mascot_hiding')
-    }, 400);
-  }
 }
 
 function handleGlobeMovement() {
@@ -178,13 +167,28 @@ const addMascotClickEventListener = (target, mascot) => {
   target.addEventListener('click', () => {
     if (mascot.classList.contains('unmounted')) {
       mascot.classList.remove('unmounted')
-      mascot.classList.add('mascot_showing')
+      if (mascot.id.includes('peru')) {
+        mascot.classList.add('alphaca_showing')
+      } else {
+        mascot.classList.add('mascot_showing')
+      }
     } else {
-      mascot.classList.remove('mascot_showing')
-      mascot.classList.add('mascot_hiding')
+      if (mascot.id.includes('peru')) {
+        mascot.classList.remove('alphaca_showing')
+        mascot.classList.add('alphaca_hiding')
+      } else {
+        mascot.classList.remove('mascot_showing')
+        mascot.classList.add('mascot_hiding')
+      }
+
       setTimeout(() => {
         mascot.classList.add('unmounted')
-        mascot.classList.remove('mascot_hiding')
+
+        if (mascot.id.includes('peru')) {
+          mascot.classList.remove('alphaca_hiding')
+        } else {
+          mascot.classList.remove('mascot_hiding')
+        }
       }, 400);
     }
   })

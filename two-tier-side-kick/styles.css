@@ -124,6 +124,40 @@ img {
   margin-left: 10px;
 }
 
+@keyframes alphaca_showing {
+  0% {
+    transform: translateX(1000px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.alphaca_showing {
+  animation-name: alphaca_showing;
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  animation-fill-mode: forwards;
+}
+
+@keyframes alphaca_hiding {
+  0% {
+    transform: translateX(0px);
+  }
+  
+  100% {
+    transform: translateX(1000px);
+  }
+}
+
+.alphaca_hiding {
+  animation-name: alphaca_hiding;
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  animation-fill-mode: forwards;
+}
+
 @keyframes mascot_showing {
   0% {
     transform: translateY(1000px);
