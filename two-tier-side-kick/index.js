@@ -185,7 +185,7 @@ const addMascotClickEventListener = (target, mascot) => {
       setTimeout(() => {
         mascot.classList.add('unmounted')
         mascot.classList.remove('mascot_hiding')
-      }, 600);
+      }, 200);
     }
   })
 }
