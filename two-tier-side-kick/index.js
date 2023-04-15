@@ -20,9 +20,14 @@ const TANZANIA_IDX = 6
 const DENMARK_IDX = 7
 
 const UNMOUNTED = 'unmounted'
+const MASCOT_SHOWING = 'mascot_showing'
+const MASCOT_HIDING = 'mascot_hiding'
+const ALPHACA_SHOWING = 'alphaca_showing'
+const ALPHACA_HIDING = 'alphaca_hiding'
 
 const FRAME_IN_DURATION = 700
 const PLATE_BREAK_TIMEOUT = 125
+const MASCOT_HIDING_DURATION = 400
 
 const countries = [
   {
@@ -240,12 +245,63 @@ const handlePlateBreak = () => {
   }, PLATE_BREAK_TIMEOUT);
 }
 
+const isPeruMascot = mascot => mascot.id.includes('peru')
+
+const handleHideMascot = (mascot, showingClass, hidingClass) => {
+  mascot.classList.remove(showingClass)
+  mascot.classList.add(hidingClass)
+
+  setTimeout(() => {
+    mascot.classList.add(UNMOUNTED)
+    mascot.classList.remove(hidingClass)
+  }, MASCOT_HIDING_DURATION);
+}
+
+const addMascotClickEvent = (target, mascot) => {
+  const SHOWING = isPeruMascot(mascot) ? ALPHACA_SHOWING : MASCOT_SHOWING
+  const HIDING = isPeruMascot(mascot) ? ALPHACA_HIDING : MASCOT_HIDING
+
+  const handleShowMascot = () => {
+    mascot.classList.remove(UNMOUNTED)
+    mascot.classList.add(SHOWING)
+  }
+
+  target.addEventListener('click', () => {
+    if (mascot.classList.contains(UNMOUNTED)) {
+      handleShowMascot()
+    } else {
+      handleHideMascot(mascot, SHOWING, HIDING)
+    }
+  })
+
+  mascot.addEventListener('click', () => {
+    handleHideMascot(mascot, SHOWING, HIDING)
+  })
+}
+
+const handleCleanUpMascot = () => {
+  const { id: curCountryId } = countries[curCountryIdx]
+  const mascot = document.querySelector(`#${curCountryId}_mascot`)
+
+  if (!mascot) { return }
+
+  const SHOWING = isPeruMascot(mascot) ? ALPHACA_SHOWING : MASCOT_SHOWING
+  const HIDING = isPeruMascot(mascot) ? ALPHACA_HIDING : MASCOT_HIDING
+
+  const isMascotShowing = mascot.classList.contains(SHOWING)
+
+  if (isMascotShowing) {
+    handleHideMascot(mascot, SHOWING, HIDING)
+  }
+}
+
 arrow.addEventListener('click', () => {
   handleHideArrow()
   handleCountryMovement()
   handleGlobeMovement()
   handleChangeMetaValues()
   handleShowArrow()
+  handleCleanUpMascot()
 
   if (curCountryIdx === HOME_IDX) {
     handlePlateBreak()
@@ -253,39 +309,6 @@ arrow.addEventListener('click', () => {
 
   curCountryIdx += 1
 })
-
-const addMascotClickEvent = (target, mascot) => {
-  const isPeruMascot = mascot.id.includes('peru')
-  const SHOWING = isPeruMascot ? 'alphaca_showing' : 'mascot_showing'
-  const HIDING = isPeruMascot ? 'alphaca_hiding' : 'mascot_hiding'
-
-  const handleShowMascot = () => {
-    mascot.classList.remove(UNMOUNTED)
-    mascot.classList.add(SHOWING)
-  }
-
-  const handleHideMascot = () => {
-    mascot.classList.remove(SHOWING)
-    mascot.classList.add(HIDING)
-
-    setTimeout(() => {
-      mascot.classList.add(UNMOUNTED)
-      mascot.classList.remove(HIDING)
-    }, 400);
-  }
-
-  target.addEventListener('click', () => {
-    if (mascot.classList.contains(UNMOUNTED)) {
-      handleShowMascot()
-    } else {
-      handleHideMascot()
-    }
-  })
-
-  mascot.addEventListener('click', () => {
-    handleHideMascot()
-  })
-}
 
 /**
  * @summary Home
