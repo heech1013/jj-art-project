@@ -92,7 +92,7 @@ img {
   z-index: 1;
 }
 
-#book_opened_background {
+#book_opened_dimmer {
   position: fixed;
   top: 0;
   left: 0;

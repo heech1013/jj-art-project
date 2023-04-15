@@ -289,16 +289,16 @@ const addMascotClickEvent = (target, mascot) => {
 
 const book = document.querySelector('#book')
 const bookOpened = document.querySelector('#book_opened')
-const bookOpenedBackground = document.querySelector('#book_opened_background')
+const bookOpenedDimmer = document.querySelector('#book_opened_dimmer')
 
 book.addEventListener('click', () => {
   bookOpened.classList.remove(UNMOUNTED)
-  bookOpenedBackground.classList.remove(UNMOUNTED)
+  bookOpenedDimmer.classList.remove(UNMOUNTED)
 
-  bookOpenedBackground.addEventListener('click', () => {
+  bookOpenedDimmer.addEventListener('click', () => {
     if (bookOpened.classList.contains(UNMOUNTED)) { return }
     bookOpened.classList.add(UNMOUNTED)
-    bookOpenedBackground.classList.add(UNMOUNTED)
+    bookOpenedDimmer.classList.add(UNMOUNTED)
   })
 })
 
