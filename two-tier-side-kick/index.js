@@ -281,6 +281,10 @@ const addMascotClickEvent = (target, mascot) => {
       handleHideMascot()
     }
   })
+
+  mascot.addEventListener('click', () => {
+    handleHideMascot()
+  })
 }
 
 /**
