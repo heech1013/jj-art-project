@@ -174,6 +174,14 @@ initGlobe()
 let curCountryIdx = 0
 const arrow = document.querySelector('#right_arrow')
 
+const getNextCountryIdx = (curCountryIdx) => {
+  if (curCountryIdx === DENMARK_IDX) {
+    return KOREA_IDX
+  }
+
+  return curCountryIdx + 1
+}
+
 const handleHideArrow = () => {
   arrow.classList.add('hidden')
 }
@@ -184,11 +192,38 @@ const handleShowArrow = () => {
   }, FRAME_IN_DURATION)
 }
 
-function handleCountryMovement() {
+const switchCountryOrder = () => {
+  const content = document.querySelector('#content')
+  const korea = document.querySelector('#korea')
+  const character = document.querySelector('#character')
+
+  content.insertBefore(korea, character)
+}
+
+const handleRevertCountryOrder = () => {
+  const content = document.querySelector('#content')
+  const korea = document.querySelector('#korea')
+  const australia = document.querySelector('#australia')
+
+  content.insertBefore(korea, australia)
+}
+
+/** adjust order due to the frame in & out animation */
+const handleAdjustCountryOrder = () => {
+  if (curCountryIdx === KOREA_IDX) {
+    handleRevertCountryOrder()
+  }
+  if (curCountryIdx === DENMARK_IDX) {
+    switchCountryOrder()
+  }
+}
+
+const handleCountryMovement = () => {
   const { id: curCountryId } = countries[curCountryIdx]
   const curCountryElement = document.querySelector(`#${curCountryId}`)
   
-  const { id: nextCountryId } = countries[curCountryIdx + 1]
+  const nextCountryIdx = getNextCountryIdx(curCountryIdx)
+  const { id: nextCountryId } = countries[nextCountryIdx]
   const nextCountry = document.querySelector(`#${nextCountryId}`)
   
   curCountryElement.classList.add('frame_out')
@@ -205,7 +240,8 @@ function handleCountryMovement() {
 function handleGlobeMovement() {
   if (curCountryIdx === HOME_IDX) { return }
 
-  const { lat, lng } = countries[curCountryIdx + 1]
+  const nextCountryIdx = getNextCountryIdx(curCountryIdx)
+  const { lat, lng } = countries[nextCountryIdx]
 
   globe.pointOfView({
     lat,
@@ -215,7 +251,7 @@ function handleGlobeMovement() {
 }
 
 const handleChangeMetaValues = () => {
-  const nextCountryIdx = curCountryIdx + 1
+  const nextCountryIdx = getNextCountryIdx(curCountryIdx)
   const metaValues = document.querySelectorAll('#meta_value')
 
   const {
@@ -297,6 +333,7 @@ const handleCleanUpMascot = () => {
 
 arrow.addEventListener('click', () => {
   handleHideArrow()
+  handleAdjustCountryOrder()
   handleCountryMovement()
   handleGlobeMovement()
   handleChangeMetaValues()
@@ -307,7 +344,7 @@ arrow.addEventListener('click', () => {
     handlePlateBreak()
   }
 
-  curCountryIdx += 1
+  curCountryIdx = getNextCountryIdx(curCountryIdx)
 })
 
 /**
