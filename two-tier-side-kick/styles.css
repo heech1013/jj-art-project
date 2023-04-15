@@ -337,7 +337,7 @@ iframe#globe {
   overflow: hidden;
 }
 
-@keyframes kicked_out {
+@keyframes frame_out {
   0% {
     transform: translateX(0);
   }
@@ -347,14 +347,14 @@ iframe#globe {
   }
 }
 
-.kicked_out {
-  animation-name: kicked_out;
+.frame_out {
+  animation-name: frame_out;
   animation-duration: 0.7s;
   animation-timing-function: cubic-bezier(0.65,0.05,0.36,1);
   animation-fill-mode: forwards;
 }
 
-@keyframes kicked_in {
+@keyframes frame_in {
   0% {
     transform: translateX(0);
   }
@@ -364,8 +364,8 @@ iframe#globe {
   }
 }
 
-.kicked_in {
-  animation-name: kicked_in;
+.frame_in {
+  animation-name: frame_in;
   animation-duration: 0.7s;
   animation-timing-function: cubic-bezier(0.65,0.05,0.36,1);
   animation-fill-mode: backwards;
