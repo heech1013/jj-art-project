@@ -278,14 +278,18 @@ const handlePlateBreak = () => {
   setTimeout(() => {
     teacherWithPlate.classList.add(UNMOUNTED)
     teacherWithBrokenPlate.classList.remove(UNMOUNTED)
+
+    new Audio('./assets/sounds/1_home/스타트_격파.m4a').play()
   }, PLATE_BREAK_TIMEOUT);
 }
 
 const isPeruMascot = mascot => mascot.id.includes('peru')
 
-const handleHideMascot = (mascot, showingClass, hidingClass) => {
+const handleHideMascot = (mascot, showingClass, hidingClass, hidingAudio) => {
   mascot.classList.remove(showingClass)
   mascot.classList.add(hidingClass)
+
+  hidingAudio.play()
 
   setTimeout(() => {
     mascot.classList.add(UNMOUNTED)
@@ -293,25 +297,30 @@ const handleHideMascot = (mascot, showingClass, hidingClass) => {
   }, MASCOT_HIDING_DURATION);
 }
 
-const addMascotClickEvent = (target, mascot) => {
+const addMascotClickEvent = (target, mascot, showingAudioSrc, hidingAudioSrc) => {
   const SHOWING = isPeruMascot(mascot) ? ALPHACA_SHOWING : MASCOT_SHOWING
   const HIDING = isPeruMascot(mascot) ? ALPHACA_HIDING : MASCOT_HIDING
+
+  const showingAudio = new Audio(showingAudioSrc)
+  const hidingAudio = new Audio(hidingAudioSrc)
 
   const handleShowMascot = () => {
     mascot.classList.remove(UNMOUNTED)
     mascot.classList.add(SHOWING)
+
+    showingAudio.play()
   }
 
   target.addEventListener('click', () => {
     if (mascot.classList.contains(UNMOUNTED)) {
       handleShowMascot()
     } else {
-      handleHideMascot(mascot, SHOWING, HIDING)
+      handleHideMascot(mascot, SHOWING, HIDING, hidingAudio)
     }
   })
 
   mascot.addEventListener('click', () => {
-    handleHideMascot(mascot, SHOWING, HIDING)
+    handleHideMascot(mascot, SHOWING, HIDING, hidingAudio)
   })
 }
 
@@ -347,6 +356,37 @@ arrow.addEventListener('click', () => {
   curCountryIdx = getNextCountryIdx(curCountryIdx)
 })
 
+const playAudioOnEvent = (eventName) => (target, audioSrc) => {
+  const audio = new Audio(audioSrc)
+
+  target.addEventListener(eventName, () => {
+    audio.play()
+  })
+}
+
+const playAudioOnClick = playAudioOnEvent('click')
+const playAudioOnHover = playAudioOnEvent('mouseover')
+
+/**
+ * @summary Common
+ */
+
+const interactionable = document.getElementsByClassName('red_cursor')
+const withoutNudge = ['book_opened_dimmer']
+
+const addNudgeOnInteractionable = () => {
+  for (let i = 0; i < interactionable.length; i++) {
+    if (withoutNudge.includes(interactionable[i].id)) {
+      continue
+    }
+  
+    playAudioOnHover(interactionable[i], './assets/sounds/0_common/공통_넛지.m4a')
+  }
+}
+
+addNudgeOnInteractionable()
+playAudioOnClick(arrow, './assets/sounds/0_common/공통_화면전환.m4a')
+
 /**
  * @summary Home
  */
@@ -366,25 +406,31 @@ book.addEventListener('click', () => {
   })
 })
 
+playAudioOnClick(book, './assets/sounds/1_home/스타트_책_펼침.m4a')
+playAudioOnClick(bookOpenedDimmer, './assets/sounds/1_home/스타트_책_덮음.m4a')
+
 /**
  * @summary Korea
  */
 
 const tiger = document.querySelector('#korea #tiger')
 const cryingTiger = document.querySelector('#korea #tiger_cry')
-
-tiger.addEventListener('click', () => {
-tiger.classList.add(UNMOUNTED)
-cryingTiger.classList.remove(UNMOUNTED)
-
-setTimeout(() => {
-  tiger.classList.remove(UNMOUNTED)
-  cryingTiger.classList.add(UNMOUNTED)
-}, 1000);
-})
-
 const koreaMascot = document.querySelector('#korea_mascot')
-addMascotClickEvent(tiger, koreaMascot)
+
+const tigerCryingOnClick = () => {
+  tiger.addEventListener('click', () => {
+    tiger.classList.add(UNMOUNTED)
+    cryingTiger.classList.remove(UNMOUNTED)
+  
+    setTimeout(() => {
+      tiger.classList.remove(UNMOUNTED)
+      cryingTiger.classList.add(UNMOUNTED)
+    }, 1000);
+  })
+}
+
+tigerCryingOnClick()
+addMascotClickEvent(tiger, koreaMascot, './assets/sounds/2_korea/한국_호랑이1.m4a', './assets/sounds/2_korea/한국_호랑이3.m4a')
 
 /**
  * @summary Australia
@@ -393,18 +439,20 @@ addMascotClickEvent(tiger, koreaMascot)
 const native = document.querySelector('#australia #native')
 const nativeHand = document.querySelector('#australia #native_hand')
 
-native.addEventListener('click', () => {
-  nativeHand.classList.add('native_hand_up')
-
-  setTimeout(() => {
-    nativeHand.classList.remove('native_hand_up')
-    nativeHand.classList.add('native_hand_down')
-    
+const nativeHandUpOnClick = () => {
+  native.addEventListener('click', () => {
+    nativeHand.classList.add('native_hand_up')
+  
     setTimeout(() => {
-      nativeHand.classList.remove('native_hand_down')
-    }, 300);
-  }, 1000)
-})
+      nativeHand.classList.remove('native_hand_up')
+      nativeHand.classList.add('native_hand_down')
+      
+      setTimeout(() => {
+        nativeHand.classList.remove('native_hand_down')
+      }, 300);
+    }, 1000)
+  })
+}
 
 const kangaroo = document.querySelector('#australia #kangaroo')
 const australiaMascot = document.querySelector('#australia_mascot')
