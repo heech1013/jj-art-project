@@ -457,6 +457,7 @@ const nativeHandUpOnClick = () => {
 const kangaroo = document.querySelector('#australia #kangaroo')
 const australiaMascot = document.querySelector('#australia_mascot')
 
+nativeHandUpOnClick()
 addMascotClickEvent(kangaroo, australiaMascot)
 
 /**
