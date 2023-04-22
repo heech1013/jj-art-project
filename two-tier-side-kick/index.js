@@ -357,15 +357,16 @@ arrow.addEventListener('click', () => {
 })
 
 const playAudioOnEvent = (eventName) => (target, audioSrc) => {
-  const audio = new Audio(audioSrc)
+  const audios = audioSrc.map(src => new Audio(src))
+  let idx = 0
 
   target.addEventListener(eventName, () => {
+    const audio = audios[idx++ % audios.length]
     audio.play()
   })
 }
 
 const playAudioOnClick = playAudioOnEvent('click')
-const playAudioOnHover = playAudioOnEvent('mouseover')
 
 /**
  * @summary Common
@@ -374,18 +375,7 @@ const playAudioOnHover = playAudioOnEvent('mouseover')
 const interactionable = document.getElementsByClassName('red_cursor')
 const withoutNudge = ['book_opened_dimmer']
 
-const addNudgeOnInteractionable = () => {
-  for (let i = 0; i < interactionable.length; i++) {
-    if (withoutNudge.includes(interactionable[i].id)) {
-      continue
-    }
-  
-    playAudioOnHover(interactionable[i], './assets/sounds/0_common/공통_넛지.m4a')
-  }
-}
-
-addNudgeOnInteractionable()
-playAudioOnClick(arrow, './assets/sounds/0_common/공통_화면전환.m4a')
+playAudioOnClick(arrow, ['./assets/sounds/0_common/공통_화면전환.m4a'])
 
 /**
  * @summary Home
@@ -406,8 +396,8 @@ book.addEventListener('click', () => {
   })
 })
 
-playAudioOnClick(book, './assets/sounds/1_home/스타트_책_펼침.m4a')
-playAudioOnClick(bookOpenedDimmer, './assets/sounds/1_home/스타트_책_덮음.m4a')
+playAudioOnClick(book, ['./assets/sounds/1_home/스타트_책_펼침.m4a'])
+playAudioOnClick(bookOpenedDimmer, ['./assets/sounds/1_home/스타트_책_덮음.m4a'])
 
 /**
  * @summary Korea
@@ -438,6 +428,11 @@ addMascotClickEvent(tiger, koreaMascot, './assets/sounds/2_korea/한국_호랑�
 
 const native = document.querySelector('#australia #native')
 const nativeHand = document.querySelector('#australia #native_hand')
+const kangaroo = document.querySelector('#australia #kangaroo')
+const australiaMascot = document.querySelector('#australia_mascot')
+const boomerang = document.querySelector('#australia #boomerang')
+const landmark = document.querySelector('#australia #landmark')
+const ulruru = document.querySelector('#australia #ulruru')
 
 const nativeHandUpOnClick = () => {
   native.addEventListener('click', () => {
@@ -454,43 +449,62 @@ const nativeHandUpOnClick = () => {
   })
 }
 
-const kangaroo = document.querySelector('#australia #kangaroo')
-const australiaMascot = document.querySelector('#australia_mascot')
-
 nativeHandUpOnClick()
-addMascotClickEvent(kangaroo, australiaMascot)
+playAudioOnClick(native, ['./assets/sounds/3_australia/호주_원주민1.m4a', './assets/sounds/3_australia/호주_원주민2.m4a', './assets/sounds/3_australia/호주_원주민3.m4a', './assets/sounds/3_australia/호주_원주민_나와.m4a', './assets/sounds/3_australia/호주_원주민_여기에.m4a'])
+playAudioOnClick(boomerang, ['./assets/sounds/3_australia/호주_부메랑.m4a'])
+playAudioOnClick(landmark, ['./assets/sounds/3_australia/호주_울루루.m4a'])
+playAudioOnClick(ulruru, ['./assets/sounds/3_australia/호주_울루루.m4a'])
+addMascotClickEvent(kangaroo, australiaMascot, './assets/sounds/3_australia/호주_캥거루.m4a', './assets/sounds/3_australia/호주_캥거루.m4a')
 
 /**
  * @summary Ocean
  */
 
 const bird = document.querySelector('#ocean #bird')
-
-bird.addEventListener('click', (e) => {
-  const monitorFrame = document.querySelector('#content')
-  const ocean = document.querySelector('#ocean')
-  const poop = document.createElement('div')
-  poop.id = 'poop'
-
-  const left = e.clientX - monitorFrame.getBoundingClientRect().left
-  poop.style.left = `${left}px`
-
-  const poopImg = document.createElement('img')
-  poopImg.src = './assets/3_ocean/poop.png'
-
-  poop.appendChild(poopImg)
-  ocean.appendChild(poop)
-  poop.classList.add('poop_falling')
-
-  setTimeout(() => {
-    poop.remove()
-  }, 1000);
-})
-
 const shark = document.querySelector('#ocean #shark')
+const oceanBoat = document.querySelector('#ocean #boat') 
 const oceanMascot = document.querySelector('#ocean_mascot')
 
-addMascotClickEvent(shark, oceanMascot)
+const poopFallingOnClick = () => {
+  bird.addEventListener('click', (e) => {
+    const monitorFrame = document.querySelector('#content')
+    const ocean = document.querySelector('#ocean')
+    const poop = document.createElement('div')
+    poop.id = 'poop'
+  
+    const left = e.clientX - monitorFrame.getBoundingClientRect().left
+    poop.style.left = `${left}px`
+  
+    const poopImg = document.createElement('img')
+    poopImg.src = './assets/3_ocean/poop.png'
+  
+    poop.appendChild(poopImg)
+    ocean.appendChild(poop)
+    poop.classList.add('poop_falling')
+  
+    setTimeout(() => {
+      poop.remove()
+    }, 1000);
+  })
+}
+
+const playOceanBackgroundAudioInteval = () => {
+  const audios = ['./assets/sounds/4_ocean/태평양_갈매기(배경).m4a', './assets/sounds/4_ocean/태평양_철썩(배경).m4a', './assets/sounds/4_ocean/태평양_갈매기(배경2).m4a']
+  let idx = 0
+
+  setInterval(() => {
+    if (curCountryIdx !== OCEAN_IDX) { return }
+
+    const audio = new Audio(audios[idx++ % audios.length])
+    audio.play()
+  }, 4000)
+}
+
+poopFallingOnClick()
+playAudioOnClick(bird, ['./assets/sounds/4_ocean/태평양_갈매기_뿌직.m4a'])
+playAudioOnClick(oceanBoat, ['./assets/sounds/4_ocean/태평양_인물1.m4a', './assets/sounds/4_ocean/태평양_인물2.m4a', './assets/sounds/4_ocean/태평양_인물3.m4a', './assets/sounds/4_ocean/태평양_인물4.m4a'])
+playOceanBackgroundAudioInteval()
+addMascotClickEvent(shark, oceanMascot, './assets/sounds/4_ocean/태평양_상어_등장.m4a', './assets/sounds/4_ocean/태평양_상어_퇴장.m4a')
 
 /**
  * @summary America
@@ -807,7 +821,7 @@ windowsToOpen.forEach((windowId) => {
   })
 })
 
-const boat = document.querySelector('#denmark #boat')
+const denmarkBoat = document.querySelector('#denmark #boat')
 const denmarkMascot = document.querySelector('#denmark_mascot')
 
-addMascotClickEvent(boat, denmarkMascot)
+addMascotClickEvent(denmarkBoat, denmarkMascot)

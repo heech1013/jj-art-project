@@ -601,6 +601,22 @@ iframe#globe {
   filter: drop-shadow(1px 2px 0px black);
 }
 
+#australia #boomerang {
+  position: absolute;
+  top: 200px;
+  left: 80px;
+  width: 120px;
+  height: 80px;
+}
+
+#australia #ulruru {
+  position: absolute;
+  top: 310px;
+  left: 60px;
+  width: 560px;
+  height: 290px;
+}
+
 /* ocean */
 #ocean {
   position: relative;
