@@ -588,6 +588,12 @@ addMascotClickEvent(sky, americaMascot, './assets/sounds/5_america/미국_독수
  * @summary Peru
  */
 
+const moon = document.querySelector('#peru #moon')
+const ground = document.querySelector('#peru #ground')
+const alpaca = document.querySelector('#peru #alpaca')
+const peruMascot = document.querySelector('#peru_mascot')
+const peruMascotBody = document.querySelector('#peru_mascot_body')
+
 const freshness = {
   mountain_1_01: true,
   mountain_1_02: true,
@@ -686,58 +692,47 @@ const colorMap = {
   mountain_2_24: 'color_green3',
 }
 
-const colors = [
-  'color_black1',
-  'color_grey1',
-  'color_grey2',
-  'color_brown1',
-  'color_blue1',
-  'color_blue2',
-  'color_blue3',
-  'color_blue4',
-  'color_green1',
-  'color_green2',
-  'color_green3',
-  'color_green4',
-  'color_green5',
-  'color_red1',
-  'color_pink1',
-  'color_pink2',
-  'color_pink3',
-  'color_yellow1',
-]
+const colors = ['color_black1', 'color_grey1', 'color_grey2', 'color_brown1', 'color_blue1', 'color_blue2', 'color_blue3', 'color_blue4', 'color_green1', 'color_green2', 'color_green3', 'color_green4', 'color_green5', 'color_red1', 'color_pink1', 'color_pink2', 'color_pink3', 'color_yellow1']
+const ridgeSounds = ['./assets/sounds/6_peru/페루_능선1.m4a', './assets/sounds/6_peru/페루_능선2.m4a', './assets/sounds/6_peru/페루_능선3.m4a', './assets/sounds/6_peru/페루_능선4.m4a', './assets/sounds/6_peru/페루_능선5.m4a', './assets/sounds/6_peru/페루_능선6.m4a', './assets/sounds/6_peru/페루_능선7.m4a', './assets/sounds/6_peru/페루_능선8.m4a', './assets/sounds/6_peru/페루_능선9.m4a', './assets/sounds/6_peru/페루_능선10.m4a', './assets/sounds/6_peru/페루_능선11.m4a']
 
 const getRandomColor = () => {
-  const randomColorIdx = Math.floor(Math.random() * colors.length)
-  return colors[randomColorIdx]
+  return colors[Math.floor(Math.random() * colors.length)]
+}
+
+const getRandomSound = () => {
+  return ridgeSounds[Math.floor(Math.random() * ridgeSounds.length)]
 }
 
 document.addEventListener('mouseover', (e) => {
   const coloredMountain = e.target.closest('[id^=mountain_]')
 
-  if (coloredMountain) {
-    if (freshness[coloredMountain.id]) {
-      freshness[coloredMountain.id] = false
-      const color = colorMap[coloredMountain.id]
-      coloredMountain.classList.remove('fresh_filter')
-      coloredMountain.classList.add(color)
-    } else {
-      const randomColor = getRandomColor()
-      coloredMountain.classList.forEach((item) => {
-        if (item.includes('color_')) {
-          coloredMountain.classList.remove(item)
-        }
-      })
-      coloredMountain.classList.add(randomColor)
-    }
-  }
-})
+  if (!coloredMountain) { return }
 
-const moon = document.querySelector('#peru #moon')
-const ground = document.querySelector('#peru #ground')
-const alpaca = document.querySelector('#peru #alpaca')
-const peruMascot = document.querySelector('#peru_mascot')
-const peruMascotBody = document.querySelector('#peru_mascot_body')
+  const isFresh = freshness[coloredMountain.id]
+
+  if (isFresh) {
+    freshness[coloredMountain.id] = false
+
+    const color = colorMap[coloredMountain.id]
+    coloredMountain.classList.remove('fresh_filter')
+    coloredMountain.classList.add(color)
+    return
+  }
+
+  const randomColor = getRandomColor()
+  const randomSound = getRandomSound()
+
+  coloredMountain.classList.forEach((item) => {
+    if (item.includes('color_')) {
+      coloredMountain.classList.remove(item)
+    }
+  })
+
+  coloredMountain.classList.add(randomColor)
+
+  const audio = new Audio(randomSound)
+  audio.play()
+})
 
 const addColoringEventListener = (element, linkedElement) => {
   element.addEventListener('mouseover', () => {
@@ -768,7 +763,7 @@ addColoringEventListener(ground)
 addColoringEventListener(peruMascotBody, alpaca)
 addColoringEventListener(alpaca, peruMascotBody)
 
-addMascotClickEvent(alpaca, peruMascot)
+addMascotClickEvent(alpaca, peruMascot, './assets/sounds/6_peru/페루_알파카_등장.m4a', './assets/sounds/6_peru/페루_알파카_퇴장.m4a')
 
 /**
  * @summary tanzania
