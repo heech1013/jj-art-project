@@ -367,6 +367,7 @@ const playAudioOnEvent = (eventName) => (target, audioSrc) => {
 }
 
 const playAudioOnClick = playAudioOnEvent('click')
+const playAudioOnHover = playAudioOnEvent('mouseover')
 
 /**
  * @summary Common
@@ -510,38 +511,78 @@ addMascotClickEvent(shark, oceanMascot, './assets/sounds/4_ocean/태평양_상�
  * @summary America
  */
 
-const faceLips = [
-  { 
-    face: document.querySelector('#face1'),
-    lip: document.querySelector('#lower_lip_1') 
-  },
-  { 
-    face: document.querySelector('#face2'),
-    lip: document.querySelector('#lower_lip_2') 
-  },
-  { 
-    face: document.querySelector('#face3'),
-    lip: document.querySelector('#lower_lip_3') 
-  },
-  { 
-    face: document.querySelector('#face4'),
-    lip: document.querySelector('#lower_lip_4') 
-  },
-]
-
-faceLips.forEach(({ face, lip }) => {
-  face.addEventListener('click', () => {
-    lip.classList.add('sing')
-    setTimeout(() => {
-      lip.classList.remove('sing')
-    }, 1000)
-  })
-})
-
 const sky = document.querySelector('#america #sky')
 const americaMascot = document.querySelector('#america_mascot')
 
-addMascotClickEvent(sky, americaMascot)
+const faceLips = [
+  { 
+    face: document.querySelector('#face1'),
+    lip: document.querySelector('#lower_lip_1'),
+    sound: './assets/sounds/5_america/미국_석상1.m4a'
+  },
+  { 
+    face: document.querySelector('#face2'),
+    lip: document.querySelector('#lower_lip_2'),
+    sound: './assets/sounds/5_america/미국_석상2.m4a'
+  },
+  { 
+    face: document.querySelector('#face3'),
+    lip: document.querySelector('#lower_lip_3'),
+    sound: './assets/sounds/5_america/미국_석상3.m4a'
+  },
+  { 
+    face: document.querySelector('#face4'),
+    lip: document.querySelector('#lower_lip_4'),
+    sound: './assets/sounds/5_america/미국_석상4.m4a'
+  },
+]
+
+const stars = [
+  {
+    star: document.querySelector('#star1'),
+    sound: './assets/sounds/5_america/미국_별1.m4a'
+  },
+  {
+    star: document.querySelector('#star2'),
+    sound: './assets/sounds/5_america/미국_별2.m4a'
+  },
+  {
+    star: document.querySelector('#star3'),
+    sound: './assets/sounds/5_america/미국_별3.m4a'
+  },
+  {
+    star: document.querySelector('#star4'),
+    sound: './assets/sounds/5_america/미국_별4.m4a'
+  },
+  {
+    star: document.querySelector('#star5'),
+    sound: './assets/sounds/5_america/미국_별5.m4a'
+  },
+]
+
+const singOnClick = () => {
+  faceLips.forEach(({ face, lip, sound }) => {
+    face.addEventListener('click', () => {
+      lip.classList.add('sing')
+  
+      setTimeout(() => {
+        lip.classList.remove('sing')
+      }, 1000)
+    })
+
+    playAudioOnClick(face, [sound])
+  })
+}
+
+const playAudioOnStarBlink = () => {
+  stars.forEach(({ star, sound }) => {
+    playAudioOnHover(star, [sound])
+  })
+}
+
+singOnClick()
+playAudioOnStarBlink()
+addMascotClickEvent(sky, americaMascot, './assets/sounds/5_america/미국_독수리_등장.m4a', './assets/sounds/5_america/미국_독수리_퇴장.m4a')
 
 /**
  * @summary Peru
