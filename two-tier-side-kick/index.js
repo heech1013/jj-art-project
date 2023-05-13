@@ -381,7 +381,15 @@ const playAudioOnHover = playAudioOnEvent('mouseover')
 const interactionable = document.getElementsByClassName('red_cursor')
 const withoutNudge = ['book_opened_dimmer']
 
-playAudioOnClick(arrow, ['./assets/sounds/0_common/공통_화면전환.m4a'])
+const handleClickArrowAtFirst = () => {
+  const audio = new Audio('./assets/sounds/1_home/스타트_격파.m4a')
+  playAudio(audio)
+  
+  playAudioOnClick(arrow, ['./assets/sounds/0_common/공통_화면전환.m4a'])
+  arrow.removeEventListener('click', handleClickArrowAtFirst)
+}
+
+arrow.addEventListener('click', handleClickArrowAtFirst)
 
 /**
  * @summary Home
