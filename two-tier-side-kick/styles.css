@@ -103,7 +103,7 @@ img {
 
 #meta_block {
   position: absolute;
-  top: 145px;
+  top: 130px;
   left: 125px;
   font-size: 40px;
   letter-spacing: 1px;
@@ -408,16 +408,16 @@ iframe#globe {
 
 #home #sound_on {
   position: absolute;
-  top: 508px;
-  left: 178px;
-  width: 70px;
+  top: 459px;
+  left: 165px;
+  width: 127px;
 }
 
 #home #sound_off {
   position: absolute;
-  top: 508px;
-  left: 178px;
-  width: 39px;
+  top: 459px;
+  left: 165px;
+  width: 71px;
 }
 
 #home #teacher1 {
