@@ -29,6 +29,8 @@ const FRAME_IN_DURATION = 700
 const PLATE_BREAK_TIMEOUT = 125
 const MASCOT_HIDING_DURATION = 400
 
+let isMuted = false
+
 const countries = [
   {
     id: 'home',
@@ -271,6 +273,8 @@ const handleChangeMetaValues = () => {
   metaValues[5].textContent = gdp
 }
 
+const playAudio = (audio) => !isMuted && audio.play()
+
 const handlePlateBreak = () => {
   const teacherWithPlate = document.querySelector('#teacher1')
   const teacherWithBrokenPlate = document.querySelector('#teacher2')
@@ -279,7 +283,8 @@ const handlePlateBreak = () => {
     teacherWithPlate.classList.add(UNMOUNTED)
     teacherWithBrokenPlate.classList.remove(UNMOUNTED)
 
-    new Audio('./assets/sounds/1_home/스타트_격파.m4a').play()
+    const audio = new Audio('./assets/sounds/1_home/스타트_격파.m4a')
+    playAudio(audio)
   }, PLATE_BREAK_TIMEOUT);
 }
 
@@ -289,7 +294,7 @@ const handleHideMascot = (mascot, showingClass, hidingClass, hidingAudio) => {
   mascot.classList.remove(showingClass)
   mascot.classList.add(hidingClass)
 
-  hidingAudio.play()
+  playAudio(hidingAudio)
 
   setTimeout(() => {
     mascot.classList.add(UNMOUNTED)
@@ -308,7 +313,7 @@ const addMascotClickEvent = (target, mascot, showingAudioSrc, hidingAudioSrc) =>
     mascot.classList.remove(UNMOUNTED)
     mascot.classList.add(SHOWING)
 
-    showingAudio.play()
+    playAudio(showingAudio)
   }
 
   target.addEventListener('click', () => {
@@ -362,7 +367,7 @@ const playAudioOnEvent = (eventName) => (target, audioSrc) => {
 
   target.addEventListener(eventName, () => {
     const audio = audios[idx++ % audios.length]
-    audio.play()
+    playAudio(audio)
   })
 }
 
@@ -385,6 +390,8 @@ playAudioOnClick(arrow, ['./assets/sounds/0_common/공통_화면전환.m4a'])
 const book = document.querySelector('#book')
 const bookOpened = document.querySelector('#book_opened')
 const bookOpenedDimmer = document.querySelector('#book_opened_dimmer')
+const soundOn = document.querySelector('#sound_on')
+const soundOff = document.querySelector('#sound_off')
 
 book.addEventListener('click', () => {
   bookOpened.classList.remove(UNMOUNTED)
@@ -395,6 +402,21 @@ book.addEventListener('click', () => {
     bookOpened.classList.add(UNMOUNTED)
     bookOpenedDimmer.classList.add(UNMOUNTED)
   })
+})
+
+soundOn.addEventListener('click', () => {
+  isMuted = true
+  soundOn.classList.add(UNMOUNTED)
+  soundOff.classList.remove(UNMOUNTED)
+})
+
+soundOff.addEventListener('click', () => {
+  isMuted = false
+  soundOn.classList.remove(UNMOUNTED)
+  soundOff.classList.add(UNMOUNTED)
+
+  const audio = new Audio('./assets/sounds/0_common/공통_넛지.m4a')
+  playAudio(audio)
 })
 
 playAudioOnClick(book, ['./assets/sounds/1_home/스타트_책_펼침.m4a'])
@@ -497,7 +519,7 @@ const playOceanBackgroundAudioInteval = () => {
     if (curCountryIdx !== OCEAN_IDX) { return }
 
     const audio = new Audio(audios[idx++ % audios.length])
-    audio.play()
+    playAudio(audio)
   }, 4000)
 }
 
@@ -731,7 +753,7 @@ document.addEventListener('mouseover', (e) => {
   coloredMountain.classList.add(randomColor)
 
   const audio = new Audio(randomSound)
-  audio.play()
+  playAudio(audio)
 })
 
 const addColoringEventListener = (element, linkedElement) => {
@@ -826,8 +848,8 @@ const handleGiraffeClick = () => {
   giraffeHead.classList.remove('hidden')
   giraffeHead.classList.add('giraffe-head-down')
 
-  const sound = new Audio('./assets/sounds/7_tanzania/탄자니아_기린.m4a')
-  sound.play()
+  const audio = new Audio('./assets/sounds/7_tanzania/탄자니아_기린.m4a')
+  playAudio(audio)
 
   setTimeout(() => {
     giraffe.style.pointerEvents = 'auto'

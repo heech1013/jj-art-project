@@ -108,6 +108,7 @@ img {
   font-size: 40px;
   letter-spacing: 1px;
   user-select: none;
+  font-family: 'Bauhaus 93', sans-serif;
 }
 
 #meta_row {
@@ -117,11 +118,24 @@ img {
 }
 
 #meta_key {
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 0 13px 0 13px;
+  border-radius: 7px;;
+  color: white;
+  background-color: #353535;
 }
 
 #meta_value {
   margin-left: 10px;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 0 13px 0 13px;
+  border-radius: 7px;;
+  color: white;
+  background-color: #6b6b6b;
 }
 
 @keyframes alphaca_showing {
@@ -390,6 +404,20 @@ iframe#globe {
   top: 455px;
   left: 38px;
   width: 100px;
+}
+
+#home #sound_on {
+  position: absolute;
+  top: 508px;
+  left: 178px;
+  width: 70px;
+}
+
+#home #sound_off {
+  position: absolute;
+  top: 508px;
+  left: 178px;
+  width: 39px;
 }
 
 #home #teacher1 {
