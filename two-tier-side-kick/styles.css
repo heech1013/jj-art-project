@@ -673,6 +673,17 @@ iframe#globe {
   width: 140px;
 }
 
+#ocean #front_shark {
+  position: absolute;
+  right: 70px;
+  bottom: 65px;
+
+  width: 140px;
+  height: 140px;
+
+  z-index: 3;
+}
+
 @keyframes bird-fly {
   0% {
     transform: translateX(-100px) rotate(-12deg);
@@ -1435,6 +1446,15 @@ iframe#globe {
   left: 463px;
   width: 194px;
   filter: drop-shadow(1px 2px 1px black);
+}
+
+#tanzania #front_elephant_head {
+  position: absolute;
+  top: 340px;
+  left: 463px;
+  width: 244px;
+  height: 270px;
+  z-index: 1;
 }
 
 #tanzania #ground {

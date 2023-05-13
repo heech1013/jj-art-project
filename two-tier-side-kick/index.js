@@ -462,7 +462,7 @@ addMascotClickEvent(kangaroo, australiaMascot, './assets/sounds/3_australia/호�
  */
 
 const bird = document.querySelector('#ocean #bird')
-const shark = document.querySelector('#ocean #shark')
+const shark = document.querySelector('#ocean #front_shark')
 const oceanBoat = document.querySelector('#ocean #boat') 
 const oceanMascot = document.querySelector('#ocean_mascot')
 
@@ -770,6 +770,12 @@ addMascotClickEvent(alpaca, peruMascot, './assets/sounds/6_peru/페루_알파카
  */
 
 const zebra = document.querySelector('#zebra')
+const leopardPattern = document.querySelector('#leopard_pattern')
+const giraffe = document.querySelector('#giraffe')
+const giraffeHead = document.querySelector('#giraffe_head')
+const elephantHead = document.querySelector('#tanzania #front_elephant_head')
+const tanzaniaMascot = document.querySelector('#tanzania_mascot')
+
 const zebraImgSrc = [
   './assets/6_tanzania/얼룩말 기본.png',
   './assets/6_tanzania/얼룩말 2.png',
@@ -779,64 +785,63 @@ const zebraImgSrc = [
   './assets/6_tanzania/얼룩말 6.png',
   './assets/6_tanzania/얼룩말 7.png',
 ]
+
 let currentZebraIdx = 0
 
-zebra.addEventListener('click', () => {
+const handleZebraClick = () => {
   currentZebraIdx = (currentZebraIdx + 1) % zebraImgSrc.length
-
   zebra.querySelector('img').src = zebraImgSrc[currentZebraIdx]
-})
+}
 
-const ASH_COUNT = 15
-const leopardPattern = document.querySelector('#leopard_pattern')
-
-leopardPattern.addEventListener('click', () => {
+const handleLeopardClick = () => {
   leopardPattern.classList.add('leopard-animation')
-
+  
   setTimeout(() => {
     Array
-      .from({ length: ASH_COUNT }, (_, i) => i + 1)
+      .from({ length: 15 }, (_, i) => i + 1)
       .map((num) => {
         const ash = document.querySelector(`#ash_${num}`)
         ash.classList.remove('hidden')
         ash.classList.add(`ash-${num}-falling`)
       })
-  }, 2000);
-})
+  }, 2000)
+}
 
-const giraffe = document.querySelector('#giraffe')
-const giraffeHead = document.querySelector('#giraffe_head')
-
-giraffe.addEventListener('click', () => {
-  if (!giraffe.classList.contains('giraffe-stretch')) {
-    giraffe.style.pointerEvents = 'none'
-    
-    giraffeHead.classList.remove('giraffe-head-up')
-    giraffe.classList.remove('giraffe-stretch-back')
-
-    giraffe.classList.add('giraffe-stretch')
-    giraffeHead.classList.remove('hidden')
-    giraffeHead.classList.add('giraffe-head-down')
-
-    setTimeout(() => {
-      giraffe.style.pointerEvents = 'auto'
-    }, 3000);
-  }
-  else {
+const handleGiraffeClick = () => {
+  if (giraffe.classList.contains('giraffe-stretch')) {
     giraffe.classList.remove('giraffe-stretch')
     giraffeHead.classList.remove('giraffe-head-down')
-
+  
     giraffeHead.classList.add('giraffe-head-up')
     giraffe.classList.add('giraffe-stretch-back')
+    return
   }
-})
 
-const elephantBody = document.querySelector('#tanzania #elephant_body')
-const elephantHead = document.querySelector('#tanzania #elephant_head')
-const tanzaniaMascot = document.querySelector('#tanzania_mascot')
+  giraffe.style.pointerEvents = 'none'
+  
+  giraffeHead.classList.remove('giraffe-head-up')
+  giraffe.classList.remove('giraffe-stretch-back')
 
-addMascotClickEvent(elephantHead, tanzaniaMascot)
-addMascotClickEvent(elephantBody, tanzaniaMascot)
+  giraffe.classList.add('giraffe-stretch')
+  giraffeHead.classList.remove('hidden')
+  giraffeHead.classList.add('giraffe-head-down')
+
+  const sound = new Audio('./assets/sounds/7_tanzania/탄자니아_기린.m4a')
+  sound.play()
+
+  setTimeout(() => {
+    giraffe.style.pointerEvents = 'auto'
+  }, 3000);
+}
+
+leopardPattern.addEventListener('click', handleLeopardClick)
+giraffe.addEventListener('click', handleGiraffeClick)
+zebra.addEventListener('click', handleZebraClick)
+
+playAudioOnClick(leopardPattern, ['./assets/sounds/7_tanzania/탄자니아_표범_풀버전.m4a'])
+playAudioOnClick(zebra, ['./assets/sounds/7_tanzania/탄자니아_얼룩말1.m4a', './assets/sounds/7_tanzania/탄자니아_얼룩말2.m4a', './assets/sounds/7_tanzania/탄자니아_얼룩말3.m4a'])
+
+addMascotClickEvent(elephantHead, tanzaniaMascot, './assets/sounds/7_tanzania/탄자니아_코끼리.m4a', './assets/sounds/7_tanzania/탄자니아_코끼리.m4a')
 
 /**
  * @summary Denmark
@@ -855,9 +860,12 @@ windowsToOpen.forEach((windowId) => {
       openedWindow.classList.add(UNMOUNTED)
     })
   })
+
+  playAudioOnClick(closedWindow, ['./assets/sounds/8_denmark/덴마크_창문_열음.m4a'])
+  playAudioOnClick(openedWindow, ['./assets/sounds/8_denmark/덴마크_창문_닫음.m4a'])
 })
 
 const denmarkBoat = document.querySelector('#denmark #boat')
 const denmarkMascot = document.querySelector('#denmark_mascot')
 
-addMascotClickEvent(denmarkBoat, denmarkMascot)
+addMascotClickEvent(denmarkBoat, denmarkMascot, './assets/sounds/8_denmark/덴마크_백조.m4a', './assets/sounds/8_denmark/덴마크_백조.m4a')
