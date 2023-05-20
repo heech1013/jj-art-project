@@ -317,14 +317,14 @@ img {
   animation-fill-mode: forwards;
 }
 
-#hand {
+#main #hand {
   position: absolute;
   top: 975px;
   left: -50px;
   width: 530px;
 }
 
-#hand img {
+#main #hand img {
   transform: scaleX(-1);
 }
 
@@ -2391,9 +2391,94 @@ iframe#globe {
 }
 
 /* common */
-#character {
+#main #character {
   position: absolute;
   top: 403px;
   left: 400px;
   width: 220px;
+}
+
+/* mobile warning page */
+#mobile {
+  width: 100%;
+  height: 100%;
+  background-color: #129b15;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#first {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  flex-grow: 2;
+  flex-shrink: 1;
+  width: 100%;
+  height: 100%;
+}
+
+#center {
+  position: absolute;
+  bottom: 0;
+  width: 300px;
+  height: 180px;
+  transform: translateZ(0);
+}
+
+#second {
+  flex-grow: 1;
+  flex-shrink: 2;
+  width: 100%;
+  height: 100%;
+  background-color: #c4c4c4;
+  z-index: 1;
+}
+
+#mobile #character {
+  position: fixed;
+  left: 30px;
+  height: 180px;
+}
+
+#mobile #hand {
+  position: fixed;
+  bottom: 9px;
+  width: 210px;
+  left: 39px;
+
+  transform-origin: bottom;
+  transform: rotate(0deg);
+}
+
+@keyframes hand-up {
+  0% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.hand-up {
+  animation-name: hand-up;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes hand-down {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+.hand-down {
+  animation-name: hand-down;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
 }
