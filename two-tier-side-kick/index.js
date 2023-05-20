@@ -7,8 +7,6 @@ const isMobile = (() => {
   return check;
 })()
 
-console.log({ isMobile})
-
 if (isMobile) {
   main.classList.add('unmounted')
 } else {
