@@ -392,6 +392,14 @@ const handleCleanUpMascot = () => {
   }
 }
 
+const giraffe = document.querySelector('#giraffe')
+const giraffeHead = document.querySelector('#giraffe_head')
+
+const cleanClass = () => {
+  giraffe.classList.remove('giraffe-stretch')
+  giraffeHead.classList.remove('giraffe-head-down')
+}
+
 arrow.addEventListener('click', () => {
   handleHideArrow()
   handleAdjustCountryOrder()
@@ -400,6 +408,7 @@ arrow.addEventListener('click', () => {
   handleChangeMetaValues()
   handleShowArrow()
   handleCleanUpMascot()
+  cleanClass()
 
   if (curCountryIdx === HOME_IDX) {
     handlePlateBreak()
@@ -871,8 +880,6 @@ addMascotClickEvent(alpaca, peruMascot, './assets/sounds/6_peru/페루_알파카
 
 const zebra = document.querySelector('#zebra')
 const leopardPattern = document.querySelector('#leopard_pattern')
-const giraffe = document.querySelector('#giraffe')
-const giraffeHead = document.querySelector('#giraffe_head')
 const elephantHead = document.querySelector('#tanzania #front_elephant_head')
 const tanzaniaMascot = document.querySelector('#tanzania_mascot')
 
