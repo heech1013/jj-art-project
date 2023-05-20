@@ -397,6 +397,8 @@ const giraffeHead = document.querySelector('#giraffe_head')
 
 const cleanClass = () => {
   giraffe.classList.remove('giraffe-stretch')
+  giraffe.classList.remove('giraffe-stretch-back')
+  giraffeHead.classList.remove('giraffe-head-up')
   giraffeHead.classList.remove('giraffe-head-down')
 }
 
@@ -529,6 +531,7 @@ const nativeHandUpOnClick = () => {
     nativeHand.classList.add('native_hand_up')
   
     setTimeout(() => {
+      
       nativeHand.classList.remove('native_hand_up')
       nativeHand.classList.add('native_hand_down')
       
