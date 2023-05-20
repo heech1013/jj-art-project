@@ -554,7 +554,8 @@ const poopFallingOnClick = () => {
     poop.id = 'poop'
   
     const left = e.clientX - monitorFrame.getBoundingClientRect().left
-    poop.style.left = `${left}px`
+    /** frame is scaled by 0.5 */
+    poop.style.left = `${left * 2}px`
   
     const poopImg = document.createElement('img')
     poopImg.src = './assets/3_ocean/poop.png'
