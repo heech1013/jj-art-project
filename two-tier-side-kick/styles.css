@@ -28,7 +28,7 @@ img {
 }
 
 .unmounted {
-  display: none;
+  display: none !important;
 }
 
 .hidden {
