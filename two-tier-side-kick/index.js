@@ -563,6 +563,10 @@ const poopFallingOnClick = () => {
     poop.appendChild(poopImg)
     ocean.appendChild(poop)
     poop.classList.add('poop_falling')
+
+    const audio = new Audio('./assets/sounds/4_ocean/태평양_갈매기_뿌직.m4a')
+    audio.volume = volume.SEAGULL_FOO
+    playAudio(audio)
   
     setTimeout(() => {
       poop.remove()
@@ -598,7 +602,6 @@ const playOceanBackgroundAudioInteval = () => {
 }
 
 poopFallingOnClick()
-playAudioOnClick(bird, ['./assets/sounds/4_ocean/태평양_갈매기_뿌직.m4a'], volume.SEAGULL_FOO)
 playAudioOnClick(oceanBoat, ['./assets/sounds/4_ocean/태평양_인물1.m4a', './assets/sounds/4_ocean/태평양_인물2.m4a', './assets/sounds/4_ocean/태평양_인물3.m4a', './assets/sounds/4_ocean/태평양_인물4.m4a'], volume.CASTAWAY_TALKING)
 playOceanBackgroundAudioInteval()
 addMascotClickEvent(shark, oceanMascot, './assets/sounds/4_ocean/태평양_상어_등장.m4a', './assets/sounds/4_ocean/태평양_상어_퇴장.m4a', volume.SHARK)
