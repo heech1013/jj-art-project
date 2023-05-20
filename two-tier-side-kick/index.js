@@ -528,14 +528,15 @@ const ulruru = document.querySelector('#australia #ulruru')
 
 const nativeHandUpOnClick = () => {
   native.addEventListener('click', () => {
+    native.classList.add('unclickable')
     nativeHand.classList.add('native_hand_up')
   
     setTimeout(() => {
-      
       nativeHand.classList.remove('native_hand_up')
       nativeHand.classList.add('native_hand_down')
       
       setTimeout(() => {
+        native.classList.remove('unclickable')
         nativeHand.classList.remove('native_hand_down')
       }, 300);
     }, 1000)
@@ -919,15 +920,21 @@ const handleLeopardClick = () => {
 
 const handleGiraffeClick = () => {
   if (giraffe.classList.contains('giraffe-stretch')) {
+    giraffe.classList.add('unclickable')
     giraffe.classList.remove('giraffe-stretch')
     giraffeHead.classList.remove('giraffe-head-down')
   
     giraffeHead.classList.add('giraffe-head-up')
     giraffe.classList.add('giraffe-stretch-back')
+
+    setTimeout(() => {
+      giraffe.classList.remove('unclickable')
+    }, 1300);
+
     return
   }
 
-  giraffe.style.pointerEvents = 'none'
+  giraffe.classList.add('unclickable')
   
   giraffeHead.classList.remove('giraffe-head-up')
   giraffe.classList.remove('giraffe-stretch-back')
@@ -941,8 +948,8 @@ const handleGiraffeClick = () => {
   playAudio(audio)
 
   setTimeout(() => {
-    giraffe.style.pointerEvents = 'auto'
-  }, 3000);
+    giraffe.classList.remove('unclickable')
+  }, 4000);
 }
 
 leopardPattern.addEventListener('click', handleLeopardClick)

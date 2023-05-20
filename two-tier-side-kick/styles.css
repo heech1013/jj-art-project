@@ -39,6 +39,10 @@ img {
   visibility: visible;
 }
 
+.unclickable {
+  pointer-events: none;
+}
+
 .blue_cursor {
   cursor: url('./assets/0_common/blue-cursor.png'), auto;
 }
