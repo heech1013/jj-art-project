@@ -519,6 +519,7 @@ addMascotClickEvent(tiger, koreaMascot, './assets/sounds/2_korea/한국_호랑�
  */
 
 const native = document.querySelector('#australia #native')
+const nativeLips = document.querySelector('#australia #native_lips')
 const nativeHand = document.querySelector('#australia #native_hand')
 const kangaroo = document.querySelector('#australia #kangaroo')
 const australiaMascot = document.querySelector('#australia_mascot')
@@ -529,6 +530,7 @@ const ulruru = document.querySelector('#australia #ulruru')
 const nativeHandUpOnClick = () => {
   native.addEventListener('click', () => {
     native.classList.add('unclickable')
+    nativeLips.classList.add('native_talking')
     nativeHand.classList.add('native_hand_up')
   
     setTimeout(() => {
@@ -537,6 +539,7 @@ const nativeHandUpOnClick = () => {
       
       setTimeout(() => {
         native.classList.remove('unclickable')
+        nativeLips.classList.remove('native_talking')
         nativeHand.classList.remove('native_hand_down')
       }, 300);
     }, 1000)

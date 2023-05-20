@@ -597,6 +597,40 @@ iframe#globe {
   animation-fill-mode: backwards;
 }
 
+#australia #native_lips {
+  position: absolute;
+  top: 175px;
+  right: 339px;
+  width: 20px;
+}
+
+@keyframes native_talking {
+  0% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(7px);
+  }
+
+  50% {
+    transform: translateY(0);
+  }
+
+  75% {
+    transform: translateY(7px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.native_talking {
+  animation-name: native_talking;
+  animation-duration: 0.5s;
+}
+
 #australia #native_hand {
   position: absolute;
   top: 360px;
