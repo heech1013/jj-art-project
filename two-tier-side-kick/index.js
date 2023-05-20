@@ -29,6 +29,38 @@ const FRAME_IN_DURATION = 700
 const PLATE_BREAK_TIMEOUT = 125
 const MASCOT_HIDING_DURATION = 400
 
+const volume = {
+  PLATE_BREAK: 1,
+  COUNTRY_CHANGE: 1,
+  SOUND_ON: 1,
+  BOOK_OPEN: 1,
+  BOOK_CLOSE: 1,
+  TIGER: 1,
+  NATIVE_TALKING: 1,
+  BOOMERANG: 1,
+  ULRURU: 1,
+  ULRURU: 1,
+  KANGAROO: 1,
+  SEAGULL: 1,
+  SEA: 1,
+  SEAGULL: 1,
+  SEAGULL_FOO: 1,
+  CASTAWAY_TALKING: 1,
+  SHARK: 1,
+  STATUE_SING: 1,
+  STAR: 1,
+  EAGLE: 1,
+  PERU_MOUNTAIN: 1,
+  ALPHACA: 1,
+  GIRAFFE: 1,
+  FIREWORKS: 1,
+  ZEBRA: 1,
+  ELEPHANT: 1,
+  WINDOW_OPEN: 1,
+  WINDOW_CLOSE: 1,
+  SWAN: 1,
+}
+
 let isMuted = false
 
 const countries = [
@@ -282,9 +314,6 @@ const handlePlateBreak = () => {
   setTimeout(() => {
     teacherWithPlate.classList.add(UNMOUNTED)
     teacherWithBrokenPlate.classList.remove(UNMOUNTED)
-
-    const audio = new Audio('./assets/sounds/1_home/스타트_격파.m4a')
-    playAudio(audio)
   }, PLATE_BREAK_TIMEOUT);
 }
 
@@ -302,12 +331,15 @@ const handleHideMascot = (mascot, showingClass, hidingClass, hidingAudio) => {
   }, MASCOT_HIDING_DURATION);
 }
 
-const addMascotClickEvent = (target, mascot, showingAudioSrc, hidingAudioSrc) => {
+const addMascotClickEvent = (target, mascot, showingAudioSrc, hidingAudioSrc, volume) => {
   const SHOWING = isPeruMascot(mascot) ? ALPHACA_SHOWING : MASCOT_SHOWING
   const HIDING = isPeruMascot(mascot) ? ALPHACA_HIDING : MASCOT_HIDING
 
   const showingAudio = new Audio(showingAudioSrc)
   const hidingAudio = new Audio(hidingAudioSrc)
+
+  showingAudio.volume = volume
+  hidingAudio.volume = volume
 
   const handleShowMascot = () => {
     mascot.classList.remove(UNMOUNTED)
@@ -361,12 +393,13 @@ arrow.addEventListener('click', () => {
   curCountryIdx = getNextCountryIdx(curCountryIdx)
 })
 
-const playAudioOnEvent = (eventName) => (target, audioSrc) => {
+const playAudioOnEvent = (eventName) => (target, audioSrc, volume) => {
   const audios = audioSrc.map(src => new Audio(src))
   let idx = 0
 
   target.addEventListener(eventName, () => {
     const audio = audios[idx++ % audios.length]
+    audio.volume = volume
     playAudio(audio)
   })
 }
@@ -383,9 +416,10 @@ const withoutNudge = ['book_opened_dimmer']
 
 const handleClickArrowAtFirst = () => {
   const audio = new Audio('./assets/sounds/1_home/스타트_격파.m4a')
+  audio.volume = volume.PLATE_BREAK
   playAudio(audio)
   
-  playAudioOnClick(arrow, ['./assets/sounds/0_common/공통_화면전환.m4a'])
+  playAudioOnClick(arrow, ['./assets/sounds/0_common/공통_화면전환.m4a'], volume.COUNTRY_CHANGE)
   arrow.removeEventListener('click', handleClickArrowAtFirst)
 }
 
@@ -423,12 +457,13 @@ soundOff.addEventListener('click', () => {
   soundOn.classList.remove(UNMOUNTED)
   soundOff.classList.add(UNMOUNTED)
 
-  const audio = new Audio('./assets/sounds/0_common/공통_넛지.m4a')
+  const audio = new Audio('./assets/sounds/1_home/스타트_효과음온.m4a')
+  audio.volume = volume.SOUND_ON
   playAudio(audio)
 })
 
-playAudioOnClick(book, ['./assets/sounds/1_home/스타트_책_펼침.m4a'])
-playAudioOnClick(bookOpenedDimmer, ['./assets/sounds/1_home/스타트_책_덮음.m4a'])
+playAudioOnClick(book, ['./assets/sounds/1_home/스타트_책_펼침.m4a'], volume.BOOK_OPEN)
+playAudioOnClick(bookOpenedDimmer, ['./assets/sounds/1_home/스타트_책_덮음.m4a'], volume.BOOK_CLOSE)
 
 /**
  * @summary Korea
@@ -451,7 +486,7 @@ const tigerCryingOnClick = () => {
 }
 
 tigerCryingOnClick()
-addMascotClickEvent(tiger, koreaMascot, './assets/sounds/2_korea/한국_호랑이1.m4a', './assets/sounds/2_korea/한국_호랑이3.m4a')
+addMascotClickEvent(tiger, koreaMascot, './assets/sounds/2_korea/한국_호랑이1.m4a', './assets/sounds/2_korea/한국_호랑이3.m4a', volume.TIGER)
 
 /**
  * @summary Australia
@@ -481,11 +516,11 @@ const nativeHandUpOnClick = () => {
 }
 
 nativeHandUpOnClick()
-playAudioOnClick(native, ['./assets/sounds/3_australia/호주_원주민1.m4a', './assets/sounds/3_australia/호주_원주민2.m4a', './assets/sounds/3_australia/호주_원주민3.m4a', './assets/sounds/3_australia/호주_원주민_나와.m4a', './assets/sounds/3_australia/호주_원주민_여기에.m4a'])
-playAudioOnClick(boomerang, ['./assets/sounds/3_australia/호주_부메랑.m4a'])
-playAudioOnClick(landmark, ['./assets/sounds/3_australia/호주_울루루.m4a'])
-playAudioOnClick(ulruru, ['./assets/sounds/3_australia/호주_울루루.m4a'])
-addMascotClickEvent(kangaroo, australiaMascot, './assets/sounds/3_australia/호주_캥거루.m4a', './assets/sounds/3_australia/호주_캥거루.m4a')
+playAudioOnClick(native, ['./assets/sounds/3_australia/호주_원주민1.m4a', './assets/sounds/3_australia/호주_원주민2.m4a', './assets/sounds/3_australia/호주_원주민3.m4a', './assets/sounds/3_australia/호주_원주민_나와.m4a', './assets/sounds/3_australia/호주_원주민_여기에.m4a'], volume.NATIVE_TALKING)
+playAudioOnClick(boomerang, ['./assets/sounds/3_australia/호주_부메랑.m4a'], volume.BOOMERANG)
+playAudioOnClick(landmark, ['./assets/sounds/3_australia/호주_울루루.m4a'], volume.ULRURU)
+playAudioOnClick(ulruru, ['./assets/sounds/3_australia/호주_울루루.m4a'], volume.ULRURU)
+addMascotClickEvent(kangaroo, australiaMascot, './assets/sounds/3_australia/호주_캥거루.m4a', './assets/sounds/3_australia/호주_캥거루.m4a', volume.KANGAROO)
 
 /**
  * @summary Ocean
@@ -520,22 +555,37 @@ const poopFallingOnClick = () => {
 }
 
 const playOceanBackgroundAudioInteval = () => {
-  const audios = ['./assets/sounds/4_ocean/태평양_갈매기(배경).m4a', './assets/sounds/4_ocean/태평양_철썩(배경).m4a', './assets/sounds/4_ocean/태평양_갈매기(배경2).m4a']
+  const audios = [
+    { 
+      src: './assets/sounds/4_ocean/태평양_갈매기(배경).m4a',
+      volume: volume.SEAGULL,
+    }, 
+    { 
+      src: './assets/sounds/4_ocean/태평양_철썩(배경).m4a',
+      volume: volume.SEA,
+    }, 
+    { 
+      src: './assets/sounds/4_ocean/태평양_갈매기(배경2).m4a',
+      volume: volume.SEAGULL,
+    },
+  ]
   let idx = 0
 
   setInterval(() => {
     if (curCountryIdx !== OCEAN_IDX) { return }
 
-    const audio = new Audio(audios[idx++ % audios.length])
+    const audioObj = audios[idx++ % audios.length]
+    const audio = new Audio(audioObj.src)
+    audio.volume = audioObj.volume
     playAudio(audio)
   }, 4000)
 }
 
 poopFallingOnClick()
-playAudioOnClick(bird, ['./assets/sounds/4_ocean/태평양_갈매기_뿌직.m4a'])
-playAudioOnClick(oceanBoat, ['./assets/sounds/4_ocean/태평양_인물1.m4a', './assets/sounds/4_ocean/태평양_인물2.m4a', './assets/sounds/4_ocean/태평양_인물3.m4a', './assets/sounds/4_ocean/태평양_인물4.m4a'])
+playAudioOnClick(bird, ['./assets/sounds/4_ocean/태평양_갈매기_뿌직.m4a'], volume.SEAGULL_FOO)
+playAudioOnClick(oceanBoat, ['./assets/sounds/4_ocean/태평양_인물1.m4a', './assets/sounds/4_ocean/태평양_인물2.m4a', './assets/sounds/4_ocean/태평양_인물3.m4a', './assets/sounds/4_ocean/태평양_인물4.m4a'], volume.CASTAWAY_TALKING)
 playOceanBackgroundAudioInteval()
-addMascotClickEvent(shark, oceanMascot, './assets/sounds/4_ocean/태평양_상어_등장.m4a', './assets/sounds/4_ocean/태평양_상어_퇴장.m4a')
+addMascotClickEvent(shark, oceanMascot, './assets/sounds/4_ocean/태평양_상어_등장.m4a', './assets/sounds/4_ocean/태평양_상어_퇴장.m4a', volume.SHARK)
 
 /**
  * @summary America
@@ -600,19 +650,19 @@ const singOnClick = () => {
       }, 1000)
     })
 
-    playAudioOnClick(face, [sound])
+    playAudioOnClick(face, [sound], volume.STATUE_SING)
   })
 }
 
 const playAudioOnStarBlink = () => {
   stars.forEach(({ star, sound }) => {
-    playAudioOnHover(star, [sound])
+    playAudioOnHover(star, [sound], volume.STAR)
   })
 }
 
 singOnClick()
 playAudioOnStarBlink()
-addMascotClickEvent(sky, americaMascot, './assets/sounds/5_america/미국_독수리_등장.m4a', './assets/sounds/5_america/미국_독수리_퇴장.m4a')
+addMascotClickEvent(sky, americaMascot, './assets/sounds/5_america/미국_독수리_등장.m4a', './assets/sounds/5_america/미국_독수리_퇴장.m4a', volume.EAGLE)
 
 /**
  * @summary Peru
@@ -761,6 +811,7 @@ document.addEventListener('mouseover', (e) => {
   coloredMountain.classList.add(randomColor)
 
   const audio = new Audio(randomSound)
+  audio.volume = volume.PERU_MOUNTAIN
   playAudio(audio)
 })
 
@@ -793,7 +844,7 @@ addColoringEventListener(ground)
 addColoringEventListener(peruMascotBody, alpaca)
 addColoringEventListener(alpaca, peruMascotBody)
 
-addMascotClickEvent(alpaca, peruMascot, './assets/sounds/6_peru/페루_알파카_등장.m4a', './assets/sounds/6_peru/페루_알파카_퇴장.m4a')
+addMascotClickEvent(alpaca, peruMascot, './assets/sounds/6_peru/페루_알파카_등장.m4a', './assets/sounds/6_peru/페루_알파카_퇴장.m4a', volume.ALPHACA)
 
 /**
  * @summary tanzania
@@ -857,6 +908,7 @@ const handleGiraffeClick = () => {
   giraffeHead.classList.add('giraffe-head-down')
 
   const audio = new Audio('./assets/sounds/7_tanzania/탄자니아_기린.m4a')
+  audio.volume = volume.GIRAFFE
   playAudio(audio)
 
   setTimeout(() => {
@@ -868,10 +920,10 @@ leopardPattern.addEventListener('click', handleLeopardClick)
 giraffe.addEventListener('click', handleGiraffeClick)
 zebra.addEventListener('click', handleZebraClick)
 
-playAudioOnClick(leopardPattern, ['./assets/sounds/7_tanzania/탄자니아_표범_풀버전.m4a'])
-playAudioOnClick(zebra, ['./assets/sounds/7_tanzania/탄자니아_얼룩말1.m4a', './assets/sounds/7_tanzania/탄자니아_얼룩말2.m4a', './assets/sounds/7_tanzania/탄자니아_얼룩말3.m4a'])
+playAudioOnClick(leopardPattern, ['./assets/sounds/7_tanzania/탄자니아_표범_풀버전.m4a'], volume.FIREWORKS)
+playAudioOnClick(zebra, ['./assets/sounds/7_tanzania/탄자니아_얼룩말1.m4a', './assets/sounds/7_tanzania/탄자니아_얼룩말2.m4a', './assets/sounds/7_tanzania/탄자니아_얼룩말3.m4a'], volume.ZEBRA)
 
-addMascotClickEvent(elephantHead, tanzaniaMascot, './assets/sounds/7_tanzania/탄자니아_코끼리.m4a', './assets/sounds/7_tanzania/탄자니아_코끼리.m4a')
+addMascotClickEvent(elephantHead, tanzaniaMascot, './assets/sounds/7_tanzania/탄자니아_코끼리.m4a', './assets/sounds/7_tanzania/탄자니아_코끼리.m4a', volume.ELEPHANT)
 
 /**
  * @summary Denmark
@@ -891,11 +943,11 @@ windowsToOpen.forEach((windowId) => {
     })
   })
 
-  playAudioOnClick(closedWindow, ['./assets/sounds/8_denmark/덴마크_창문_열음.m4a'])
-  playAudioOnClick(openedWindow, ['./assets/sounds/8_denmark/덴마크_창문_닫음.m4a'])
+  playAudioOnClick(closedWindow, ['./assets/sounds/8_denmark/덴마크_창문_열음.m4a'], volume.WINDOW_OPEN)
+  playAudioOnClick(openedWindow, ['./assets/sounds/8_denmark/덴마크_창문_닫음.m4a'], volume.WINDOW_CLOSE)
 })
 
 const denmarkBoat = document.querySelector('#denmark #boat')
 const denmarkMascot = document.querySelector('#denmark_mascot')
 
-addMascotClickEvent(denmarkBoat, denmarkMascot, './assets/sounds/8_denmark/덴마크_백조.m4a', './assets/sounds/8_denmark/덴마크_백조.m4a')
+addMascotClickEvent(denmarkBoat, denmarkMascot, './assets/sounds/8_denmark/덴마크_백조.m4a', './assets/sounds/8_denmark/덴마크_백조.m4a', volume.SWAN)
