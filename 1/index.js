@@ -527,6 +527,20 @@ const boomerang = document.querySelector('#australia #boomerang')
 const landmark = document.querySelector('#australia #landmark')
 const ulruru = document.querySelector('#australia #ulruru')
 
+const pointedObjectsByNative = [boomerang, landmark, ulruru, kangaroo, australiaMascot]
+
+const nativeTalkingOnClick = () => {
+  pointedObjectsByNative.forEach(el => {
+    el.addEventListener('click', () => {
+      nativeLips.classList.add('native_talking')
+    
+      setTimeout(() => {
+        nativeLips.classList.remove('native_talking')
+      }, 1000)
+    })
+  })
+}
+
 const nativeHandUpOnClick = () => {
   native.addEventListener('click', () => {
     native.classList.add('unclickable')
@@ -546,6 +560,7 @@ const nativeHandUpOnClick = () => {
   })
 }
 
+nativeTalkingOnClick()
 nativeHandUpOnClick()
 playAudioOnClick(native, ['./assets/sounds/3_australia/호주_원주민1.m4a', './assets/sounds/3_australia/호주_원주민2.m4a', './assets/sounds/3_australia/호주_원주민3.m4a', './assets/sounds/3_australia/호주_원주민_나와.m4a', './assets/sounds/3_australia/호주_원주민_여기에.m4a'], volume.NATIVE_TALKING)
 playAudioOnClick(boomerang, ['./assets/sounds/3_australia/호주_부메랑.m4a'], volume.BOOMERANG)
