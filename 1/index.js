@@ -13,36 +13,19 @@ if (isMobile) {
   mobile.classList.add('unmounted')
 }
 
-const GLOBE_IMAGE_URL = 'https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg'
-const BUMP_IMAGE_URL = 'https://unpkg.com/three-globe/example/img/earth-topology.png'
-const GLOBE_WIDTH = 470
-const GLOBE_HEIGHT = 470
-const GLOBE_ALTITUDE = 1.5
-const GLOBE_INITAIL_TRANSITION = 2500
-const GLOBE_MOVE_TRANSITION = 800
-const GLOBE_LABEL_SIZE = 3.5
-const GLOBEL_LABEL_DOT_RADIUS = 0.5
-const GLOBE_BACKGROUND_COLOR = 'white'
-const GLOBE_LABEL_COLOR = 'white'
+const playAudioOnEvent = (eventName) => (target, audioSrc, volume) => {
+  const audios = audioSrc.map(src => new Audio(src))
+  let idx = 0
 
-const HOME_IDX = 0
-const KOREA_IDX = 1
-const AUSTRALIA_IDX = 2
-const OCEAN_IDX = 3
-const AMERICA_IDX = 4
-const PERU_IDX = 5
-const TANZANIA_IDX = 6
-const DENMARK_IDX = 7
+  target.addEventListener(eventName, () => {
+    const audio = audios[idx++ % audios.length]
+    audio.volume = volume
+    playAudio(audio)
+  })
+}
 
-const UNMOUNTED = 'unmounted'
-const MASCOT_SHOWING = 'mascot_showing'
-const MASCOT_HIDING = 'mascot_hiding'
-const ALPHACA_SHOWING = 'alphaca_showing'
-const ALPHACA_HIDING = 'alphaca_hiding'
-
-const FRAME_IN_DURATION = 700
-const PLATE_BREAK_TIMEOUT = 125
-const MASCOT_HIDING_DURATION = 400
+const playAudioOnClick = playAudioOnEvent('click')
+const playAudioOnHover = playAudioOnEvent('mouseover')
 
 const volume = {
   PLATE_BREAK: 1,
@@ -75,6 +58,75 @@ const volume = {
   WINDOW_CLOSE: 0.8,
   SWAN: 1,
 }
+
+const book = document.querySelector('#book')
+const bookOpenedDimmer = document.querySelector('#book_opened_dimmer')
+
+if (isMobile) {
+  document.querySelector('#mobile #character img').src = './assets/mobile/character.png'
+  document.querySelector('#mobile #hand img').src = './assets/mobile/hand.png'
+} else {
+  document.querySelector('#book_opened img').src = './assets/home/book-opened.png'
+  document.querySelector('#hand img').src = './assets/0_common/hand.png'
+  document.querySelector('#main #character img').src = './assets/0_common/character.png'
+  document.querySelector('#right_arrow img').src = './assets/0_common/arrow2.png'
+  document.querySelector('#monitor img').src = './assets/0_common/monitor.png'
+
+  document.querySelector('#home #title img').src = './assets/home/title.png'
+  document.querySelector('#home #book img').src = './assets/home/book.png'
+  document.querySelector('#home #sound_on img').src = './assets/home/sound-on.png'
+  document.querySelector('#home #sound_off img').src = './assets/home/sound-off.png'
+  document.querySelector('#home #teacher1 img').src = './assets/home/teacher1.png'
+  document.querySelector('#home #teacher2 img').src = './assets/home/teacher2.png'
+  document.querySelector('#home #ground img').src = './assets/home/ground.png'
+
+  playAudioOnClick(book, ['./assets/sounds/1_home/스타트_책_펼침.m4a'], volume.BOOK_OPEN)
+  playAudioOnClick(bookOpenedDimmer, ['./assets/sounds/1_home/스타트_책_덮음.m4a'], volume.BOOK_CLOSE)
+
+  document.querySelector('#korea #sun img').src = './assets/1_korea/1_korea_sun.png'
+  document.querySelector('#korea #mountain1 img').src = './assets/1_korea/1_korea_mountain.png'
+  document.querySelector('#korea #mountain2 img').src = './assets/1_korea/1_korea_mountain2.png'
+  document.querySelector('#korea #tiger img').src = './assets/1_korea/1_korea_tiger.png'
+  document.querySelector('#korea #tiger_cry img').src = './assets/1_korea/tiger_cry.png'
+  document.querySelector('#korea #tower img').src = './assets/1_korea/1_korea_tower.png'
+  document.querySelector('#korea #landmark img').src = './assets/1_korea/1_korea_landmark.png'
+  document.querySelector('#korea #plant2 img').src = './assets/1_korea/1_korea_plant2.png'
+  document.querySelector('#korea #ground img').src = './assets/1_korea/1_korea_ground.png'
+  document.querySelector('#korea #plant1 img').src = './assets/1_korea/1_korea_plant1.png'
+
+  document.querySelector('#korea_mascot img').src = './assets/1_korea/1_korea_mascot.png'
+}
+
+const GLOBE_IMAGE_URL = 'https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg'
+const BUMP_IMAGE_URL = 'https://unpkg.com/three-globe/example/img/earth-topology.png'
+const GLOBE_WIDTH = 470
+const GLOBE_HEIGHT = 470
+const GLOBE_ALTITUDE = 1.5
+const GLOBE_INITAIL_TRANSITION = 2500
+const GLOBE_MOVE_TRANSITION = 800
+const GLOBE_LABEL_SIZE = 3.5
+const GLOBEL_LABEL_DOT_RADIUS = 0.5
+const GLOBE_BACKGROUND_COLOR = 'white'
+const GLOBE_LABEL_COLOR = 'white'
+
+const HOME_IDX = 0
+const KOREA_IDX = 1
+const AUSTRALIA_IDX = 2
+const OCEAN_IDX = 3
+const AMERICA_IDX = 4
+const PERU_IDX = 5
+const TANZANIA_IDX = 6
+const DENMARK_IDX = 7
+
+const UNMOUNTED = 'unmounted'
+const MASCOT_SHOWING = 'mascot_showing'
+const MASCOT_HIDING = 'mascot_hiding'
+const ALPHACA_SHOWING = 'alphaca_showing'
+const ALPHACA_HIDING = 'alphaca_hiding'
+
+const FRAME_IN_DURATION = 700
+const PLATE_BREAK_TIMEOUT = 125
+const MASCOT_HIDING_DURATION = 400
 
 let isMuted = false
 
@@ -193,6 +245,8 @@ const getGlobeLabelElement = () => {
 }
 
 const initGlobe = () => {
+  if (isMobile) { return }
+
   globe = window.Globe()(globeTargetElement)
     .globeImageUrl(GLOBE_IMAGE_URL)
     .bumpImageUrl(BUMP_IMAGE_URL)
@@ -221,14 +275,252 @@ addIframeClass()
 initGlobe()
 
 let curCountryIdx = 0
+let allImagesLoaded = false
+
 const arrow = document.querySelector('#right_arrow')
 
 const getNextCountryIdx = (curCountryIdx) => {
   if (curCountryIdx === DENMARK_IDX) {
+    allImagesLoaded = true
     return KOREA_IDX
   }
 
   return curCountryIdx + 1
+}
+
+const handleLoadImage = () => {
+  if (allImagesLoaded) { return }
+
+  if (curCountryIdx === HOME_IDX) {
+    document.querySelector('#australia #sun img').src = './assets/2_australia/sun.png'
+    document.querySelector('#australia #native img').src = './assets/2_australia/native.png'
+    document.querySelector('#australia #native_lips img').src = './assets/2_australia/native_lips.png'
+    document.querySelector('#australia #native_hand img').src = './assets/2_australia/native_hand.png'
+    document.querySelector('#australia #landmark img').src = './assets/2_australia/landmark.png'
+    document.querySelector('#australia #kangaroo img').src = './assets/2_australia/kangaroo.png'
+    document.querySelector('#australia #ground img').src = './assets/2_australia/ground.png'
+    document.querySelector('#australia #plant img').src = './assets/2_australia/plant.png'
+
+    document.querySelector('#australia_mascot img').src = './assets/2_australia/2_australia_mascot.png'
+  }
+
+  if (curCountryIdx === KOREA_IDX) {
+    document.querySelector('#ocean #sun img').src = './assets/3_ocean/3_ocean_sun.png'
+    document.querySelector('#ocean #wave1 img').src = './assets/3_ocean/3_ocean_wave.png'
+    document.querySelector('#ocean #boat img').src = './assets/3_ocean/3_ocean_boat.png'
+    document.querySelector('#ocean #shark img').src = './assets/3_ocean/3_ocean_shark.png'
+    document.querySelector('#ocean #bird img').src = './assets/3_ocean/3_ocean_bird.png'
+    document.querySelector('#ocean #wave2 img').src = './assets/3_ocean/3_ocean_wave.png'
+
+    document.querySelector('#ocean_mascot img').src = './assets/3_ocean/3_ocean_mascot.png'
+  }
+
+  if (curCountryIdx === AUSTRALIA_IDX) {
+    document.querySelector('#america #sky img').src = './assets/4_america/3_america_sky.png'
+    document.querySelector('#america #landmark_base img').src = './assets/4_america/3_america_landmark_base.png'
+    document.querySelector('#america #face3 img').src = './assets/4_america/3_america_face_3.png'
+    document.querySelector('#america #lower_lip_3 img').src = './assets/4_america/3_america_lower_lip_3.png'
+    document.querySelector('#america #face2 img').src = './assets/4_america/3_america_face_2.png'
+    document.querySelector('#america #mouse2 img').src = './assets/4_america/3_america_mouse_2.png'
+    document.querySelector('#america #lower_lip_2 img').src = './assets/4_america/3_america_lower_lip_2.png'
+    document.querySelector('#america #face1 img').src = './assets/4_america/3_america_face_1.png'
+    document.querySelector('#america #mouse1 img').src = './assets/4_america/3_america_mouse_1.png'
+    document.querySelector('#america #lower_lip_1 img').src = './assets/4_america/3_america_lower_lip_1.png'
+    document.querySelector('#america #face4 img').src = './assets/4_america/3_america_face_4.png'
+    document.querySelector('#america #mouse4 img').src = './assets/4_america/3_america_mouse_4.png'
+    document.querySelector('#america #lower_lip_4 img').src = './assets/4_america/3_america_lower_lip_4.png'
+    document.querySelector('#america #star1 img').src = './assets/4_america/3_america_star.png'
+    document.querySelector('#america #star2 img').src = './assets/4_america/3_america_star.png'
+    document.querySelector('#america #star3 img').src = './assets/4_america/3_america_star.png'
+    document.querySelector('#america #star4 img').src = './assets/4_america/3_america_star.png'
+    document.querySelector('#america #star5 img').src = './assets/4_america/3_america_star.png'
+    document.querySelector('#america #ground img').src = './assets/4_america/3_america_ground.png'
+    document.querySelector('#america #plant img').src = './assets/4_america/3_america_plant.png'
+
+    document.querySelector('#america_mascot img').src = './assets/4_america/america_mascot.png'
+  }
+
+  if (curCountryIdx === OCEAN_IDX) {
+    document.querySelector('#peru #moon img').src = './assets/5_peru/moon.png'
+    document.querySelector('#peru #mountain_3_01 img').src = './assets/5_peru/mountain_3_01.png'
+    document.querySelector('#peru #mountain_3_02 img').src = './assets/5_peru/mountain_3_02.png'
+    document.querySelector('#peru #mountain_3_03 img').src = './assets/5_peru/mountain_3_03.png'
+    document.querySelector('#peru #mountain_3_04 img').src = './assets/5_peru/mountain_3_04.png'
+    document.querySelector('#peru #mountain_3_05 img').src = './assets/5_peru/mountain_3_05.png'
+    document.querySelector('#peru #mountain_3_06 img').src = './assets/5_peru/mountain_3_06.png'
+    document.querySelector('#peru #mountain_3_07 img').src = './assets/5_peru/mountain_3_07.png'
+    document.querySelector('#peru #mountain_3_08 img').src = './assets/5_peru/mountain_3_08.png'
+    document.querySelector('#peru #mountain_3_09 img').src = './assets/5_peru/mountain_3_09.png'
+    document.querySelector('#peru #mountain_3_10 img').src = './assets/5_peru/mountain_3_10.png'
+    document.querySelector('#peru #mountain_3_11 img').src = './assets/5_peru/mountain_3_11.png'
+    document.querySelector('#peru #mountain_3_12 img').src = './assets/5_peru/mountain_3_12.png'
+    document.querySelector('#peru #mountain_3_13 img').src = './assets/5_peru/mountain_3_13.png'
+    document.querySelector('#peru #mountain_3_14 img').src = './assets/5_peru/mountain_3_14.png'
+    document.querySelector('#peru #mountain_3_15 img').src = './assets/5_peru/mountain_3_15.png'
+    document.querySelector('#peru #mountain_3_16 img').src = './assets/5_peru/mountain_3_16.png'
+    document.querySelector('#peru #mountain_3_17 img').src = './assets/5_peru/mountain_3_17.png'
+    document.querySelector('#peru #mountain_1_01 img').src = './assets/5_peru/mountain_1_01.png'
+    document.querySelector('#peru #mountain_1_02 img').src = './assets/5_peru/mountain_1_02.png'
+    document.querySelector('#peru #mountain_1_03 img').src = './assets/5_peru/mountain_1_03.png'
+    document.querySelector('#peru #mountain_1_04 img').src = './assets/5_peru/mountain_1_04.png'
+    document.querySelector('#peru #mountain_1_05 img').src = './assets/5_peru/mountain_1_05.png'
+    document.querySelector('#peru #mountain_1_06 img').src = './assets/5_peru/mountain_1_06.png'
+    document.querySelector('#peru #mountain_1_07 img').src = './assets/5_peru/mountain_1_07.png'
+    document.querySelector('#peru #mountain_1_08 img').src = './assets/5_peru/mountain_1_08.png'
+    document.querySelector('#peru #mountain_1_09 img').src = './assets/5_peru/mountain_1_09.png'
+    document.querySelector('#peru #mountain_1_10 img').src = './assets/5_peru/mountain_1_10.png'
+    document.querySelector('#peru #mountain_1_11 img').src = './assets/5_peru/mountain_1_11.png'
+    document.querySelector('#peru #mountain_1_12 img').src = './assets/5_peru/mountain_1_12.png'
+    document.querySelector('#peru #mountain_1_13 img').src = './assets/5_peru/mountain_1_13.png'
+    document.querySelector('#peru #mountain_1_14 img').src = './assets/5_peru/mountain_1_14.png'
+    document.querySelector('#peru #mountain_1_15 img').src = './assets/5_peru/mountain_1_15.png'
+    document.querySelector('#peru #mountain_1_16 img').src = './assets/5_peru/mountain_1_16.png'
+    document.querySelector('#peru #ground img').src = './assets/5_peru/ground.png'
+    document.querySelector('#peru #mountain_2_12 img').src = './assets/5_peru/mountain_2_12.png'
+    document.querySelector('#peru #mountain_2_13 img').src = './assets/5_peru/mountain_2_13.png'
+    document.querySelector('#peru #mountain_2_14 img').src = './assets/5_peru/mountain_2_14.png'
+    document.querySelector('#peru #mountain_2_15 img').src = './assets/5_peru/mountain_2_15.png'
+    document.querySelector('#peru #mountain_2_16 img').src = './assets/5_peru/mountain_2_16.png'
+    document.querySelector('#peru #mountain_2_17 img').src = './assets/5_peru/mountain_2_17.png'
+    document.querySelector('#peru #mountain_2_18 img').src = './assets/5_peru/mountain_2_18.png'
+    document.querySelector('#peru #mountain_2_19 img').src = './assets/5_peru/mountain_2_19.png'
+    document.querySelector('#peru #mountain_2_20 img').src = './assets/5_peru/mountain_2_20.png'
+    document.querySelector('#peru #mountain_2_21 img').src = './assets/5_peru/mountain_2_21.png'
+    document.querySelector('#peru #mountain_2_22 img').src = './assets/5_peru/mountain_2_22.png'
+    document.querySelector('#peru #mountain_2_23 img').src = './assets/5_peru/mountain_2_23.png'
+    document.querySelector('#peru #mountain_2_24 img').src = './assets/5_peru/mountain_2_24.png'
+    document.querySelector('#peru #alpaca img').src = './assets/5_peru/alpaca.png'
+
+    document.querySelector('#peru_mascot_body img').src = './assets/5_peru/peru_mascot_body.png'
+    document.querySelector('#peru_mascot_face img').src = './assets/5_peru/peru_mascot_face.png'
+  }
+
+  if (curCountryIdx === AMERICA_IDX) {
+    document.querySelector('#tanzania #sun img').src = './assets/6_tanzania/해.png'
+    document.querySelector('#tanzania #mountain img').src = './assets/6_tanzania/산.png'
+    document.querySelector('#tanzania #leopard_body img').src = './assets/6_tanzania/표범 민무늬.png'
+    document.querySelector('#tanzania #leopard_pattern img').src = './assets/6_tanzania/표범 점.png'
+    document.querySelector('#tanzania #leopard_head img').src = './assets/6_tanzania/표범 얼굴.png'
+    document.querySelector('#tanzania #zebra img').src = './assets/6_tanzania/얼룩말 기본.png'
+    document.querySelector('#tanzania #elephant_body img').src = './assets/6_tanzania/코끼리 몸통.png'
+    document.querySelector('#tanzania #elephant_head img').src = './assets/6_tanzania/코끼리 얼굴.png'
+    document.querySelector('#tanzania #grass img').src = './assets/6_tanzania/풀.png'
+    document.querySelector('#tanzania #ground img').src = './assets/6_tanzania/땅.png'
+    document.querySelector('#tanzania #giraffe img').src = './assets/6_tanzania/기린.png'
+    document.querySelector('#tanzania #giraffe_head img').src = './assets/6_tanzania/기린 머리.png'
+    document.querySelector('#tanzania #ash_1 img').src = './assets/6_tanzania/화산송이 1.png'
+    document.querySelector('#tanzania #ash_2 img').src = './assets/6_tanzania/화산송이 2.png'
+    document.querySelector('#tanzania #ash_3 img').src = './assets/6_tanzania/화산송이 3.png'
+    document.querySelector('#tanzania #ash_4 img').src = './assets/6_tanzania/화산송이 4.png'
+    document.querySelector('#tanzania #ash_5 img').src = './assets/6_tanzania/화산송이 5.png'
+    document.querySelector('#tanzania #ash_6 img').src = './assets/6_tanzania/화산송이 6.png'
+    document.querySelector('#tanzania #ash_7 img').src = './assets/6_tanzania/화산송이 7.png'
+    document.querySelector('#tanzania #ash_8 img').src = './assets/6_tanzania/화산송이 8.png'
+    document.querySelector('#tanzania #ash_9 img').src = './assets/6_tanzania/화산송이 9.png'
+    document.querySelector('#tanzania #ash_10 img').src = './assets/6_tanzania/화산송이 10.png'
+    document.querySelector('#tanzania #ash_11 img').src = './assets/6_tanzania/화산송이 11.png'
+    document.querySelector('#tanzania #ash_12 img').src = './assets/6_tanzania/화산송이 12.png'
+    document.querySelector('#tanzania #ash_13 img').src = './assets/6_tanzania/화산송이 13.png'
+    document.querySelector('#tanzania #ash_14 img').src = './assets/6_tanzania/화산송이 14.png'
+    document.querySelector('#tanzania #ash_15 img').src = './assets/6_tanzania/화산송이 15.png'
+
+    document.querySelector('#tanzania_mascot img').src = './assets/6_tanzania/tanzania_mascot.png'
+  }
+
+  if (curCountryIdx === PERU_IDX) {
+    document.querySelector('#denmark #sun img').src = './assets/7_denmark/해.png'
+    document.querySelector('#denmark #building_1 img').src = './assets/7_denmark/건물1_창문달기전.png'
+    document.querySelector('#denmark #closed_window_1_1 img').src = './assets/7_denmark/건물1_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_1_2 img').src = './assets/7_denmark/건물1_닫힌창문.png'
+    document.querySelector('#denmark #open_window_1_2 img').src = './assets/7_denmark/열린창문_강아지.png'
+    document.querySelector('#denmark #closed_window_1_3 img').src = './assets/7_denmark/건물1_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_1_4 img').src = './assets/7_denmark/건물1_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_1_5 img').src = './assets/7_denmark/건물1_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_1_6 img').src = './assets/7_denmark/건물1_닫힌창문.png'
+    document.querySelector('#denmark #closed_door_1 img').src = './assets/7_denmark/건물1_문.png'
+    document.querySelector('#denmark #building_2 img').src = './assets/7_denmark/건물2_창문달기전.png'
+    document.querySelector('#denmark #closed_window_2_1 img').src = './assets/7_denmark/건물2_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_2_2 img').src = './assets/7_denmark/건물2_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_2_3 img').src = './assets/7_denmark/건물2_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_2_4 img').src = './assets/7_denmark/건물2_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_2_5 img').src = './assets/7_denmark/건물2_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_2_6 img').src = './assets/7_denmark/건물2_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_2_7 img').src = './assets/7_denmark/건물2_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_2_8 img').src = './assets/7_denmark/건물2_닫힌창문.png'
+    document.querySelector('#denmark #open_window_2_8 img').src = './assets/7_denmark/열린창문_사람.png'
+    document.querySelector('#denmark #closed_window_2_9 img').src = './assets/7_denmark/건물2_닫힌창문.png'
+    document.querySelector('#denmark #building_4 img').src = './assets/7_denmark/건물4_창문달기전.png'
+    document.querySelector('#denmark #closed_window_4_1 img').src = './assets/7_denmark/건물4_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_4_2 img').src = './assets/7_denmark/건물4_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_4_3 img').src = './assets/7_denmark/건물4_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_4_4 img').src = './assets/7_denmark/건물4_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_4_5 img').src = './assets/7_denmark/건물4_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_4_6 img').src = './assets/7_denmark/건물4_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_4_7 img').src = './assets/7_denmark/건물4_닫힌창문.png'
+    document.querySelector('#denmark #open_window_4_7 img').src = './assets/7_denmark/열린창문_인사.png'
+    document.querySelector('#denmark #closed_window_4_8 img').src = './assets/7_denmark/건물4_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_4_9 img').src = './assets/7_denmark/건물4_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_4_10 img').src = './assets/7_denmark/건물4_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_4_11 img').src = './assets/7_denmark/건물4_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_4_12 img').src = './assets/7_denmark/건물4_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_4_13 img').src = './assets/7_denmark/건물4_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_4_14 img').src = './assets/7_denmark/건물4_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_4_15 img').src = './assets/7_denmark/건물4_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_4_16 img').src = './assets/7_denmark/건물4_닫힌창문.png'
+    document.querySelector('#denmark #building_3 img').src = './assets/7_denmark/건물3_창문달기전.png'
+    document.querySelector('#denmark #closed_window_3_1 img').src = './assets/7_denmark/건물3_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_3_2 img').src = './assets/7_denmark/건물3_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_3_3 img').src = './assets/7_denmark/건물3_닫힌창문.png'
+    document.querySelector('#denmark #open_window_3_3 img').src = './assets/7_denmark/열린창문_꽃.png'
+    document.querySelector('#denmark #closed_window_3_4 img').src = './assets/7_denmark/건물3_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_3_5 img').src = './assets/7_denmark/건물3_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_3_6 img').src = './assets/7_denmark/건물3_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_3_7 img').src = './assets/7_denmark/건물3_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_3_8 img').src = './assets/7_denmark/건물3_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_3_9 img').src = './assets/7_denmark/건물3_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_3_10 img').src = './assets/7_denmark/건물3_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_3_11 img').src = './assets/7_denmark/건물3_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_3_12 img').src = './assets/7_denmark/건물3_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_3_13 img').src = './assets/7_denmark/건물3_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_3_14 img').src = './assets/7_denmark/건물3_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_3_15 img').src = './assets/7_denmark/건물3_닫힌창문.png'
+    document.querySelector('#denmark #closed_window_3_16 img').src = './assets/7_denmark/건물3_닫힌창문.png'
+    document.querySelector('#denmark #water img').src = './assets/7_denmark/물.png'
+    document.querySelector('#denmark #ground img').src = './assets/7_denmark/땅.png'
+    document.querySelector('#denmark #boat img').src = './assets/7_denmark/배.png'
+
+    document.querySelector('#denmark_mascot img').src = './assets/7_denmark/denmark_mascot.png'
+  }
+}
+
+const native = document.querySelector('#australia #native')
+const boomerang = document.querySelector('#australia #boomerang')
+const landmark = document.querySelector('#australia #landmark')
+const ulruru = document.querySelector('#australia #ulruru')
+
+const oceanBoat = document.querySelector('#ocean #boat') 
+
+const zebra = document.querySelector('#zebra')
+const leopardPattern = document.querySelector('#leopard_pattern')
+
+const handleAddSoundEventListeners = () => {
+  if (allImagesLoaded) { return }
+
+  if (curCountryIdx === HOME_IDX) {
+    playAudioOnClick(native, ['./assets/sounds/3_australia/호주_원주민1.m4a', './assets/sounds/3_australia/호주_원주민2.m4a', './assets/sounds/3_australia/호주_원주민3.m4a', './assets/sounds/3_australia/호주_원주민_나와.m4a', './assets/sounds/3_australia/호주_원주민_여기에.m4a'], volume.NATIVE_TALKING)
+    playAudioOnClick(boomerang, ['./assets/sounds/3_australia/호주_부메랑.m4a'], volume.BOOMERANG)
+    playAudioOnClick(landmark, ['./assets/sounds/3_australia/호주_울루루.m4a'], volume.ULRURU)
+    playAudioOnClick(ulruru, ['./assets/sounds/3_australia/호주_울루루.m4a'], volume.ULRURU)
+  }
+
+  if (curCountryIdx === KOREA_IDX) {
+    playAudioOnClick(oceanBoat, ['./assets/sounds/4_ocean/태평양_인물1.m4a', './assets/sounds/4_ocean/태평양_인물2.m4a', './assets/sounds/4_ocean/태평양_인물3.m4a', './assets/sounds/4_ocean/태평양_인물4.m4a'], volume.CASTAWAY_TALKING)
+  }
+
+  if (curCountryIdx === AMERICA_IDX) {
+    playAudioOnClick(leopardPattern, ['./assets/sounds/7_tanzania/탄자니아_표범_풀버전.m4a'], volume.FIREWORKS)
+    playAudioOnClick(zebra, ['./assets/sounds/7_tanzania/탄자니아_얼룩말1.m4a', './assets/sounds/7_tanzania/탄자니아_얼룩말2.m4a', './assets/sounds/7_tanzania/탄자니아_얼룩말3.m4a'], volume.ZEBRA)
+  }
 }
 
 const handleHideArrow = () => {
@@ -403,6 +695,8 @@ const cleanClass = () => {
 }
 
 arrow.addEventListener('click', () => {
+  handleLoadImage()
+  handleAddSoundEventListeners()
   handleHideArrow()
   handleAdjustCountryOrder()
   handleCountryMovement()
@@ -418,20 +712,6 @@ arrow.addEventListener('click', () => {
 
   curCountryIdx = getNextCountryIdx(curCountryIdx)
 })
-
-const playAudioOnEvent = (eventName) => (target, audioSrc, volume) => {
-  const audios = audioSrc.map(src => new Audio(src))
-  let idx = 0
-
-  target.addEventListener(eventName, () => {
-    const audio = audios[idx++ % audios.length]
-    audio.volume = volume
-    playAudio(audio)
-  })
-}
-
-const playAudioOnClick = playAudioOnEvent('click')
-const playAudioOnHover = playAudioOnEvent('mouseover')
 
 /**
  * @summary Common
@@ -454,10 +734,7 @@ arrow.addEventListener('click', handleClickArrowAtFirst)
 /**
  * @summary Home
  */
-
-const book = document.querySelector('#book')
 const bookOpened = document.querySelector('#book_opened')
-const bookOpenedDimmer = document.querySelector('#book_opened_dimmer')
 const soundOn = document.querySelector('#sound_on')
 const soundOff = document.querySelector('#sound_off')
 
@@ -488,9 +765,6 @@ soundOff.addEventListener('click', () => {
   playAudio(audio)
 })
 
-playAudioOnClick(book, ['./assets/sounds/1_home/스타트_책_펼침.m4a'], volume.BOOK_OPEN)
-playAudioOnClick(bookOpenedDimmer, ['./assets/sounds/1_home/스타트_책_덮음.m4a'], volume.BOOK_CLOSE)
-
 /**
  * @summary Korea
  */
@@ -518,14 +792,10 @@ addMascotClickEvent(tiger, koreaMascot, './assets/sounds/2_korea/한국_호랑�
  * @summary Australia
  */
 
-const native = document.querySelector('#australia #native')
 const nativeLips = document.querySelector('#australia #native_lips')
 const nativeHand = document.querySelector('#australia #native_hand')
 const kangaroo = document.querySelector('#australia #kangaroo')
 const australiaMascot = document.querySelector('#australia_mascot')
-const boomerang = document.querySelector('#australia #boomerang')
-const landmark = document.querySelector('#australia #landmark')
-const ulruru = document.querySelector('#australia #ulruru')
 
 const pointedObjectsByNative = [boomerang, landmark, ulruru, kangaroo, australiaMascot]
 
@@ -562,10 +832,6 @@ const nativeHandUpOnClick = () => {
 
 nativeTalkingOnClick()
 nativeHandUpOnClick()
-playAudioOnClick(native, ['./assets/sounds/3_australia/호주_원주민1.m4a', './assets/sounds/3_australia/호주_원주민2.m4a', './assets/sounds/3_australia/호주_원주민3.m4a', './assets/sounds/3_australia/호주_원주민_나와.m4a', './assets/sounds/3_australia/호주_원주민_여기에.m4a'], volume.NATIVE_TALKING)
-playAudioOnClick(boomerang, ['./assets/sounds/3_australia/호주_부메랑.m4a'], volume.BOOMERANG)
-playAudioOnClick(landmark, ['./assets/sounds/3_australia/호주_울루루.m4a'], volume.ULRURU)
-playAudioOnClick(ulruru, ['./assets/sounds/3_australia/호주_울루루.m4a'], volume.ULRURU)
 addMascotClickEvent(kangaroo, australiaMascot, './assets/sounds/3_australia/호주_캥거루.m4a', './assets/sounds/3_australia/호주_캥거루.m4a', volume.KANGAROO)
 
 /**
@@ -574,7 +840,6 @@ addMascotClickEvent(kangaroo, australiaMascot, './assets/sounds/3_australia/호�
 
 const bird = document.querySelector('#ocean #bird')
 const shark = document.querySelector('#ocean #front_shark')
-const oceanBoat = document.querySelector('#ocean #boat') 
 const oceanMascot = document.querySelector('#ocean_mascot')
 
 const poopFallingOnClick = () => {
@@ -633,7 +898,6 @@ const playOceanBackgroundAudioInteval = () => {
 }
 
 poopFallingOnClick()
-playAudioOnClick(oceanBoat, ['./assets/sounds/4_ocean/태평양_인물1.m4a', './assets/sounds/4_ocean/태평양_인물2.m4a', './assets/sounds/4_ocean/태평양_인물3.m4a', './assets/sounds/4_ocean/태평양_인물4.m4a'], volume.CASTAWAY_TALKING)
 playOceanBackgroundAudioInteval()
 addMascotClickEvent(shark, oceanMascot, './assets/sounds/4_ocean/태평양_상어_등장.m4a', './assets/sounds/4_ocean/태평양_상어_퇴장.m4a', volume.SHARK)
 
@@ -900,8 +1164,6 @@ addMascotClickEvent(alpaca, peruMascot, './assets/sounds/6_peru/페루_알파카
  * @summary tanzania
  */
 
-const zebra = document.querySelector('#zebra')
-const leopardPattern = document.querySelector('#leopard_pattern')
 const elephantHead = document.querySelector('#tanzania #front_elephant_head')
 const tanzaniaMascot = document.querySelector('#tanzania_mascot')
 
@@ -973,9 +1235,6 @@ const handleGiraffeClick = () => {
 leopardPattern.addEventListener('click', handleLeopardClick)
 giraffe.addEventListener('click', handleGiraffeClick)
 zebra.addEventListener('click', handleZebraClick)
-
-playAudioOnClick(leopardPattern, ['./assets/sounds/7_tanzania/탄자니아_표범_풀버전.m4a'], volume.FIREWORKS)
-playAudioOnClick(zebra, ['./assets/sounds/7_tanzania/탄자니아_얼룩말1.m4a', './assets/sounds/7_tanzania/탄자니아_얼룩말2.m4a', './assets/sounds/7_tanzania/탄자니아_얼룩말3.m4a'], volume.ZEBRA)
 
 addMascotClickEvent(elephantHead, tanzaniaMascot, './assets/sounds/7_tanzania/탄자니아_코끼리.m4a', './assets/sounds/7_tanzania/탄자니아_코끼리.m4a', volume.ELEPHANT)
 
