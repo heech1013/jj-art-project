@@ -12,7 +12,11 @@ const rightEyeClosed = document.querySelector('#right_eye_closed')
 const leftTear = document.querySelector('#left_tear')
 const rightTear = document.querySelector('#right_tear')
 
+let isClosed = false
+
 document.addEventListener('mousemove', (e) => {
+    if (isClosed) { return }
+
     const leftPupilX = leftPupil.getBoundingClientRect().left
     const leftPupilY = leftPupil.getBoundingClientRect().top
 
@@ -30,6 +34,8 @@ document.addEventListener('mousemove', (e) => {
 })
 
 frame.addEventListener('click', () => {
+    isClosed = true
+
     leftEye.style.display = 'none'
     rightEye.style.display = 'none'
     leftPupil.style.display = 'none'
@@ -49,6 +55,8 @@ frame.addEventListener('click', () => {
         rightPupil.style.display = 'block'
         leftEyeClosed.style.display = 'none'
         rightEyeClosed.style.display = 'none'
+
+        isClosed = false
     }, 700);
 
     window.setTimeout(() => {
