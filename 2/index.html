@@ -1,17 +1,20 @@
 <html>
     <head>
         <link rel="stylesheet" href="./styles.css">
+        <script src="./warp.js"></script>
     </head>
 
     <body>
         <div id="frame">
             <img id='face' src="./assets/face.png"></img>
-            <div id="left_eye">
-                <div id="left_pupil"></div>
-            </div>
-            <div id="right_eye">
-                <div id="right_pupil"></div>
-            </div>
+            <svg id="left_eye" width="100" height="100">
+                <circle cx="50" cy="50" r="40" fill="white" />
+            </svg>
+            <div id="left_pupil"></div>
+            <svg id="right_eye" width="100" height="100">
+                <circle cx="50" cy="50" r="40" fill="white" />
+            </svg>
+            <div id="right_pupil"></div>
             <img id="left_tear" src="./assets/tear.png"></img>
             <img id="right_tear" src="./assets/tear.png"></img>
             <div id="left_eye_closed">
