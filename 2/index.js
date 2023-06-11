@@ -23,11 +23,11 @@ document.addEventListener('mousemove', (e) => {
     const rightPupilX = rightPupil.getBoundingClientRect().left
     const rightPupilY = rightPupil.getBoundingClientRect().top
 
-    const leftX = (e.pageX - leftPupilX) / 45
-    const leftY = (e.pageY - leftPupilY) / 25
+    const leftX = (e.pageX - leftPupilX) / 50
+    const leftY = (e.pageY - leftPupilY) / 30
 
-    const rightX = (e.pageX - rightPupilX) / 45
-    const rightY = (e.pageY - rightPupilY) / 25
+    const rightX = (e.pageX - rightPupilX) / 50
+    const rightY = (e.pageY - rightPupilY) / 30
 
     leftPupil.style.transform = `translate(${leftX}px, ${leftY}px)`
     rightPupil.style.transform = `translate(${rightX}px, ${rightY}px)`
@@ -78,8 +78,8 @@ document.querySelectorAll('svg').forEach((eye) => {
     let offset = 0
 
     const animate = () => {
-        warp.transform(([ x, y, oy ]) => [ x, oy + 3 * Math.sin(x / 6 + offset), oy ])
-        offset += 0.18
+        warp.transform(([ x, y, oy ]) => [ x, oy + 4 * Math.sin(x / 6 + offset), oy ])
+        offset += 0.13
         requestAnimationFrame(animate)
     }
     
