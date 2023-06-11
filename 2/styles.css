@@ -90,15 +90,15 @@ body {
     display: none;
     position: absolute;
     left: 67px;
-    top: 250px;
+    top: 255px;
     filter: drop-shadow( 2px 2px 1px rgba(0, 0, 0, .7));
 }
 
 #right_eye_closed {
     display: none;
     position: absolute;
-    left: 245px;
-    top: 250px;
+    left: 243px;
+    top: 255px;
     filter: drop-shadow( 2px 2px 1px rgba(0, 0, 0, .7));
 }
 
