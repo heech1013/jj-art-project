@@ -125,12 +125,13 @@ body {
         transform: translateY(0px);
     }
     100% {
-        transform: translateY(800px);
+        transform: translateY(700px);
     }
 }
 
 .teardrop {
     animation-name: teardrop;
-    animation-duration: 2.5s;
+    animation-duration: 2s;
     animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.86, 0.04, 0.88, 0.54);
 }

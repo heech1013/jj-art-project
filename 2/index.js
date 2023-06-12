@@ -13,6 +13,7 @@ const leftTear = document.querySelector('#left_tear')
 const rightTear = document.querySelector('#right_tear')
 
 let isClosed = false
+let isTearDropping = false
 
 document.addEventListener('mousemove', (e) => {
     if (isClosed) { return }
@@ -34,7 +35,9 @@ document.addEventListener('mousemove', (e) => {
 })
 
 frame.addEventListener('click', () => {
+    if (isTearDropping) { return }
     isClosed = true
+    isTearDropping = true
 
     leftEye.style.display = 'none'
     rightEye.style.display = 'none'
@@ -57,7 +60,7 @@ frame.addEventListener('click', () => {
         rightEyeClosed.style.display = 'none'
 
         isClosed = false
-    }, 700);
+    }, 2000);
 
     window.setTimeout(() => {
         leftTear.classList.remove('teardrop')
@@ -65,7 +68,9 @@ frame.addEventListener('click', () => {
 
         leftTear.style.display = 'none'
         rightTear.style.display = 'none'
-    }, 1000);
+
+        isTearDropping = false
+    }, 2000);
 })
 
 /** @description wavy warp eye */
