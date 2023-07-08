@@ -18,16 +18,16 @@ const projects = [
   {
     id: 'jump_kick',
     name: 'Jumpkick Around The World',
-    x: 480,
-    y: 180,
+    x: 499,
+    y: 301,
     width: 170,
     href: './1/index.html'
   },
   {
     id: 'face_time',
     name: 'Face time',
-    x: 840,
-    y: 320,
+    x: 826,
+    y: 457,
     width: 60,
     href: './2/index.html'
   }
@@ -58,6 +58,7 @@ projects.forEach(({ id, name, x, y, width, href }) => {
   background.appendChild($project)
 })
 
+let target
 let isDragging = false
 let disableClickEvent = false
 let initX = 0
@@ -68,20 +69,21 @@ const move = (target, left, right) => {
   target.style.top = `${right}px`
 }
 
-const handleDragStart = (e) => {
+
+function handleDragStart(e) {
+  target = e.target.closest('.project')
   isDragging = true
 
   initX = e.pageX
   initY = e.pageY
 }
 
-const handleDrag = (e) => {
+function handleDrag(e) {
   if (!isDragging) return
   e.preventDefault()
 
   disableClickEvent = true
 
-  const target = e.target.closest('.project')
   const { x, y } = target.getBoundingClientRect()
 
   const offsetX = initX - e.pageX
@@ -96,7 +98,7 @@ const handleDrag = (e) => {
   initY = e.pageY
 }
 
-const handleDragEnd = (e) => {
+function handleDragEnd(e) {
   isDragging = false
   setTimeout(() => {
     disableClickEvent = false
@@ -106,16 +108,18 @@ const handleDragEnd = (e) => {
   initY = e.pageY
 }
 
-const handleClick = (e) => {
+function handleClick(e) {
   if (disableClickEvent) {
     return e.preventDefault()
   }
 }
 
+document.ondragstart = () => false
+document.addEventListener('mousedown', handleDragStart, true)
+document.addEventListener('mousemove', handleDrag, true)
+document.addEventListener('mouseup', handleDragEnd, true)
+
 document.querySelectorAll('.project').forEach($project => {
   $project.ondragstart = () => false
-  $project.addEventListener('mousedown', handleDragStart, true)
-  $project.addEventListener('mousemove', handleDrag, true)
-  $project.addEventListener('mouseup', handleDragEnd, true)
   $project.addEventListener('click', handleClick)
 })
