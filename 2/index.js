@@ -1,4 +1,5 @@
 const frame = document.querySelector('#frame')
+const typo = document.querySelector('#typo')
 
 const leftEye = document.querySelector('#left_eye')
 const rightEye = document.querySelector('#right_eye')
@@ -32,6 +33,14 @@ document.addEventListener('mousemove', (e) => {
 
     leftPupil.style.transform = `translate(${leftX}px, ${leftY}px)`
     rightPupil.style.transform = `translate(${rightX}px, ${rightY}px)`
+})
+
+frame.addEventListener('mouseover', () => {
+    typo.style.color = 'black'
+})
+
+frame.addEventListener('mouseout', () => {
+    typo.style.color = 'white'
 })
 
 frame.addEventListener('click', () => {
